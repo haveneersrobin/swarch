@@ -1,2 +1,2 @@
 # swarch
-Software architercture for 2016-2017.
+Software architercture project in 2016-2017.
