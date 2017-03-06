@@ -63,18 +63,139 @@ in this analysis.
 \end{figure}
 
 \section{Use case overview}\label{sec:uc_overview}
+\paragraph{UC1: Log in}
+The user wishing to use the system provides his credentials.
+The system verifies the credentials and authenticates the user.
+If the provides credentials were not correct, the system does not authenticate the user.
+
+\paragraph{UC2: Log off}
+The user indicates he wants to log off from the system.
+The system logs him of.
+
+\paragraph{UC3: Enroll as application provider}
+The organisation wishing to becoma an application provider contacts SIoTIP and they negotiate the contract. The organisation reveices API documentation and rules of conduct from SIoTIP. When the negotiations are conducted, the organisation is provided dashboard accounts for the individual developers employed by the organisation.
+
+\paragraph{UC4: Add application}
+The user logs into the application provider dashboard and uploads the new application. SIoTIP initiates a number of automated tests and shows the progress on the user's application provider dashboard. If the application passes all tests, the user receives a notification and the application is made available to customer organizations for subscription. If the application does not pass al tests, a SIoTIP system administrator performs a secondary review and decides whether to accept or reject the application. In the latter case, the user is notified of the reason of rejection.
+
+\paragraph{UC5: Update existing application}
+The user logs into the application provider dashboard and uploads the updated application. The user also indicates whether to automatically update existing instances of the application or to require customer organisations to subscribe to the application. SIoTIP initiates a number of automated tests and shows the progress on the user's application provider dashboard. If the application passes all tests, the user receives a notification and the application is made available to customer organizations for subscription. If the application does not pass al tests, a SIoTIP system administrator performs a secondary review and decides whether to accept or reject the application. In the latter case, the user is notified of the reason of rejection.
+
+\paragraph{UC6: Register as new infrastructure owner}
+The infrastructure owner contacts SIoTIP and negotiatons are started. An infrastructure owner dashboard account is set up for the new user. The infrastrucure owner proides the names of the currently renting companies, and SIoTIP contacts them for registration (See UC: Register new customer organisation).
+
+\paragraph{UC7: Register as new customer organisation}
+The new customer organisation contacts or is contacted by SIoTIP and provides it's billing and contact information.
+
+\paragraph{UC8: Subscribe to application}
+The user logs into his dashboard, subscribes to the application and provides the needed information. The user is informed that the application will be activated once the required peripherals are installed. SIoTIP checks whether or not the customer organisation has access to all the peripherals needed for the application. If not, the infrastrucure owner is automatically notified of the subscription and the needed peripherals (see UC9: process peripheral request). Once all required hardware is installed, the application is activated and the user is notified.
+
+\paragraph{UC9: Process peripheral request}
+The infrastructure owner is notified of a new request for peripherals. SIoTIP automatically adds sufficient gateways needed to support these peripherals to the request, if any. The infrastructure owner approves or rejects the purchase of the hardware and a notification of the decision is sent to the user which requested the peripherals. 
+
+\paragraph{UC10: Install new hardware}
+
+
+
+\section{Detailed use cases}
+\subsection{\emph{UC1}: Log in}
+\begin{itemize}
+    \item \textbf{Name:} log in
+    \item \textbf{Primary actor:} the User
+    \item \textbf{Secondary actor(s)}: secondary actor(s)
+    \item \textbf{Interested parties:} 
+        \begin{itemize}
+            \item \textit{System:} wants to authenticate its users.
+        \end{itemize}
+
+    \item \textbf{Preconditions:}
+        \begin{itemize}
+            \item The User is registered into the system and has credentials to prove his identity.
+            \item Second precondition.
+        \end{itemize}
+
+    \item \textbf{Postconditions:}
+        \begin{itemize}
+            \item First postcondition.
+            \item Second postcondition.
+        \end{itemize}
+        
+    \item \textbf{Main scenario:} 
+    \begin{enumerate}
+       \item Step 1
+       \item Step 2
+       \item Step 3
+       \item \ldots
+    \end{enumerate}
+
+    \item \textbf{Alternative scenarios:} 
+    \begin{enumerate}
+        \item [3b.] Alternative at step 3
+    \end{enumerate}
+    
+    \item \textbf{Remarks:}
+        \begin{itemize}
+            \item First remark
+        \end{itemize}
+\end{itemize}
+
 \paragraph{UC1: Name}
 Short summary of this use case scenario
 
 \section{Detailed use cases}
-\subsection{\emph{UC1}: Name}
+\subsection{\emph{UC1}: Log in}
 \begin{itemize}
-    \item \textbf{Name:} Name of use case 1
-    \item \textbf{Primary actor:} primary actor
+    \item \textbf{Name:} log in
+    \item \textbf{Primary actor:} the User
     \item \textbf{Secondary actor(s)}: secondary actor(s)
     \item \textbf{Interested parties:} 
         \begin{itemize}
-            \item \textit{Name of interested party:} reason why party is interested
+            \item \textit{System:} wants to authenticate its users.
+        \end{itemize}
+
+    \item \textbf{Preconditions:}
+        \begin{itemize}
+            \item First precondition.
+            \item Second precondition.
+        \end{itemize}
+
+    \item \textbf{Postconditions:}
+        \begin{itemize}
+            \item First postcondition.
+            \item Second postcondition.
+        \end{itemize}
+        
+    \item \textbf{Main scenario:} 
+    \begin{enumerate}
+       \item Step 1
+       \item Step 2
+       \item Step 3
+       \item \ldots
+    \end{enumerate}
+
+    \item \textbf{Alternative scenarios:} 
+    \begin{enumerate}
+        \item [3b.] Alternative at step 3
+    \end{enumerate}
+    
+    \item \textbf{Remarks:}
+        \begin{itemize}
+            \item First remark
+        \end{itemize}
+\end{itemize}
+
+\paragraph{UC1: Name}
+Short summary of this use case scenario
+
+\section{Detailed use cases}
+\subsection{\emph{UC1}: Log in}
+\begin{itemize}
+    \item \textbf{Name:} log in
+    \item \textbf{Primary actor:} the User
+    \item \textbf{Secondary actor(s)}: secondary actor(s)
+    \item \textbf{Interested parties:} 
+        \begin{itemize}
+            \item \textit{System:} wants to authenticate its users.
         \end{itemize}
 
     \item \textbf{Preconditions:}
@@ -137,6 +258,9 @@ Shortly describe the context of the scenario.
             \item Describe how the satisfaction of a response is measured.
         \end{itemize}
 \end{itemize}
+
+\paragraph{UC2: Name}
+Short summary of this use case scenario
 
 \section{Performance}
 \subsection{\emph{P1}: Name of the quality attribute scenario}
