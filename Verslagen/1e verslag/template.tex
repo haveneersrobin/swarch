@@ -73,28 +73,38 @@ The user indicates he wants to log off from the system.
 The system logs him of.
 
 \paragraph{UC3: Enroll as application provider}
-The organisation wishing to becoma an application provider contacts SIoTIP and they negotiate the contract. The organisation reveices API documentation and rules of conduct from SIoTIP. When the negotiations are conducted, the organisation is provided dashboard accounts for the individual developers employed by the organisation.
+The organization wishing to becoma an application provider contacts SIoTIP and they negotiate the contract. The organization reveices API documentation and rules of conduct from SIoTIP. When the negotiations are conducted, the organization is provided dashboard accounts for the individual developers employed by the organization.
 
 \paragraph{UC4: Add application}
 The user logs into the application provider dashboard and uploads the new application. SIoTIP initiates a number of automated tests and shows the progress on the user's application provider dashboard. If the application passes all tests, the user receives a notification and the application is made available to customer organizations for subscription. If the application does not pass al tests, a SIoTIP system administrator performs a secondary review and decides whether to accept or reject the application. In the latter case, the user is notified of the reason of rejection.
 
 \paragraph{UC5: Update existing application}
-The user logs into the application provider dashboard and uploads the updated application. The user also indicates whether to automatically update existing instances of the application or to require customer organisations to subscribe to the application. SIoTIP initiates a number of automated tests and shows the progress on the user's application provider dashboard. If the application passes all tests, the user receives a notification and the application is made available to customer organizations for subscription. If the application does not pass al tests, a SIoTIP system administrator performs a secondary review and decides whether to accept or reject the application. In the latter case, the user is notified of the reason of rejection.
+The user logs into the application provider dashboard and uploads the updated application. The user also indicates whether to automatically update existing instances of the application or to require customer organizations to subscribe to the application. SIoTIP initiates a number of automated tests and shows the progress on the user's application provider dashboard. If the application passes all tests, the user receives a notification and the application is made available to customer organizations for subscription. If the application does not pass all tests, a SIoTIP system administrator performs a secondary review and decides whether to accept or reject the application. In the latter case, the user is notified of the reason of rejection.
 
 \paragraph{UC6: Register as new infrastructure owner}
-The infrastructure owner contacts SIoTIP and negotiatons are started. An infrastructure owner dashboard account is set up for the new user. The infrastrucure owner proides the names of the currently renting companies, and SIoTIP contacts them for registration (See UC: Register new customer organisation).
+The infrastructure owner contacts SIoTIP and negotiations are started. An infrastructure owner dashboard account is set up for the new user. The infrastructure owner provides the names of the currently renting companies, and SIoTIP contacts them for registration (See UC: Register new customer organization).
 
-\paragraph{UC7: Register as new customer organisation}
-The new customer organisation contacts or is contacted by SIoTIP and provides it's billing and contact information.
+\paragraph{UC7: Register as new customer organization}
+The new customer organization contacts or is contacted by SIoTIP and provides it's billing and contact information.
 
 \paragraph{UC8: Subscribe to application}
-The user logs into his dashboard, subscribes to the application and provides the needed information. The user is informed that the application will be activated once the required peripherals are installed. SIoTIP checks whether or not the customer organisation has access to all the peripherals needed for the application. If not, the infrastrucure owner is automatically notified of the subscription and the needed peripherals (see UC9: process peripheral request). Once all required hardware is installed, the application is activated and the user is notified.
+The user logs into his dashboard, subscribes to the application and provides the needed information. The user is informed that the application will be activated once the required peripherals are installed. SIoTIP checks whether or not the customer organization has access to all the peripherals needed for the application. If not, the infrastructure owner is automatically notified of the subscription and the needed peripherals (see UC9: process peripheral request). Once all required hardware is installed, the application is activated and the user is notified.
 
 \paragraph{UC9: Process peripheral request}
-The infrastructure owner is notified of a new request for peripherals. SIoTIP automatically adds sufficient gateways needed to support these peripherals to the request, if any. The infrastructure owner approves or rejects the purchase of the hardware and a notification of the decision is sent to the user which requested the peripherals. 
+The infrastructure owner is notified of a new request for peripherals. SIoTIP automatically adds sufficient gateways needed to support these peripherals to the request, if any. The infrastructure owner approves or rejects the purchase of the hardware and a notification of the decision is sent to the user which requested the peripherals. If the infrastructure owner approved the request, the hardware is ordered from SIoTIP.
 
 \paragraph{UC10: Install new hardware}
+The infrastructure owner receives the hardware from SIoTIP and installs it. The infrastructure owner configures any new gateways to connect to the (WiFi?) local network. Once online, the gateways immediately connect to the Online Service to register themselves. The infrastructure owner then logs in to the infrastructure owner dashboard and provides the necessary topology information. Lastly, he assigns access rights to the customer organizations in his building to use the new peripherals.
 
+\paragraph{UC11: Resolve hardware failure}
+The system detects that a hardware component is no longer sending data and sends a notification to the infrastructure owner. The system also notifies all applications currently using the failing hardware component so that the applications can search for equivalent sensors in the topology. 
+
+\paragraph{UC12: Configure end-users}
+The user logs in to the customer organization dashboard and assigns other users to an application.
+Nodig?
+
+\paragraph{UC13: Transmit data}
+The sensor sends data to the corresponding gateway. 
 
 
 \section{Detailed use cases}
