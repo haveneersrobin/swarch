@@ -88,7 +88,7 @@ The infrastructure owner contacts SIoTIP and negotiations are started. An Infras
 The organization contacts or is contacted by SIoTIP and provides it's billing and contact information. The organization is then registered as a Customer Organization in the Online Service.
 
 \paragraph{UC8: Subscribe to application}
-The user logs into his Customer Organization dashboard, subscribes to the application and provides the needed information. The user is informed by the Online Service that the application will be activated once the required peripherals are installed. SIoTIP checks whether or not the customer organization has access to all the peripherals needed for the application. If not, the infrastructure owner is automatically notified of the subscription and the needed peripherals (see UC9: process peripheral request). Once all required hardware is installed, the application is activated and the user is notified.
+The user logs into his Customer Organization dashboard, subscribes to the application and provides the needed information. The user is informed by the Online Service that the application will be activated once the required peripherals are installed. SIoTIP checks whether or not the customer organization has access to all the peripherals needed for the application. If not, the infrastructure owner is automatically notified of the subscription and the needed peripherals (see UC10: process peripheral request). Once all required hardware is installed, the application is activated and the user is notified.
 
 \paragraph{UC9: Unsubscribe from application}
 The user logs into his Customer organization dashboard and unsubscribes from the application. TODO notification nodig? The user is informed by the Online Service that the application will be deactivated.
@@ -117,7 +117,7 @@ The user logs into his Customer Organization dashboard and selects the option to
 The user logs into his Infrastructure Owner dashboard and selects the option to edit the his building's (TODO meerdere buildings?) topology. When the user is done editing the topology, the updated topology will be saved in the Online Service.
 
 \paragraph{UC17: Allocate peripherals}
-The user logs into his infrastructure owner dashboard and selects the option to allocate peripherals to Customer Organizations. He then assigns access rights to the Customer Organizations in his building to use the new peripherals. The Online Service automatically activates any application of that Customer Organizaion which needed the newly allocated peripherals in order to run. Conversely, if a peripheral gets withheld from a Customer Organization, the Onlice Service deactivates any application of that Customer Organization which needed the withholded peripheral to function properly.
+The user logs into his Infrastructure Owner dashboard and selects the option to allocate peripherals to Customer Organizations. He then assigns access rights to the Customer Organizations in his building to use the new peripherals. The Online Service automatically activates any application of that Customer Organizaion which needed the newly allocated peripherals in order to run. Conversely, if a peripheral gets withheld from a Customer Organization, the Onlice Service deactivates any application of that Customer Organization which needed the withholded peripheral to function properly.
 
 \paragraph{UC18: Develop application}
 TODO nodig? Niet echt interactie tussen context en systeem?
@@ -135,7 +135,7 @@ The user logs into his Customer Organization dashboard and configures the method
 The user logs into his dashboard and requests an overview of previously received notifications and alarms. The Online Service provides this overview.
 
 \paragraph{UC23: Synchronize Online Service and gateway}
-TODO ook niet echt nodig denk ik
+The gateway sends all data acquired between this moment and the last synchronization moment to the Online Service.
 
 \paragraph{UC24: Get application overview}
 The user logs into his Application Provider dashboard and request an overview their applications. The Online Service provides this overview.
