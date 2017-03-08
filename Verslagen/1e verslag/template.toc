@@ -3,36 +3,36 @@
 \contentsline {section}{\numberline {1.1}Domain models}{2}{section.1.1}
 \contentsline {section}{\numberline {1.2}Domain constraints}{2}{section.1.2}
 \contentsline {section}{\numberline {1.3}Glossary}{2}{section.1.3}
-\contentsline {chapter}{\numberline {2}Functional requirements}{3}{chapter.2}
-\contentsline {section}{\numberline {2.1}Use case overview}{3}{section.2.1}
-\contentsline {paragraph}{UC1: Log in}{3}{paragraph*.2}
-\contentsline {paragraph}{UC2: Log off}{3}{paragraph*.3}
-\contentsline {paragraph}{UC3: Enroll as application provider}{3}{paragraph*.4}
-\contentsline {paragraph}{UC4: Add application}{3}{paragraph*.5}
-\contentsline {paragraph}{UC5: Update existing application}{3}{paragraph*.6}
-\contentsline {paragraph}{UC6: Register as new infrastructure owner}{3}{paragraph*.7}
-\contentsline {paragraph}{UC7: Register as new customer organization}{4}{paragraph*.8}
-\contentsline {paragraph}{UC8: Subscribe to application}{4}{paragraph*.9}
-\contentsline {paragraph}{UC9: Process peripheral request}{4}{paragraph*.10}
-\contentsline {paragraph}{UC10: Install new hardware}{4}{paragraph*.11}
-\contentsline {paragraph}{UC11: Resolve hardware failure}{4}{paragraph*.12}
-\contentsline {paragraph}{UC12: Configure end-users}{4}{paragraph*.13}
-\contentsline {paragraph}{UC13: Transmit data}{4}{paragraph*.14}
-\contentsline {section}{\numberline {2.2}Detailed use cases}{4}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}\emph {UC1}: Log in}{4}{subsection.2.2.1}
-\contentsline {paragraph}{UC1: Name}{5}{paragraph*.15}
-\contentsline {section}{\numberline {2.3}Detailed use cases}{5}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}\emph {UC1}: Log in}{5}{subsection.2.3.1}
-\contentsline {paragraph}{UC1: Name}{5}{paragraph*.16}
-\contentsline {section}{\numberline {2.4}Detailed use cases}{6}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}\emph {UC1}: Log in}{6}{subsection.2.4.1}
-\contentsline {chapter}{\numberline {3}Non-functional requirements}{7}{chapter.3}
-\contentsline {section}{\numberline {3.1}Availability}{7}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}\emph {Av1}: Name of the quality attribute scenario}{7}{subsection.3.1.1}
-\contentsline {paragraph}{UC2: Name}{7}{paragraph*.17}
-\contentsline {section}{\numberline {3.2}Performance}{7}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}\emph {P1}: Name of the quality attribute scenario}{7}{subsection.3.2.1}
-\contentsline {section}{\numberline {3.3}Modifiability}{8}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}\emph {M1}: Name of the quality attribute scenario}{8}{subsection.3.3.1}
-\contentsline {section}{\numberline {3.4}Usability}{8}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}\emph {U1}: Name of the quality attribute scenario}{8}{subsection.3.4.1}
+\contentsline {chapter}{\numberline {2}Functional requirements}{5}{chapter.2}
+\contentsline {section}{\numberline {2.1}Use case overview}{5}{section.2.1}
+\contentsline {paragraph}{UC1: Log in}{5}{paragraph*.2}
+\contentsline {paragraph}{UC2: Log off}{5}{paragraph*.3}
+\contentsline {paragraph}{UC3: Enroll as application provider}{5}{paragraph*.4}
+\contentsline {paragraph}{UC4: Add application}{5}{paragraph*.5}
+\contentsline {paragraph}{UC5: Update existing application}{5}{paragraph*.6}
+\contentsline {paragraph}{UC6: Register as new infrastructure owner}{5}{paragraph*.7}
+\contentsline {paragraph}{UC7: Register as new customer organization}{6}{paragraph*.8}
+\contentsline {paragraph}{UC8: Subscribe to application}{6}{paragraph*.9}
+\contentsline {paragraph}{UC9: Process peripheral request}{6}{paragraph*.10}
+\contentsline {paragraph}{UC10: Install new hardware}{6}{paragraph*.11}
+\contentsline {paragraph}{UC11: Resolve hardware failure}{6}{paragraph*.12}
+\contentsline {paragraph}{UC12: Configure end-users}{6}{paragraph*.13}
+\contentsline {paragraph}{UC13: Transmit data}{6}{paragraph*.14}
+\contentsline {section}{\numberline {2.2}Detailed use cases}{6}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}\emph {UC1}: Log in}{6}{subsection.2.2.1}
+\contentsline {paragraph}{UC1: Name}{7}{paragraph*.15}
+\contentsline {section}{\numberline {2.3}Detailed use cases}{7}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}\emph {UC1}: Log in}{7}{subsection.2.3.1}
+\contentsline {paragraph}{UC1: Name}{7}{paragraph*.16}
+\contentsline {section}{\numberline {2.4}Detailed use cases}{8}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}\emph {UC1}: Log in}{8}{subsection.2.4.1}
+\contentsline {chapter}{\numberline {3}Non-functional requirements}{9}{chapter.3}
+\contentsline {section}{\numberline {3.1}Availability}{9}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}\emph {Av1}: Name of the quality attribute scenario}{9}{subsection.3.1.1}
+\contentsline {paragraph}{UC2: Name}{9}{paragraph*.17}
+\contentsline {section}{\numberline {3.2}Performance}{9}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}\emph {P1}: Name of the quality attribute scenario}{9}{subsection.3.2.1}
+\contentsline {section}{\numberline {3.3}Modifiability}{10}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}\emph {M1}: Name of the quality attribute scenario}{10}{subsection.3.3.1}
+\contentsline {section}{\numberline {3.4}Usability}{10}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}\emph {U1}: Name of the quality attribute scenario}{10}{subsection.3.4.1}
