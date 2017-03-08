@@ -40,7 +40,12 @@ In this section we provide additional domain constraints.
 
 \begin{itemize}
     \item A customer organization can only subscribe to an application that is already registered with the system.
-    \item This is a second constraint.
+    \item A end-user only receives notifications from applications that the customer organization he works for is subscribed to. He only receives these notifcations if he/she is an individual who should receive notifications as configured in the application by the previously mentioned customer organization.
+    \item The Online Service can only communicate with peripherals via their gateway.
+    \item The connectivity between the network manager and the attached devices is done via 6LoWPAN.
+    \item Application developers only receive rejection notification about the applications they want to deploy.
+    \item An application should be idle until all the necesarry hardware is available and if the hardware is available it should be activated automatically.
+    \item If a component of the hardware fails, the system should automatically switch to a nearby, similar device if possible, based on the topology provided by the infrastructure owner.
 \end{itemize}
 
 \section{Glossary}
