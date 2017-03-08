@@ -11,22 +11,25 @@
 \contentsline {paragraph}{UC4: Add application}{3}{paragraph*.5}
 \contentsline {paragraph}{UC5: Update existing application}{3}{paragraph*.6}
 \contentsline {paragraph}{UC6: Register as new infrastructure owner}{3}{paragraph*.7}
-\contentsline {paragraph}{UC7: Register as new customer organisation}{4}{paragraph*.8}
+\contentsline {paragraph}{UC7: Register as new customer organization}{4}{paragraph*.8}
 \contentsline {paragraph}{UC8: Subscribe to application}{4}{paragraph*.9}
 \contentsline {paragraph}{UC9: Process peripheral request}{4}{paragraph*.10}
 \contentsline {paragraph}{UC10: Install new hardware}{4}{paragraph*.11}
+\contentsline {paragraph}{UC11: Resolve hardware failure}{4}{paragraph*.12}
+\contentsline {paragraph}{UC12: Configure end-users}{4}{paragraph*.13}
+\contentsline {paragraph}{UC13: Transmit data}{4}{paragraph*.14}
 \contentsline {section}{\numberline {2.2}Detailed use cases}{4}{section.2.2}
 \contentsline {subsection}{\numberline {2.2.1}\emph {UC1}: Log in}{4}{subsection.2.2.1}
-\contentsline {paragraph}{UC1: Name}{5}{paragraph*.12}
+\contentsline {paragraph}{UC1: Name}{5}{paragraph*.15}
 \contentsline {section}{\numberline {2.3}Detailed use cases}{5}{section.2.3}
 \contentsline {subsection}{\numberline {2.3.1}\emph {UC1}: Log in}{5}{subsection.2.3.1}
-\contentsline {paragraph}{UC1: Name}{5}{paragraph*.13}
-\contentsline {section}{\numberline {2.4}Detailed use cases}{5}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}\emph {UC1}: Log in}{5}{subsection.2.4.1}
+\contentsline {paragraph}{UC1: Name}{5}{paragraph*.16}
+\contentsline {section}{\numberline {2.4}Detailed use cases}{6}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}\emph {UC1}: Log in}{6}{subsection.2.4.1}
 \contentsline {chapter}{\numberline {3}Non-functional requirements}{7}{chapter.3}
 \contentsline {section}{\numberline {3.1}Availability}{7}{section.3.1}
 \contentsline {subsection}{\numberline {3.1.1}\emph {Av1}: Name of the quality attribute scenario}{7}{subsection.3.1.1}
-\contentsline {paragraph}{UC2: Name}{7}{paragraph*.14}
+\contentsline {paragraph}{UC2: Name}{7}{paragraph*.17}
 \contentsline {section}{\numberline {3.2}Performance}{7}{section.3.2}
 \contentsline {subsection}{\numberline {3.2.1}\emph {P1}: Name of the quality attribute scenario}{7}{subsection.3.2.1}
 \contentsline {section}{\numberline {3.3}Modifiability}{8}{section.3.3}
