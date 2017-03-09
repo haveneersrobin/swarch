@@ -135,7 +135,7 @@ The Online Service verifies the credentials and authenticates the user.
 The Online Service then provides the user acces to his dashboard.
 If the provides credentials were not correct, the system does not authenticate the user.
 
-\paragraph{UC2: Log off}
+\paragraph{UC2: Log out}
 The user indicates he wants to log off from the system.
 The system logs him of.
 
@@ -155,13 +155,13 @@ The infrastructure owner contacts SIoTIP and negotiations are started. An Infras
 The organization contacts or is contacted by SIoTIP and provides it's billing and contact information. The organization is then registered as a Customer Organization in the Online Service.
 
 \paragraph{UC8: Subscribe to application}
-The user logs into his Customer Organization dashboard, subscribes to the application and provides the needed information. The user is informed by the Online Service that the application will be activated once the required peripherals are installed. The Online Service checks whether or not the customer organization has access to all the peripherals needed for the application. If not, the infrastructure owner is automatically notified of the subscription and the needed peripherals (see UC10: process peripheral request). Once all required hardware is installed, the application is activated and the user is notified.
+The user logs into his Customer Organization dashboard, subscribes to the application and provides the needed information. The user is informed by the Online Service that the application will be activated once the required peripherals are installed. The Online Service checks whether or not the customer organization has access to all the peripherals needed for the application. If not, the infrastructure owner is automatically notified of the subscription and the peripherals and gateways needed for that application (see UC10: process hardware request). Once all required hardware is installed, the application is activated and the user is notified.
 
 \paragraph{UC9: Unsubscribe from application}
 The user logs into his Customer organization dashboard and unsubscribes from the application. The user is informed by the Online Service that the application will be deactivated.
 
-\paragraph{UC10: Process peripheral request}
-The Infrastructure Owner is notified of a new request for peripherals. The Online Service automatically adds sufficient gateways needed to support these peripherals to the request, if any. The infrastructure owner approves or rejects the purchase of the hardware and a notification of the decision is sent to the user which requested the peripherals. If the infrastructure owner approved the request, the hardware is ordered from SIoTIP.
+\paragraph{UC10: Process hardware request}
+The Infrastructure Owner is notified of a new request for hardware. The infrastructure owner approves or rejects the purchase of the hardware and a notification of the decision is sent to the customer organisation which requested the peripherals. If the infrastructure owner approves the request, the hardware is ordered from SIoTIP.
 
 \paragraph{UC11: Install new hardware}
 The Infrastructure Owner receives the hardware from SIoTIP and installs it. The infrastructure owner configures any new gateways to connect to the (WiFi?) local network. Once online, the gateways immediately connect to the Online Service to register themselves. The infrastructure owner then logs in to the infrastructure owner dashboard and provides the necessary topology information. Lastly, he allocatesthe new peripherals to the Customer Organizations in his building (See UC: Allocato peripherals).
@@ -180,7 +180,7 @@ The sensor sends data to the corresponding gateway. The gateway stores the data 
 The user logs into his Customer Organization dashboard and selects the option to show his Customer Organization's invoice overview. The Online Service then shows an overview of all the Customer Organization's invoices.
 
 \paragraph{UC16: Edit topology}
-The user logs into his Infrastructure Owner dashboard and selects the option to edit his buildings' topology. When the user is done editing the topology, the updated topology will be saved in the Online Service.
+The user logs into his Infrastructure Owner dashboard and selects the option to edit the topology of his buildings. When the user is done editing the topology, the updated topology will be saved in the Online Service.
 
 \paragraph{UC17: Allocate peripherals}
 The user logs into his Infrastructure Owner dashboard and selects the option to allocate peripherals to Customer Organizations. He then assigns access rights to the Customer Organizations in his building to use the new peripherals. The Online Service automatically activates any application of that Customer Organizaion which needed the newly allocated peripherals in order to run. Conversely, if a peripheral gets withheld from a Customer Organization, the Onlice Service deactivates any application of that Customer Organization which needed the withholded peripheral to function properly.
@@ -205,74 +205,22 @@ The user logs into his Application Provider dashboard and request an overview th
 
 
 \section{Detailed use cases}
-\subsection{\emph{UC8}: Subscribe to application}
-\begin{itemize}
-    \item \textbf{Name:} Subscribe to application
-    \item \textbf{Primary actor:} Customer Organization
-    \item \textbf{Secondary actor(s)}: 
-	\begin{itemize}
-		\item Infrastructure Owner: Needs to approve/reject the subscription if extra hardware is needed
-	\end{itemize}
-    \item \textbf{Interested parties:} 
-        \begin{itemize}
-            \item \textit{System:} wants to authenticate its users.
-        \end{itemize}
-
-    \item \textbf{Preconditions:}
-        \begin{itemize}
-            \item The Customer Organization is registered on the Online Service (UC7).
-            \item The member of the Customer Organization is logged into hit Customer Organization dashboard (UC1).
-        \end{itemize}
-
-    \item \textbf{Postconditions:}
-        \begin{itemize}
-            \item The Customer Organization is subscribed to the application.
-
-        \end{itemize}
-
-        
-    \item \textbf{Main scenario:} 
-    \begin{enumerate}
-       \item The member of the Customer Organization indicates he wants to subscribe to an application.
-       \item The Online Service presents the user with a means to search for and subscribe to applications.
-       \item The user subscribes to an application.
-	\item The Online Service saves the subscription.
-	\item The Online Service notifies the user that the application will be activated once the required peripherals are installed.
-	\item The Online Service notifies the Infrastructure Owner that new peripherals are needed (\textbf{Include:} UC10: Process peripheral request).
-	\item The Infrastructure Owner installs the hardware (\textbf{Include:} UC11: Install new hardware).
-    \item The Infrastructure Owner allocates the new peripherals to the Customer Organization (\textbf{Include:} UC17: Allocate peripherals )
-	\item The Online Service activates the application
-	\item The Online Service notifies the user that the application is activated.
-    \end{enumerate}
-
-    \item \textbf{Alternative scenarios:} 
-    \begin{enumerate}
-        \item [3b.] Alternative at step 3
-    \end{enumerate}
-    
-    \item \textbf{Remarks:}
-        \begin{itemize}
-            \item First remark
-        \end{itemize}
-\end{itemize}
-
-\paragraph{UC1: Name}
-Short summary of this use case scenario
 
 \subsection{\emph{UC4}: Add application}
 \begin{itemize}
     \item \textbf{Name:} Add application
     \item \textbf{Primary actor:} Application Provider
-    \item \textbf{Secondary actor(s)}: System Administrator
+    \item \textbf{Secondary actor(s)}: System Administrator, Online Service
     \item \textbf{Interested parties:} 
         \begin{itemize}
             \item \textit{Online Service:} wants to authenticate its users and keep track of applications.
+            \item \textit{Application Provider:} wants his applications to be available on the SIoTIP platform.
         \end{itemize}
 
     \item \textbf{Preconditions:}
         \begin{itemize}
-            \item The Application Provider is registered on the Online Service (UC3).
-            \item The Application Provider is logged into the Online Service (UC1).
+            \item The Application Provider is registered on the Online Service (cf. UC3).
+            \item The Application Provider is logged into the Online Service (cf. UC1).
         \end{itemize}
 
     \item \textbf{Postconditions:}
@@ -300,28 +248,105 @@ Short summary of this use case scenario
 		\item [5b2b.] The System Administrator rejects the application. The Application provider is notified of this decision.
 	\end{enumerate}
     \end{enumerate}
-    
-    \item \textbf{Remarks:}
-        \begin{itemize}
-            \item First remark
-        \end{itemize}
 \end{itemize}
 
+\subsection{\emph{UC8}: Subscribe to application}
+\begin{itemize}
+    \item \textbf{Name:} Subscribe to application
+    \item \textbf{Primary actor:} Customer Organization
+    \item \textbf{Secondary actor(s)}: Infrastructure owner, Online Service
+    \item \textbf{Interested parties:} 
+        \begin{itemize}
+            \item \textit{Online Service:} wants to authenticate its users and keep track of subscriptions.
+            \item \textit{Customer Organization:} wants to subscribe to applications
+            \item \textit{Infrastructure Owner:} Has to decide whether hardware will be bought for the applications or not.
+        \end{itemize}
+
+    \item \textbf{Preconditions:}
+        \begin{itemize}
+            \item The Customer Organization is registered on the Online Service (UC7).
+            \item The member of the Customer Organization is logged into hit Customer Organization dashboard (cf. UC1).
+        \end{itemize}
+
+    \item \textbf{Postconditions:}
+        \begin{itemize}
+            \item The Customer Organization is subscribed to the application.
+
+        \end{itemize}
+
+        
+    \item \textbf{Main scenario:} 
+    \begin{enumerate}
+       \item The member of the Customer Organization indicates he wants to subscribe to an application.
+       \item The Online Service presents the user with a means to search for and subscribe to applications.
+       \item The user subscribes to an application.
+	\item The Online Service saves the subscription.
+	\item The Online Service notifies the user that the application will be activated once the required peripherals are installed.
+	\item The Online Service notifies the Infrastructure Owner that new peripherals are needed (\textbf{Include:} UC10: Process peripheral request).
+	\item The Infrastructure Owner installs the hardware (\textbf{Include:} UC11: Install new hardware).
+    \item The Infrastructure Owner allocates the new peripherals to the Customer Organization (\textbf{Include:} UC17: Allocate peripherals )
+	\item The Online Service activates the application
+	\item The Online Service notifies the user that the application is activated.
+    \end{enumerate}
+
+    \item \textbf{Alternative scenarios:} 
+    \begin{enumerate}
+        \item [3b.] Alternative at step 3
+    \end{enumerate}
+\end{itemize}
+
+
+\subsection{\emph{UC10}: Process hardware request}
+\begin{itemize}
+    \item \textbf{Name:} Process peripheral request
+    \item \textbf{Primary actor:} Infrastructure Owner
+    \item \textbf{Secondary actor(s)}: Online Service
+    \item \textbf{Interested parties:} 
+        \begin{itemize}
+            \item \textit{Customer Organizations:} Could use the requested hardware if it is allocated to them.
+            \item \textit{Infrastructure Owner:} Has to decide whether or not the hardware will be bought.
+        \end{itemize}
+
+    \item \textbf{Preconditions:}
+        \begin{itemize}
+            \item The Infrastructure Owner received a request for new hardware.
+            \item The Infrastructure Owner is registered on the Online Service (cf. UC6).
+            \item The Infrastructure Owner is logged into his Infrastructure Owner dashboard. (cf. UC1)
+        \end{itemize}
+
+    \item \textbf{Postconditions:}
+        \begin{itemize}
+            \item The requester of the hardware is notified about whether or not the Infrastructure Owner approved the request.
+        \end{itemize}
+        
+    \item \textbf{Main scenario:} 
+    \begin{enumerate}
+       \item The Infrastructure Owner approves the request.
+       \item The Online Service orders the hardware from SIoTIP.
+       \item The Online Service notifies the requester of the hardware about the decision.
+    \end{enumerate}
+
+    \item \textbf{Alternative scenarios:} 
+    \begin{enumerate}
+        \item [1b1.] The Infrastructure Owner rejects the request, resume at step 3.
+    \end{enumerate}
+\end{itemize}
 
 \subsection{\emph{UC11}: Install new hardware}
 \begin{itemize}
     \item \textbf{Name:} Install new hardware
     \item \textbf{Primary actor:} Infrastructure Owner
-    \item \textbf{Secondary actor(s)}: /
+    \item \textbf{Secondary actor(s)}: 
     \item \textbf{Interested parties:} 
         \begin{itemize}
             \item \textit{Online Service:}  wants to authenticate its users and keep track of all hardware.
-            \item \textit{Customer Organization:} (possible) wants to subscribe to application and is waiting for hardware for it to be deployed
+            \item \textit{Customer Organizations:} can use the newly installed hardware if it is allocated to them.
+            \item \textit{Infrastructure Owner:} has to maintain topology of the hardware and has to place and configure it.
         \end{itemize}
 
     \item \textbf{Preconditions:}
         \begin{itemize}
-            \item The Infrastructure Owner is registered on the Online Service (UC6).
+            \item The Infrastructure Owner is registered on the Online Service (cf. UC6).
         \end{itemize}
 
     \item \textbf{Postconditions:}
@@ -340,16 +365,40 @@ Short summary of this use case scenario
        \item The Infrastructure Owner edits the topology of his infrastructure. (\textbf{Include:} UC16: Edit topology)
        \item The Infrastructure Owner allocates the new peripherals to the Customer Organizations who are allowed to use them. (\textbf{UC17: Allocate peripherals})
     \end{enumerate}
+\end{itemize}
 
-    \item \textbf{Alternative scenarios:} 
-    \begin{enumerate}
-        \item [3b.] Alternative at step 3
-    \end{enumerate}
-    
-    \item \textbf{Remarks:}
+
+\subsection{\emph{UC17}: Allocate peripherals}
+\begin{itemize}
+    \item \textbf{Name:} Allocate peripherals
+    \item \textbf{Primary actor:} Infrastructure Owner
+    \item \textbf{Secondary actor(s)}: Online Service
+    \item \textbf{Interested parties:} 
         \begin{itemize}
-            \item First remark
+             \item \textit{Online Service:}  wants to authenticate its users and keep track of all allocations.
+             \item \textit{Customer Organizations: } can use the peripherals if they are allocated to them.
         \end{itemize}
+
+    \item \textbf{Preconditions:}
+        \begin{itemize}
+            \item The Infrastructure Owner is registered on the Online Service (cf. UC6).
+            \item The Infrastructure Owner is logged into his Infrastructure Owner dashboard. (cf. UC1)
+        \end{itemize}
+
+    \item \textbf{Postconditions:}
+        \begin{itemize}
+            \item
+        \end{itemize}
+
+        
+    \item \textbf{Main scenario:} 
+    \begin{enumerate}
+       \item The Infrastructure Owner indicates he wants to allocate or withhold peripherals to/from Customer Organizations.
+       \item The Online Service presents the user with a means to do this.
+       \item The Infrastructure Owner allocates/withholds peripherals to/from Customer Organizations.
+       \item The Online Service activates any application in a Customer Organization which needed the peripherals allocated to that Customer Organization.
+       \item The Online Service deactivates any application in a Customer Organization which needed the peripherals withheld from that Customer Organization.
+    \end{enumerate}
 \end{itemize}
 
 \chapter{Non-functional requirements}\label{sec:non-functional}
