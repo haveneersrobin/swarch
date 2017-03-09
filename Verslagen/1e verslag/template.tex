@@ -169,13 +169,13 @@ The infrastructure owner contacts SIoTIP and negotiations are started. An Infras
 The organization contacts or is contacted by SIoTIP and provides it's billing and contact information. The organization is then registered as a Customer Organization in the Online Service.
 
 \paragraph{UC8: Subscribe to application}
-The user logs into his Customer Organization dashboard, subscribes to the application and provides the needed information. The user is informed by the Online Service that the application will be activated once the required peripherals are installed. The Online Service checks whether or not the customer organization has access to all the peripherals needed for the application. If not, the infrastructure owner is automatically notified of the subscription and the needed peripherals (see UC10: process peripheral request). Once all required hardware is installed, the application is activated and the user is notified.
+The user logs into his Customer Organization dashboard, subscribes to the application and provides the needed information. The user is informed by the Online Service that the application will be activated once the required peripherals are installed. The Online Service checks whether or not the customer organization has access to all the peripherals needed for the application. If not, the infrastructure owner is automatically notified of the subscription and the peripherals and gateways needed for that application (see UC10: process hardware request). Once all required hardware is installed, the application is activated and the user is notified.
 
 \paragraph{UC9: Unsubscribe from application}
 The user logs into his Customer organization dashboard and unsubscribes from the application. TODO notification nodig? The user is informed by the Online Service that the application will be deactivated.
 
-\paragraph{UC10: Process peripheral request}
-The Infrastructure Owner is notified of a new request for peripherals. The Online Service automatically adds sufficient gateways needed to support these peripherals to the request, if any. The infrastructure owner approves or rejects the purchase of the hardware and a notification of the decision is sent to the user which requested the peripherals. If the infrastructure owner approved the request, the hardware is ordered from SIoTIP.
+\paragraph{UC10: Process hardware request}
+The Infrastructure Owner is notified of a new request for peripherals. The infrastructure owner approves or rejects the purchase of the hardware and a notification of the decision is sent to the user which requested the peripherals. If the infrastructure owner approved the request, the hardware is ordered from SIoTIP.
 
 \paragraph{UC11: Install new hardware}
 The Infrastructure Owner receives the hardware from SIoTIP and installs it. The infrastructure owner configures any new gateways to connect to the (WiFi?) local network. Once online, the gateways immediately connect to the Online Service to register themselves. The infrastructure owner then logs in to the infrastructure owner dashboard and provides the necessary topology information. Lastly, he allocatesthe new peripherals to the Customer Organizations in his building (See UC: Allocato peripherals).
@@ -272,15 +272,7 @@ TODO
     \begin{enumerate}
         \item [3b.] Alternative at step 3
     \end{enumerate}
-    
-    \item \textbf{Remarks:}
-        \begin{itemize}
-            \item First remark
-        \end{itemize}
 \end{itemize}
-
-\paragraph{UC1: Name}
-Short summary of this use case scenario
 
 \subsection{\emph{UC4}: Add application}
 \begin{itemize}
@@ -323,11 +315,6 @@ Short summary of this use case scenario
 		\item [5b2b.] The System Administrator rejects the application. The Application provider is notified of this decision.
 	\end{enumerate}
     \end{enumerate}
-    
-    \item \textbf{Remarks:}
-        \begin{itemize}
-            \item First remark
-        \end{itemize}
 \end{itemize}
 
 
@@ -363,16 +350,41 @@ Short summary of this use case scenario
        \item The Infrastructure Owner edits the topology of his infrastructure. (\textbf{Include:} UC16: Edit topology)
        \item The Infrastructure Owner allocates the new peripherals to the Customer Organizations who are allowed to use them. (\textbf{UC17: Allocate peripherals})
     \end{enumerate}
+\end{itemize}
+
+\subsection{\emph{UC10}: Process hardware request}
+\begin{itemize}
+    \item \textbf{Name:} Process peripheral request
+    \item \textbf{Primary actor:} Infrastructure Owner
+    \item \textbf{Secondary actor(s)}: SIoTIP Platform
+    \item \textbf{Interested parties:} 
+        \begin{itemize}
+            \item \textit{Customer Organization:} TODO The user who requested the hardware?
+        \end{itemize}
+
+    \item \textbf{Preconditions:}
+        \begin{itemize}
+            \item The Infrastructure Owner received a request for new hardware.
+            \item The Infrastructure Owner is registered on the Online Service (UC6).
+            \item The Infrastructure Owner is logged into his Infrastructure Owner dashboard.
+        \end{itemize}
+
+    \item \textbf{Postconditions:}
+        \begin{itemize}
+            \item The requester of the hardware is notified about whether or not the Infrastructure Owner approved the request.
+        \end{itemize}
+        
+    \item \textbf{Main scenario:} 
+    \begin{enumerate}
+       \item The Infrastructure Owner approves the request.
+       \item The Online Service orders the hardware from SIoTIP.
+       \item The Online Service notifies the requester of the hardware about the decision.
+    \end{enumerate}
 
     \item \textbf{Alternative scenarios:} 
     \begin{enumerate}
-        \item [3b.] Alternative at step 3
+        \item [1b1.] The Infrastructure Owner rejects the request, resume at step 3.
     \end{enumerate}
-    
-    \item \textbf{Remarks:}
-        \begin{itemize}
-            \item First remark
-        \end{itemize}
 \end{itemize}
 
 \chapter{Non-functional requirements}\label{sec:non-functional}
