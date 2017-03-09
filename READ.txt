@@ -1,0 +1,5 @@
+TODO (?)
+
+  - Pagina 4: de functionaliteiten van de SIoTIP online service, daar staat ook 'manages application configuration', misschien er toch maar inzetten?
+  - Pagina 5: bovenaan, invoices & application subscription
+  - Pagina 5 (application providers): opnieuw subscription
