@@ -239,12 +239,13 @@ TODO
     \item \textbf{Interested parties:} 
         \begin{itemize}
             \item \textit{Online Service:} wants to authenticate its users and keep track of applications.
+            \item \textit{Application Provider:} wants his applications to be available on the SIoTIP platform.
         \end{itemize}
 
     \item \textbf{Preconditions:}
         \begin{itemize}
-            \item The Application Provider is registered on the Online Service (UC3).
-            \item The Application Provider is logged into the Online Service (UC1).
+            \item The Application Provider is registered on the Online Service (cf. UC3).
+            \item The Application Provider is logged into the Online Service (cf. UC1).
         \end{itemize}
 
     \item \textbf{Postconditions:}
@@ -281,13 +282,15 @@ TODO
     \item \textbf{Secondary actor(s)}: Infrastructure owner, Online Service
     \item \textbf{Interested parties:} 
         \begin{itemize}
-            \item \textit{System:} wants to authenticate its users.
+            \item \textit{Online Service:} wants to authenticate its users and keep track of subscriptions.
+            \item \textit{Customer Organization:} wants to subscribe to applications
+            \item \textit{Infrastructure Owner:} Has to decide whether hardware will be bought for the applications or not.
         \end{itemize}
 
     \item \textbf{Preconditions:}
         \begin{itemize}
             \item The Customer Organization is registered on the Online Service (UC7).
-            \item The member of the Customer Organization is logged into hit Customer Organization dashboard (UC1).
+            \item The member of the Customer Organization is logged into hit Customer Organization dashboard (cf. UC1).
         \end{itemize}
 
     \item \textbf{Postconditions:}
@@ -325,14 +328,15 @@ TODO
     \item \textbf{Secondary actor(s)}: Online Service
     \item \textbf{Interested parties:} 
         \begin{itemize}
-            \item \textit{Customer Organization:} TODO The user who requested the hardware?
+            \item \textit{Customer Organizations:} Could use the requested hardware if it is allocated to them.
+            \item \textit{Infrastructure Owner:} Has to decide whether or not the hardware will be bought.
         \end{itemize}
 
     \item \textbf{Preconditions:}
         \begin{itemize}
             \item The Infrastructure Owner received a request for new hardware.
-            \item The Infrastructure Owner is registered on the Online Service (UC6).
-            \item The Infrastructure Owner is logged into his Infrastructure Owner dashboard. (UC1)
+            \item The Infrastructure Owner is registered on the Online Service (cf. UC6).
+            \item The Infrastructure Owner is logged into his Infrastructure Owner dashboard. (cf. UC1)
         \end{itemize}
 
     \item \textbf{Postconditions:}
@@ -361,12 +365,13 @@ TODO
     \item \textbf{Interested parties:} 
         \begin{itemize}
             \item \textit{Online Service:}  wants to authenticate its users and keep track of all hardware.
-            \item \textit{Customer Organization:} TODO?
+            \item \textit{Customer Organizations:} can use the newly installed hardware if it is allocated to them.
+            \item \textit{Infrastructure Owner:} has to maintain topology of the hardware and has to place and configure it.
         \end{itemize}
 
     \item \textbf{Preconditions:}
         \begin{itemize}
-            \item The Infrastructure Owner is registered on the Online Service (UC6).
+            \item The Infrastructure Owner is registered on the Online Service (cf. UC6).
         \end{itemize}
 
     \item \textbf{Postconditions:}
@@ -396,17 +401,18 @@ TODO
     \item \textbf{Interested parties:} 
         \begin{itemize}
              \item \textit{Online Service:}  wants to authenticate its users and keep track of all allocations.
+             \item \textit{Customer Organizations: } can use the peripherals if they are allocated to them.
         \end{itemize}
 
     \item \textbf{Preconditions:}
         \begin{itemize}
-            \item The Infrastructure Owner is registered on the Online Service (UC6).
-            \item The Infrastructure Owner is logged into his Infrastructure Owner dashboard. (UC1)
+            \item The Infrastructure Owner is registered on the Online Service (cf. UC6).
+            \item The Infrastructure Owner is logged into his Infrastructure Owner dashboard. (cf. UC1)
         \end{itemize}
 
     \item \textbf{Postconditions:}
         \begin{itemize}
-            \item TODO?
+            \item
         \end{itemize}
 
         
