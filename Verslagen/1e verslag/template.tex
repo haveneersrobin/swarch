@@ -107,7 +107,7 @@ in this analysis.
 	\item \textbf{O$_2$ gas sensor}: Sensor that can measure the amount of O$_2$ gas in the air  in percentage.
 	\item \textbf{Online Service}: The collective concept that are the services provided via our online back-end. This service is used to test, develop and host applications, to store application configurations, keep track of sensor data, collect usage statistics etc. 
 	\item \textbf{Passive IR (Presence) Sensor}: Type of sensor which allows detection of motion achieved by taking pictures and comparing subsequent pictures.
-	\item \textbf{Peripheral Data}: 
+	\item \textbf{Peripheral Data}: The data which is produced by peripherals/hardware. Hardwa
 	\item \textbf{Peripheral History}
 	\item \textbf{Peripheral type}
 	\item \textbf{Peripheral}
@@ -151,38 +151,73 @@ The user indicates he wants to log off from the system.
 The system logs him of.
 
 \paragraph{UC3: Enroll as application provider}
-The organization wishing to becoma an application provider contacts SIoTIP and they negotiate the contract. The organization reveices API documentation and rules of conduct from SIoTIP. When the negotiations are conducted, the organization is provided dashboard accounts for the individual developers employed by the organization.
+The organization wishing to becom a an Application Provider contacts SIoTIP and they negotiate the contract. The organization reveices API documentation and rules of conduct from SIoTIP. When the negotiations are conducted, the organization is provided dashboard accounts for the individual developers employed by the organization and the organization is registered as an Application Provider in the Online service.
 
 \paragraph{UC4: Add application}
-The user logs into the application provider dashboard and uploads the new application. SIoTIP initiates a number of automated tests and shows the progress on the user's application provider dashboard. If the application passes all tests, the user receives a notification and the application is made available to customer organizations for subscription. If the application does not pass al tests, a SIoTIP system administrator performs a secondary review and decides whether to accept or reject the application. In the latter case, the user is notified of the reason of rejection.
+The user logs into the Application Provider dashboard and uploads the new application. The Online Service initiates a number of automated tests and shows the progress on the user's Application Provider dashboard. If the application passes all tests, the user receives a notification and the application is made available to Customer Organizations for subscription. If the application does not pass al tests, a SIoTIP System Administrator performs a secondary review and decides whether to accept or reject the application. In the latter case, the user is notified of the reason of rejection.
 
 \paragraph{UC5: Update existing application}
-The user logs into the application provider dashboard and uploads the updated application. The user also indicates whether to automatically update existing instances of the application or to require customer organizations to subscribe to the application. SIoTIP initiates a number of automated tests and shows the progress on the user's application provider dashboard. If the application passes all tests, the user receives a notification and the application is made available to customer organizations for subscription. If the application does not pass all tests, a SIoTIP system administrator performs a secondary review and decides whether to accept or reject the application. In the latter case, the user is notified of the reason of rejection.
+The user logs into the Application Provider dashboard and uploads the updated application. The user also indicates whether to automatically update existing instances of the application or to require customer organizations to subscribe to the application. SIoTIP initiates a number of automated tests and shows the progress on the user's application provider dashboard. If the application passes all tests, the user receives a notification and the application is made available to customer organizations for subscription. If the application does not pass all tests, a SIoTIP system administrator performs a secondary review and decides whether to accept or reject the application. In the latter case, the user is notified of the reason of rejection.
 
 \paragraph{UC6: Register as new infrastructure owner}
-The infrastructure owner contacts SIoTIP and negotiations are started. An infrastructure owner dashboard account is set up for the new user. The infrastructure owner provides the names of the currently renting companies, and SIoTIP contacts them for registration (See UC: Register new customer organization).
+The infrastructure owner contacts SIoTIP and negotiations are started. An Infrastructure Owner dashboard account is set up for the new user. The infrastructure owner provides the names of the currently renting companies, and SIoTIP contacts them for registration (See UC: Register new customer organization).
 
 \paragraph{UC7: Register as new customer organization}
-The new customer organization contacts or is contacted by SIoTIP and provides it's billing and contact information.
+The organization contacts or is contacted by SIoTIP and provides it's billing and contact information. The organization is then registered as a Customer Organization in the Online Service.
 
 \paragraph{UC8: Subscribe to application}
-The user logs into his dashboard, subscribes to the application and provides the needed information. The user is informed that the application will be activated once the required peripherals are installed. SIoTIP checks whether or not the customer organization has access to all the peripherals needed for the application. If not, the infrastructure owner is automatically notified of the subscription and the needed peripherals (see UC9: process peripheral request). Once all required hardware is installed, the application is activated and the user is notified.
+The user logs into his Customer Organization dashboard, subscribes to the application and provides the needed information. The user is informed by the Online Service that the application will be activated once the required peripherals are installed. SIoTIP checks whether or not the customer organization has access to all the peripherals needed for the application. If not, the infrastructure owner is automatically notified of the subscription and the needed peripherals (see UC10: process peripheral request). Once all required hardware is installed, the application is activated and the user is notified.
 
-\paragraph{UC9: Process peripheral request}
-The infrastructure owner is notified of a new request for peripherals. SIoTIP automatically adds sufficient gateways needed to support these peripherals to the request, if any. The infrastructure owner approves or rejects the purchase of the hardware and a notification of the decision is sent to the user which requested the peripherals. If the infrastructure owner approved the request, the hardware is ordered from SIoTIP.
+\paragraph{UC9: Unsubscribe from application}
+The user logs into his Customer organization dashboard and unsubscribes from the application. TODO notification nodig? The user is informed by the Online Service that the application will be deactivated.
 
-\paragraph{UC10: Install new hardware}
-The infrastructure owner receives the hardware from SIoTIP and installs it. The infrastructure owner configures any new gateways to connect to the (WiFi?) local network. Once online, the gateways immediately connect to the Online Service to register themselves. The infrastructure owner then logs in to the infrastructure owner dashboard and provides the necessary topology information. Lastly, he assigns access rights to the customer organizations in his building to use the new peripherals.
+\paragraph{UC10: Process peripheral request}
+The Infrastructure Owner is notified of a new request for peripherals. SIoTIP automatically adds sufficient gateways needed to support these peripherals to the request, if any. The infrastructure owner approves or rejects the purchase of the hardware and a notification of the decision is sent to the user which requested the peripherals. If the infrastructure owner approved the request, the hardware is ordered from SIoTIP.
 
-\paragraph{UC11: Resolve hardware failure}
-The system detects that a hardware component is no longer sending data and sends a notification to the infrastructure owner. The system also notifies all applications currently using the failing hardware component so that the applications can search for equivalent sensors in the topology. 
+\paragraph{UC11: Install new hardware}
+The Infrastructure Owner receives the hardware from SIoTIP and installs it. The infrastructure owner configures any new gateways to connect to the (WiFi?) local network. Once online, the gateways immediately connect to the Online Service to register themselves. The infrastructure owner then logs in to the infrastructure owner dashboard and provides the necessary topology information. Lastly, he allocatesthe new peripherals to the Customer Organizations in his building (See UC: Allocato peripherals).
 
-\paragraph{UC12: Configure end-users}
-The user logs in to the customer organization dashboard and assigns other users to an application.
+\paragraph{UC12: Resolve hardware failure}
+The Online Service detects that a hardware component is no longer sending data and sends a notification to the Infrastructure Owner. The Online Service also notifies all applications currently using the failing hardware component so that the applications can search for equivalent sensors in the topology. 
+
+\paragraph{UC13: Configure end-users}
+The user logs in to the Customer Organization dashboard and assigns users to an application. These changes are saved in the Online Service.
 Nodig?
 
-\paragraph{UC13: Transmit data}
-The sensor sends data to the corresponding gateway. 
+\paragraph{UC14: Transmit data}
+TODO nodig als use case?
+The sensor sends data to the corresponding gateway. The gateway stores the data and makes it available to all applications running on that gateway.
+
+\paragraph{UC15: Get invoice overview}
+The user logs into his Customer Organization dashboard and selects the option to show his Customer Organization's invoice overview. The Online Service then shows an overview of all the Customer Organization's invoices.
+
+\paragraph{UC16: Edit topology}
+The user logs into his Infrastructure Owner dashboard and selects the option to edit the his building's (TODO meerdere buildings?) topology. When the user is done editing the topology, the updated topology will be saved in the Online Service.
+
+\paragraph{UC17: Allocate peripherals}
+The user logs into his Infrastructure Owner dashboard and selects the option to allocate peripherals to Customer Organizations. He then assigns access rights to the Customer Organizations in his building to use the new peripherals. The Online Service automatically activates any application of that Customer Organizaion which needed the newly allocated peripherals in order to run. Conversely, if a peripheral gets withheld from a Customer Organization, the Onlice Service deactivates any application of that Customer Organization which needed the withholded peripheral to function properly.
+
+\paragraph{UC18: Develop application}
+TODO nodig? Niet echt interactie tussen context en systeem?
+
+\paragraph{UC19: Resolve platform failure}
+An event causes the platform to misbehave. The Online Service detects this event and sends a notification to the System Administrator(s).
+
+\paragraph{UC20: Resolve application failure}
+An event causes an application to misbehave. The Online Service detects this event and sends a notification to the System Administrator(s). TODO ook notifiation naar app provider?
+
+\paragraph{UC21: Configure method of notification delivery}
+The user logs into his Customer Organization dashboard and configures the method of notification delivery. The Online Service will save the changes made.
+
+\paragraph{UC22: Request notification overview}
+The user logs into his dashboard and requests an overview of previously received notifications and alarms. The Online Service provides this overview.
+
+\paragraph{UC23: Synchronize Online Service and gateway}
+The gateway sends all data acquired between this moment and the last synchronization moment to the Online Service.
+
+\paragraph{UC24: Get application overview}
+The user logs into his Application Provider dashboard and request an overview their applications. The Online Service provides this overview.
+
 
 
 \section{Detailed use cases}
