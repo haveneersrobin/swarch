@@ -175,7 +175,7 @@ The user is logged into his Customer organization dashboard and unsubscribes fro
 The Infrastructure Owner is notified of a new request for peripherals. SIoTIP automatically adds sufficient gateways needed to support these peripherals to the request, if any. The infrastructure owner approves or rejects the purchase of the hardware and a notification of the decision is sent to the user which requested the peripherals. If the infrastructure owner approved the request, the hardware is ordered from SIoTIP.
 
 \paragraph{UC11: Install new hardware}
-The Infrastructure Owner receives the hardware from SIoTIP and installs it. The infrastructure owner configures any new gateways to connect to the (WiFi?) local network. Once online, the gateways immediately connect to the Online Service to register themselves. The infrastructure owner then logs in to the infrastructure owner dashboard and provides the necessary topology information. Lastly, he allocatesthe new peripherals to the Customer Organizations in his building (See UC: Allocato peripherals).
+The Infrastructure Owner receives the hardware from SIoTIP and installs it. The infrastructure owner configures any new gateways to connect to the (WiFi?) local network. Once online, the gateways immediately connect to the Online Service to register themselves. The infrastructure owner then logs in to the infrastructure owner dashboard and provides the necessary topology information. Lastly, he allocatesthe new peripherals to the Customer Organizations in his building (See UC17: Allocate peripherals).
 
 \paragraph{UC12: Resolve hardware failure}
 The Online Service detects that a hardware component is no longer sending data and sends a notification to the Infrastructure Owner. The Online Service also notifies all applications currently using the failing hardware component so that the applications can search for equivalent sensors in the topology. 
@@ -224,39 +224,46 @@ The user is logged into his Application Provider dashboard and request an overvi
 \subsection{\emph{UC8}: Subscribe to application}
 \begin{itemize}
     \item \textbf{Name:} Subscribe to application
-    \item \textbf{Primary actor:} Customer Organization
+    \item \textbf{Primary actor:} member of a Customer Organization
     \item \textbf{Secondary actor(s)}: 
 	\begin{itemize}
 		\item Infrastructure Owner: Needs to approve/reject the subscription if extra hardware is needed
 	\end{itemize}
     \item \textbf{Interested parties:} 
         \begin{itemize}
-            \item \textit{System:} wants to authenticate its users.
+            \item \textit{Online Service:} wants to authenticate its users and keep tack of subscriptions.
         \end{itemize}
 
     \item \textbf{Preconditions:}
         \begin{itemize}
-            \item The User is registered into the system and has credentials to prove his identity.
-            \item Second precondition.
+            \item The Customer Organization is registered on the Online Service (UC7).
+            \item The member of the Customer Organization is logged into the Online Service (UC1).
         \end{itemize}
 
     \item \textbf{Postconditions:}
         \begin{itemize}
-            \item First postcondition.
+            \item The Customer Organization is subscribed to the application.
             \item Second postcondition.
         \end{itemize}
         
     \item \textbf{Main scenario:} 
     \begin{enumerate}
-       \item Step 1
-       \item Step 2
-       \item Step 3
+       \item The member of the Customer Organization indicates he wants to subscribe to an application.
+       \item The Online Service presents the user with a means to search for and subscribe to applications.
+       \item The user subscribes to an application.
+	\item The Online Service saves the subscription.
+	\item The Online Service notifies the user that the application will be activated once the required peripherals are installed.
+	\item The Online Service notifies the Infrastructure Owner that hardware is needed (\textbf{include:} UC10: Process peripheral request).
+	\item The hardware is installed (\textbf{include:} UC11: Install new hardware).
+	\item The Online Service activates the application
+	\item The Online Service notifies the user that the application is activated.
        \item \ldots
     \end{enumerate}
 
     \item \textbf{Alternative scenarios:} 
     \begin{enumerate}
-        \item [3b.] Alternative at step 3
+	\item [5b.] All hardware needed is already available to the Customer Organization, resume at step 9.
+        \item [7b.] The Infrastructure owner rejected the request, the user is notified of the rejection.
     \end{enumerate}
     
     \item \textbf{Remarks:}
