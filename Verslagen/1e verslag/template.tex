@@ -135,7 +135,8 @@ in this analysis.
 \section{Use case overview}\label{sec:uc_overview}
 \paragraph{UC1: Log in}
 The user wishing to use the system provides his credentials.
-The system verifies the credentials and authenticates the user.
+The Online Service verifies the credentials and authenticates the user.
+The Online Service then provides the user acces to his dashboard.
 If the provides credentials were not correct, the system does not authenticate the user.
 
 \paragraph{UC2: Log off}
@@ -146,10 +147,10 @@ The system logs him of.
 The organization wishing to becom a an Application Provider contacts SIoTIP and they negotiate the contract. The organization reveices API documentation and rules of conduct from SIoTIP. When the negotiations are conducted, the organization is provided dashboard accounts for the individual developers employed by the organization and the organization is registered as an Application Provider in the Online service.
 
 \paragraph{UC4: Add application}
-The user logs into the Application Provider dashboard and uploads the new application. The Online Service initiates a number of automated tests and shows the progress on the user's Application Provider dashboard. If the application passes all tests, the user receives a notification and the application is made available to Customer Organizations for subscription. If the application does not pass al tests, a SIoTIP System Administrator performs a secondary review and decides whether to accept or reject the application. In the latter case, the user is notified of the reason of rejection.
+The user logs into the his Application Provider dashboard and uploads the new application. The Online Service initiates a number of automated tests and shows the progress on the user's Application Provider dashboard. If the application passes all tests, the user receives a notification and the application is made available to Customer Organizations for subscription. If the application does not pass al tests, a SIoTIP System Administrator performs a secondary review and decides whether to accept or reject the application. In the latter case, the user is notified of the reason of rejection.
 
 \paragraph{UC5: Update existing application}
-The user logs into the Application Provider dashboard and uploads the updated application. The user also indicates whether to automatically update existing instances of the application or to require customer organizations to subscribe to the application. The Online Service initiates a number of automated tests and shows the progress on the user's application provider dashboard. If the application passes all tests, the user receives a notification and the application is made available to customer organizations for subscription. If the application does not pass all tests, a SIoTIP system administrator performs a secondary review and decides whether to accept or reject the application. In the latter case, the user is notified of the reason of rejection.
+The user logs into the his Application Provider dashboard and uploads the updated application. The user also indicates whether to automatically update existing instances of the application or to require customer organizations to subscribe to the application. The Online Service initiates a number of automated tests and shows the progress on the user's application provider dashboard. If the application passes all tests, the user receives a notification and the application is made available to customer organizations for subscription. If the application does not pass all tests, a SIoTIP system administrator performs a secondary review and decides whether to accept or reject the application. In the latter case, the user is notified of the reason of rejection.
 
 \paragraph{UC6: Register as new infrastructure owner}
 The infrastructure owner contacts SIoTIP and negotiations are started. An Infrastructure Owner dashboard account is set up for the new user. The infrastructure owner provides the names of the currently renting companies, and SIoTIP contacts them for registration (See UC: Register new customer organization).
@@ -173,7 +174,7 @@ The Infrastructure Owner receives the hardware from SIoTIP and installs it. The 
 The Online Service detects that a hardware component is no longer sending data and sends a notification to the Infrastructure Owner. The Online Service also notifies all applications currently using the failing hardware component so that the applications can search for equivalent sensors in the topology. 
 
 \paragraph{UC13: Configure end-users}
-The user logs in to the Customer Organization dashboard and assigns users to an application. These changes are saved in the Online Service.
+The user logs in to his Customer Organization dashboard and assigns users to an application. These changes are saved in the Online Service.
 Nodig?
 
 \paragraph{UC14: Transmit data}
@@ -190,7 +191,9 @@ The user logs into his Infrastructure Owner dashboard and selects the option to 
 The user logs into his Infrastructure Owner dashboard and selects the option to allocate peripherals to Customer Organizations. He then assigns access rights to the Customer Organizations in his building to use the new peripherals. The Online Service automatically activates any application of that Customer Organizaion which needed the newly allocated peripherals in order to run. Conversely, if a peripheral gets withheld from a Customer Organization, the Onlice Service deactivates any application of that Customer Organization which needed the withholded peripheral to function properly.
 
 \paragraph{UC18: Develop application}
-TODO nodig? Niet echt interactie tussen context en systeem?
+TODO nodig? 
+The user logs into his Application Provider dashboard and indicates he wants to develop an application.
+The Online Service provides the user with a development environment.
 
 \paragraph{UC19: Resolve platform failure}
 An event causes the platform to misbehave. The Online Service detects this event and sends a notification to the System Administrator(s).
@@ -210,6 +213,8 @@ The gateway sends all data acquired between this moment and the last synchroniza
 \paragraph{UC24: Get application overview}
 The user logs into his Application Provider dashboard and request an overview their applications. The Online Service provides this overview.
 
+\paragraph{UC25: Interact with Application}
+TODO
 
 
 \section{Detailed use cases}
@@ -228,15 +233,16 @@ The user logs into his Application Provider dashboard and request an overview th
 
     \item \textbf{Preconditions:}
         \begin{itemize}
-            \item The User is registered into the system and has credentials to prove his identity.
-            \item Second precondition.
+            \item The Customer Organization is registered on the Online Service (UC7).
+            \item The member of the Customer Organization is logged into hit Customer Organization dashboard (UC1).
         \end{itemize}
 
     \item \textbf{Postconditions:}
         \begin{itemize}
-            \item First postcondition.
-            \item Second postcondition.
+            \item The Customer Organization is subscribed to the application.
+
         \end{itemize}
+
         
     \item \textbf{Main scenario:} 
     \begin{enumerate}
