@@ -1,4 +1,4 @@
-\documentclass[english,peerreview]{sareport}
+\documentclass[english]{sareport}
 % use the option peerreview for creating an anonymized version of your report
 % E.g., \documentclass[english,peerreview]{sareport}
 
@@ -43,7 +43,7 @@ In this section we provide additional domain constraints.
     \item A end-user only receives notifications from applications that the customer organization he works for is subscribed to. He only receives these notifcations if he/she is an individual who should receive notifications as configured in the application by the previously mentioned customer organization.
     \item The Online Service can only communicate with peripherals via their gateway.
     \item The connectivity between the network manager and the attached devices is done via 6LoWPAN.
-    \item Application developers only receive rejection notification about the applications they want to deploy.
+    \item Application developers only receive rejection notifications about the applications they want to deploy.
     \item An application should be idle until all the necesarry hardware is available and if the hardware is available it should be activated automatically. For example, a fire application requires at least 2 specific sensors per room.
     \item If a component of the hardware fails, the system should automatically switch to a nearby, similar device if possible, based on the topology provided by the infrastructure owner.
     \item Only persons who are allowed to do so, can issue commands to an application.
@@ -56,43 +56,42 @@ In this section, we provide a glossary of the most important terminology used
 in this analysis.
 
 \begin{itemize}
-	\item \textbf{API}
-	\item \textbf{Accelerometer}
-	\item \textbf{Actuator}
-	\item \textbf{Air Pressure}
-	\item \textbf{Air Temperature/humidity}
-	\item \textbf{Application Notification}
-	\item \textbf{Application Usage Information}
-	\item \textbf{Application provider}
-	\item \textbf{Application}
-	\item \textbf{Building}
-	\item \textbf{Buzzer}
-	\item \textbf{Connection Message}
-	\item \textbf{Customer SLA}
-	\item \textbf{Customer organization}
-	\item \textbf{Data Message}
-	\item \textbf{Development environement}
-	\item \textbf{Distance}
-	\item \textbf{End user}
-	\item \textbf{Gateway identifier}
-	\item \textbf{Gateway}
-	\item \textbf{Hardware}
-	\item \textbf{Heartbeat Message}
-	\item \textbf{Infrastructure owner}
-	\item \textbf{Library}
-	\item \textbf{Light}
-	\item \textbf{Llimited peripheral history}
-	\item \textbf{Message}
-	\item \textbf{Microphone}
-	\item \textbf{Mobile app}
-	\item \textbf{Mote manufacturer}
-	\item \textbf{Mote}
-	\item \textbf{Notification}
-	\item \textbf{O2 gas}
-	\item \textbf{Online Service}
-	\item \textbf{Online Service}
-	\item \textbf{Passive IR}
-	\item \textbf{Peripheral Data}
+	\item \textbf{API}: Application programming interface. The interface used by applications to communicate with the online system and gateways.
+	\item \textbf{Accelerometer}: Type of sensor that measures the acceleration in 3 dimensions.
+	\item \textbf{Actuator}: Hardware device that has actions associated with it (e.g. switch, light, buzzer ...)
+	\item \textbf{Air Pressure Sensor}: Type of sensor that measures the air pressur in bar.
+	\item \textbf{Air Temperature/Humidity Sensor}: Type of sensor the measures the air temperature in degrees Celcius and humidity in percentage.
+	\item \textbf{Application Notification}: A type of notification send by the application to a relevant end-user.
+	\item \textbf{Application Usage Information}: Data collected by applications and stored on the online service. Useful for providing insight in application usage and big data analytics.
+	\item \textbf{Application provider}: Stakeholder that provides (develops and deploys) applications on the online system, to which one can subscribe.
+	\item \textbf{Application}: Piece of 'software' running on the online service and gateway provided to customer organizations to subscribe to with the goal of simplifying their day to day business.
+	\item \textbf{Building}: Place owned by infrastructure owner where customer organisations are housed. The infrastructure owners keeps a topology about the buidling they own.
+	\item \textbf{Buzzer}: Actuator that is able to play a sound.
+	\item \textbf{Connection Message}: THe message that is sent by the mote to the gateway whenever a new sensor or actuator is inserted.
+	\item \textbf{Customer SLA}: The Service-Level Agreement between SIoTIP corporation and the customer organisation.
+	\item \textbf{Customer organization}: The stakeholder in our system which subscribes to applications which optimize their workflow.
+	\item \textbf{Data Message}: The message send by the mote from one of its connected devices to the gatewy which contains the value it's reading, the mote identifier and a timestamp. This message also specifies whether it was sent by a sensor/actuator which is necessary to be able to correctly interpret the data.
+	\item \textbf{Development environement}: The environmennt available to application providers to freely test and debug their application before deploying it.
+	\item \textbf{Distance Sensor}: Type of sensor which measure 
+	\item \textbf{End user}: A person involved in the customer organisation who interacts with applications.
+	\item \textbf{Gateway identifier}: 
+	\item \textbf{Gateway}: A device that is connected to the online service and which provides access to sensors and actuators. It relays data from connected devices to the Online Service.
+	\item \textbf{Hardware}: Umbrella concept used for all the connected devices (such as peripherals, gateways ...)
+	\item \textbf{Heartbeat Message}: Periodical message sent by the mote to indicate it is alive. This message includes a list of connected sensors and actuators as well as a timestamp indicating when the message was generated.
+	\item \textbf{Infrastructure owner}: Stakeholder in our system which manages the physical infrastructure as well as the hardware used as described in the toplogy. Customer organisations reside in these buidlings.
+	\item \textbf{Library}: Set of methods that can be used by application providers in their applications to simplify development.
+	\item \textbf{Light Sensor}: Type of sensor that measures the amount of light in LUX.
+	\item \textbf{Llimited peripheral history}: Small set of peripheral history maintained by the gateway. Useful for application to, for example, learn certain behavourial patterns.
+	\item \textbf{Message}: Umbrella term used for the different types of messages a mote can emit.
+	\item \textbf{Microphone Sensor}: Type of sensor which allows detection of sound. 
+	\item \textbf{Mobile app}: One type of interface end-users can use to communicate with the online system.
+	\item \textbf{Mote manufacturer}: Third party which produces the motes used by our system.
+	\item \textbf{Mote}: Device that hosts sensors and actuators.
+	\item \textbf{Notification}: Umbrella concept used for all the different types of notifications used by the system. Notifications are sent out on several events. The precise information depends on the type of event.
+	\item \textbf{O$_2$ gas sensor}: Sensor that can measure the amount of O$_2$ gas in the air  in percentage.
+	\item \textbf{Online Service}: The collective concept that are the services provided via our online back-end. This service is used to test, develop and host applications, to store application configurations, keep track of sensor data, collect usage statistics etc. 
+	\item \textbf{Passive IR (Presence) Sensor}: Type of sensor which allows detection of motion achieved by taking pictures and comparing subsequent pictures.
+	\item \textbf{Peripheral Data}: 
 	\item \textbf{Peripheral History}
 	\item \textbf{Peripheral type}
 	\item \textbf{Peripheral}
@@ -171,14 +170,11 @@ The sensor sends data to the corresponding gateway.
 
 
 \section{Detailed use cases}
-\subsection{\emph{UC8}: Subscribe to application}
+\subsection{\emph{UC1}: Log in}
 \begin{itemize}
-    \item \textbf{Name:} Subscribe to application
-    \item \textbf{Primary actor:} Customer Organization
-    \item \textbf{Secondary actor(s)}: 
-	\begin{itemize}
-		\item Infrastructure Owner: Needs to approve/reject the subscription if extra hardware is needed
-	\end{itemize}
+    \item \textbf{Name:} log in
+    \item \textbf{Primary actor:} the User
+    \item \textbf{Secondary actor(s)}: secondary actor(s)
     \item \textbf{Interested parties:} 
         \begin{itemize}
             \item \textit{System:} wants to authenticate its users.
@@ -218,6 +214,7 @@ The sensor sends data to the corresponding gateway.
 \paragraph{UC1: Name}
 Short summary of this use case scenario
 
+\section{Detailed use cases}
 \subsection{\emph{UC1}: Log in}
 \begin{itemize}
     \item \textbf{Name:} log in
