@@ -90,12 +90,13 @@ in this analysis.
 	\item \textbf{Development environement}: The environmennt available to application providers to freely test and debug their application before deploying it.
 	\item \textbf{Distance Sensor}: Type of sensor which measure 
 	\item \textbf{End user}: A person involved in the customer organisation who interacts with applications.
-	\item \textbf{Gateway identifier}: 
+	\item \textbf{Gateway identifier}: The identifier which is used to register the gateway with the Online Service.
 	\item \textbf{Gateway}: A device that is connected to the online service and which provides access to sensors and actuators. It relays data from connected devices to the Online Service.
 	\item \textbf{Hardware}: Umbrella concept used for all the connected devices (such as peripherals, gateways ...)
 	\item \textbf{Heartbeat Message}: Periodical message sent by the mote to indicate it is alive. This message includes a list of connected sensors and actuators as well as a timestamp indicating when the message was generated.
 	\item \textbf{Infrastructure owner}: Stakeholder in our system which manages the physical infrastructure as well as the hardware used as described in the toplogy. Customer organisations reside in these buidlings.
-	\item \textbf{Library}: Set of methods that can be used by application providers in their applications to simplify development.
+	\item \textbf{Invoice}: An invoice is associated with a subscription between a customer organization and an application provider. It specifies the fees necessary to be paid by the customer organization.
+	\item \textbf{Library}: Set of methods that can be used by application providers in their mobile applications to simplify development.
 	\item \textbf{Light Sensor}: Type of sensor that measures the amount of light in LUX.
 	\item \textbf{Llimited peripheral history}: Small set of peripheral history maintained by the gateway. Useful for application to, for example, learn certain behavourial patterns.
 	\item \textbf{Message}: Umbrella term used for the different types of messages a mote can emit.
@@ -109,25 +110,26 @@ in this analysis.
 	\item \textbf{Passive IR (Presence) Sensor}: Type of sensor which allows detection of motion achieved by taking pictures and comparing subsequent pictures.
 	\item \textbf{Peripheral Data}: The data which is produced by peripherals/hardware. Hardwa
 	\item \textbf{Peripheral History}
-	\item \textbf{Peripheral type}
-	\item \textbf{Peripheral}
-	\item \textbf{Power socket}
-	\item \textbf{Rejection Notification}
-	\item \textbf{SIoTIP Corporation}
-	\item \textbf{Sandbox environement}
-	\item \textbf{Sensor}
-	\item \textbf{Server provider}
-	\item \textbf{Server}
-	\item \textbf{Service SLA}
-	\item \textbf{Service providers}
-	\item \textbf{Synchronisation protocol}
-	\item \textbf{System Administrator}
-	\item \textbf{System Notification}
-	\item \textbf{Telecom SLA}
-	\item \textbf{Telecom operators}
-	\item \textbf{Topology}
-	\item \textbf{UI}
-	\item \textbf{Web interface}
+	\item \textbf{Peripheral Manufacturer}: The third party company that is responsible for the manufacturing of sensors and actuators.
+	\item \textbf{Peripheral Type}: The type of the peripheral. Currently sensor and actuator are possible.
+	\item \textbf{Peripheral}: Umbrella concept for sensors and actuators.
+	\item \textbf{Power socket}: Type of actuator which can be turned on or off.
+	\item \textbf{Rejection Notification}: The type of notification which is triggered by the sandbox environment if the application that is waiting to be deployed is rejected by our system. This notification is send to the application provider.
+	\item \textbf{SIoTIP Corporation}: This stakeholder wants SIoTIP to be a succesful platform for deploying IoT devices. They have agreements with different third parties for providing an optimal platform with respect to availability, performance ..
+	\item \textbf{Sandbox environement}: The environment which is used to test submitted applications before they become available on the Online Service. When there are problems with the application being tested, a system admininstrator performs a secondary, manual review. If he rejects the application, the application provider is notified and is required to fix the application.
+	\item \textbf{Sensor}: A type of peripheral that produces measurements and sends this data to the gateway to be used in applications.
+	\item \textbf{Server provider}: The third-party provider which provides (virtual or physical) servers to deploy the Online Service on.
+	\item \textbf{Server}: The server (virtual or physical) on which the Online Service is deployed. They are provided by the third party server provider.
+	\item \textbf{Server SLA}: The SLA between SIoTIP corporation and the server provider which, among others, specifies the up-time constraints and reaction time in case of a hardware failure.
+	\item \textbf{Subscription}: An agreement between the application provider and a customer organisation in which is specified for which application a customer organisation is subscribed.
+	\item \textbf{Synchronisation protocol}: The protocol used in the communication between the gateways and the online service.
+	\item \textbf{System Administrator}: The person responsible to act when a submitted application is rejected. He or she can accept the application nonetheless or reject it as well which notifies the application provider.
+	\item \textbf{System Notification}: A notification which notifies the system administrator when a submitted application needs attention. This notification is triggered by the sandbox environment.
+	\item \textbf{Telecom SLA}: The SLA between the SIoTIP corporation and the telecom provider which specifes the the capabilities of these communication channels.
+	\item \textbf{Telecom operators}: Third party who provides means for gateways to communicate with the Online Service and vice versa.
+	\item \textbf{Topology}: Overview of the hardware of the infrastructure spread out over the building(s) he owns. This can be used when new, for example, new applications are added to find out which new hardware is necessary.
+	\item \textbf{UI}: The interface of a application used by end users of a customer organisation.
+	\item \textbf{Web interface}: A possible UI for an application used by end users to communicte with the online service.
 \end{itemize}
 
 \chapter{Functional requirements}\label{sec:functional}
