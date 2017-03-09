@@ -1,4 +1,4 @@
-\documentclass[english]{sareport}
+\documentclass[english,peerreview]{sareport}
 % use the option peerreview for creating an anonymized version of your report
 % E.g., \documentclass[english,peerreview]{sareport}
 
@@ -39,7 +39,7 @@ This section shows the domain model(s).
 In this section we provide additional domain constraints.
 
 \begin{itemize}
-    \item A customer organization can only subscribe to an application that is already registered with the system.
+    \item This is a first constraint.
     \item This is a second constraint.
 \end{itemize}
 
@@ -143,11 +143,14 @@ The user logs into his Application Provider dashboard and request an overview th
 
 
 \section{Detailed use cases}
-\subsection{\emph{UC1}: Log in}
+\subsection{\emph{UC8}: Subscribe to application}
 \begin{itemize}
-    \item \textbf{Name:} log in
-    \item \textbf{Primary actor:} the User
-    \item \textbf{Secondary actor(s)}: secondary actor(s)
+    \item \textbf{Name:} Subscribe to application
+    \item \textbf{Primary actor:} Customer Organization
+    \item \textbf{Secondary actor(s)}: 
+	\begin{itemize}
+		\item Infrastructure Owner: Needs to approve/reject the subscription if extra hardware is needed
+	\end{itemize}
     \item \textbf{Interested parties:} 
         \begin{itemize}
             \item \textit{System:} wants to authenticate its users.
@@ -187,7 +190,6 @@ The user logs into his Application Provider dashboard and request an overview th
 \paragraph{UC1: Name}
 Short summary of this use case scenario
 
-\section{Detailed use cases}
 \subsection{\emph{UC1}: Log in}
 \begin{itemize}
     \item \textbf{Name:} log in
