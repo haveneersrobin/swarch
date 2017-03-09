@@ -1,4 +1,4 @@
-\documentclass[english]{sareport}
+\documentclass[english,peerreview]{sareport}
 % use the option peerreview for creating an anonymized version of your report
 % E.g., \documentclass[english,peerreview]{sareport}
 
@@ -27,19 +27,14 @@
 
 \chapter{Domain analysis}\label{sec:domain}
 \section{Domain models}
-This sections contains the domain models for our system. For readability reasons, the model is split into two parts. In the first figure the general domain model is shown, in the second figure the model containing the hardware and information flow is illustrated.
+This section shows the domain model(s).
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth, height=9cm, angle=90]{Domain_model.pdf}
-    \caption{Domain model: General}\label{fig:domain_model1}
+    \includegraphics[width=\textwidth, height=11cm, angle=90]{Domain_model.pdf}
+    \caption{The domain model for the system.}\label{fig:domain_model}
 \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth, height=9cm, angle=90]{Hardware_and_information_flow.pdf}
-    \caption{Domain model: Hardware and information flow}\label{fig:domain_model2}
-\end{figure}
 \section{Domain constraints}
 In this section we provide additional domain constraints.
 
@@ -281,26 +276,25 @@ The user logs into his Application Provider dashboard and request an overview th
 \paragraph{UC1: Name}
 Short summary of this use case scenario
 
-\subsection{\emph{UC1}: Log in}
+\subsection{\emph{UC4}: Add application}
 \begin{itemize}
-    \item \textbf{Name:} log in
-    \item \textbf{Primary actor:} the User
-    \item \textbf{Secondary actor(s)}: secondary actor(s)
+    \item \textbf{Name:} Add application
+    \item \textbf{Primary actor:} Application Provider
+    \item \textbf{Secondary actor(s)}: System Administrator
     \item \textbf{Interested parties:} 
         \begin{itemize}
-            \item \textit{System:} wants to authenticate its users.
+            \item \textit{Online Service:} wants to authenticate its users and keep track of applications.
         \end{itemize}
 
     \item \textbf{Preconditions:}
         \begin{itemize}
-            \item First precondition.
-            \item Second precondition.
+            \item The Application Provider is registered on the Online Service (UC3).
+            \item The Application Provider is logged into the Online Service (UC1).
         \end{itemize}
 
     \item \textbf{Postconditions:}
         \begin{itemize}
-            \item First postcondition.
-            \item Second postcondition.
+            \item The Application Provider is notified about whether or not the application got accepted by the Online Service
         \end{itemize}
         
     \item \textbf{Main scenario:} 
@@ -311,11 +305,17 @@ Short summary of this use case scenario
 	\item The Online Service initiates a number of automated tests on the application.
 	\item The application passes all tests.
 	\item The Online Service notifies the Application Provider that the application got accepted.
+       \item \ldots
     \end{enumerate}
 
     \item \textbf{Alternative scenarios:} 
     \begin{enumerate}
-        \item [3b.] Alternative at step 3
+        \item [5b.] The application did not pass all automated tests.
+	\begin{enumerate}
+		\item [5b1.] The Onlince Service instructs a System Administrator to perform a secondary review.
+		\item [5b2a.] The System administrator approves the application, resume at step 6.
+		\item [5b2b.] The System Administrator rejects the application. The Application provider is notified of this decision.
+	\end{enumerate}
     \end{enumerate}
     
     \item \textbf{Remarks:}
@@ -323,6 +323,7 @@ Short summary of this use case scenario
             \item First remark
         \end{itemize}
 \end{itemize}
+
 
 \subsection{\emph{UC11}: Install new hardware}
 \begin{itemize}
