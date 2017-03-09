@@ -5,17 +5,16 @@
 \BOOKMARK [0][-]{chapter.2}{Functional requirements}{}% 5
 \BOOKMARK [1][-]{section.2.1}{Use case overview}{chapter.2}% 6
 \BOOKMARK [1][-]{section.2.2}{Detailed use cases}{chapter.2}% 7
-\BOOKMARK [2][-]{subsection.2.2.1}{UC1: Log in}{section.2.2}% 8
-\BOOKMARK [1][-]{section.2.3}{Detailed use cases}{chapter.2}% 9
-\BOOKMARK [2][-]{subsection.2.3.1}{UC1: Log in}{section.2.3}% 10
-\BOOKMARK [1][-]{section.2.4}{Detailed use cases}{chapter.2}% 11
-\BOOKMARK [2][-]{subsection.2.4.1}{UC1: Log in}{section.2.4}% 12
-\BOOKMARK [0][-]{chapter.3}{Non-functional requirements}{}% 13
-\BOOKMARK [1][-]{section.3.1}{Availability}{chapter.3}% 14
-\BOOKMARK [2][-]{subsection.3.1.1}{Av1: Name of the quality attribute scenario}{section.3.1}% 15
-\BOOKMARK [1][-]{section.3.2}{Performance}{chapter.3}% 16
-\BOOKMARK [2][-]{subsection.3.2.1}{P1: Name of the quality attribute scenario}{section.3.2}% 17
-\BOOKMARK [1][-]{section.3.3}{Modifiability}{chapter.3}% 18
-\BOOKMARK [2][-]{subsection.3.3.1}{M1: Name of the quality attribute scenario}{section.3.3}% 19
-\BOOKMARK [1][-]{section.3.4}{Usability}{chapter.3}% 20
-\BOOKMARK [2][-]{subsection.3.4.1}{U1: Name of the quality attribute scenario}{section.3.4}% 21
+\BOOKMARK [2][-]{subsection.2.2.1}{UC8: Subscribe to application}{section.2.2}% 8
+\BOOKMARK [2][-]{subsection.2.2.2}{UC1: Log in}{section.2.2}% 9
+\BOOKMARK [1][-]{section.2.3}{Detailed use cases}{chapter.2}% 10
+\BOOKMARK [2][-]{subsection.2.3.1}{UC1: Log in}{section.2.3}% 11
+\BOOKMARK [0][-]{chapter.3}{Non-functional requirements}{}% 12
+\BOOKMARK [1][-]{section.3.1}{Availability}{chapter.3}% 13
+\BOOKMARK [2][-]{subsection.3.1.1}{Av1: Name of the quality attribute scenario}{section.3.1}% 14
+\BOOKMARK [1][-]{section.3.2}{Performance}{chapter.3}% 15
+\BOOKMARK [2][-]{subsection.3.2.1}{P1: Name of the quality attribute scenario}{section.3.2}% 16
+\BOOKMARK [1][-]{section.3.3}{Modifiability}{chapter.3}% 17
+\BOOKMARK [2][-]{subsection.3.3.1}{M1: Name of the quality attribute scenario}{section.3.3}% 18
+\BOOKMARK [1][-]{section.3.4}{Usability}{chapter.3}% 19
+\BOOKMARK [2][-]{subsection.3.4.1}{U1: Name of the quality attribute scenario}{section.3.4}% 20

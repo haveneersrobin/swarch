@@ -1,4 +1,4 @@
-\documentclass[english]{sareport}
+\documentclass[english,peerreview]{sareport}
 % use the option peerreview for creating an anonymized version of your report
 % E.g., \documentclass[english,peerreview]{sareport}
 
@@ -48,6 +48,7 @@ In this section we provide additional domain constraints.
     \item If a component of the hardware fails, the system should automatically switch to a nearby, similar device if possible, based on the topology provided by the infrastructure owner.
     \item Only persons who are allowed to do so, can issue commands to an application.
     \item Gateways contain limited storage space. Whenever they're runnin low on space, the oldest information should be removed.
+    \item When communicating with the system, customer organisations, infrastructure owners, system administrators and application providers each have their own, personal, dashboard to do so.
 \end{itemize}
 
 \section{Glossary}
@@ -170,11 +171,14 @@ The sensor sends data to the corresponding gateway.
 
 
 \section{Detailed use cases}
-\subsection{\emph{UC1}: Log in}
+\subsection{\emph{UC8}: Subscribe to application}
 \begin{itemize}
-    \item \textbf{Name:} log in
-    \item \textbf{Primary actor:} the User
-    \item \textbf{Secondary actor(s)}: secondary actor(s)
+    \item \textbf{Name:} Subscribe to application
+    \item \textbf{Primary actor:} Customer Organization
+    \item \textbf{Secondary actor(s)}: 
+	\begin{itemize}
+		\item Infrastructure Owner: Needs to approve/reject the subscription if extra hardware is needed
+	\end{itemize}
     \item \textbf{Interested parties:} 
         \begin{itemize}
             \item \textit{System:} wants to authenticate its users.
@@ -214,7 +218,6 @@ The sensor sends data to the corresponding gateway.
 \paragraph{UC1: Name}
 Short summary of this use case scenario
 
-\section{Detailed use cases}
 \subsection{\emph{UC1}: Log in}
 \begin{itemize}
     \item \textbf{Name:} log in
