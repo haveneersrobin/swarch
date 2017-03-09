@@ -256,7 +256,7 @@ The user is logged into his Application Provider dashboard and request an overvi
 	\item The Online Service saves the subscription.
 	\item The Online Service notifies the user that the application will be activated once the required peripherals are installed.
 	\item The Online Service notifies the Infrastructure Owner that hardware is needed (\textbf{include:} UC10: Process peripheral request).
-	\item The hardware is installed (\textbf{include:} UC11: Install new hardware).
+	\item The Infrastructure Owner installs the hardware (\textbf{include:} UC11: Install new hardware).
 	\item The Online Service activates the application
 	\item The Online Service notifies the user that the application is activated.
        \item \ldots
@@ -274,42 +274,46 @@ The user is logged into his Application Provider dashboard and request an overvi
         \end{itemize}
 \end{itemize}
 
-\paragraph{UC1: Name}
-Short summary of this use case scenario
-
-\subsection{\emph{UC1}: Log in}
+\subsection{\emph{UC4}: Add application}
 \begin{itemize}
-    \item \textbf{Name:} log in
-    \item \textbf{Primary actor:} the User
-    \item \textbf{Secondary actor(s)}: secondary actor(s)
+    \item \textbf{Name:} Add application
+    \item \textbf{Primary actor:} Application Provider
+    \item \textbf{Secondary actor(s)}: System Administrator
     \item \textbf{Interested parties:} 
         \begin{itemize}
-            \item \textit{System:} wants to authenticate its users.
+            \item \textit{Online Service:} wants to authenticate its users and keep track of applications.
         \end{itemize}
 
     \item \textbf{Preconditions:}
         \begin{itemize}
-            \item First precondition.
-            \item Second precondition.
+            \item The Application Provider is registered on the Online Service (UC3).
+            \item The Application Provider is logged into the Online Service (UC1).
         \end{itemize}
 
     \item \textbf{Postconditions:}
         \begin{itemize}
-            \item First postcondition.
-            \item Second postcondition.
+            \item The Application Provider is notified about whether or not the application got accepted by the Online Service
         \end{itemize}
         
     \item \textbf{Main scenario:} 
     \begin{enumerate}
-       \item Step 1
-       \item Step 2
-       \item Step 3
+       \item The Application Provider indicates he wants to add an application
+       \item The Online Service presents the Application Provider with a means to add his application to the Online Service.
+       \item The Application Provider adds the application.
+	\item The Online Service initiates a number of automated tests on the application.
+	\item The application passes all tests.
+	\item The Online Service notifies the Application Provider that the application got accepted.
        \item \ldots
     \end{enumerate}
 
     \item \textbf{Alternative scenarios:} 
     \begin{enumerate}
-        \item [3b.] Alternative at step 3
+        \item [5b.] The application did not pass all automated tests.
+	\begin{enumerate}
+		\item [5b1.] The Onlince Service instructs a System Administrator to perform a secondary review.
+		\item [5b2a.] The System administrator approves the application, resume at step 6.
+		\item [5b2b.] The System Administrator rejects the application. The Application provider is notified of this decision.
+	\end{enumerate}
     \end{enumerate}
     
     \item \textbf{Remarks:}
