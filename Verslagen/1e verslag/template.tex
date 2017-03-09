@@ -86,9 +86,7 @@ in this analysis.
 	\item \textbf{Heartbeat Message}: Periodical message sent by the mote to indicate it is alive. This message includes a list of connected sensors and actuators as well as a timestamp indicating when the message was generated.
 	\item \textbf{Infrastructure owner}: Stakeholder in our system which manages the physical infrastructure as well as the hardware used as described in the toplogy. Customer organisations reside in these buidlings.
 	\item \textbf{Invoice}: An invoice is associated with a subscription between a customer organization and an application provider. It specifies the fees necessary to be paid by the customer organization.
-	\item \textbf{Library}: Set of methods that can be used by application providers in their mobile applications to simplify development.
 	\item \textbf{Light Sensor}: Type of sensor that measures the amount of light in LUX.
-	\item \textbf{Llimited peripheral history}: Small set of peripheral history maintained by the gateway. Useful for application to, for example, learn certain behavourial patterns.
 	\item \textbf{Message}: Umbrella term used for the different types of messages a mote can emit.
 	\item \textbf{Microphone Sensor}: Type of sensor which allows detection of sound. 
 	\item \textbf{Mobile app}: One type of interface end-users can use to communicate with the online system.
@@ -99,7 +97,6 @@ in this analysis.
 	\item \textbf{Online Service}: The collective concept that are the services provided via our online back-end. This service is used to test, develop and host applications, to store application configurations, keep track of sensor data, collect usage statistics etc. 
 	\item \textbf{Passive IR (Presence) Sensor}: Type of sensor which allows detection of motion achieved by taking pictures and comparing subsequent pictures.
 	\item \textbf{Peripheral Data}: The data which is produced by peripherals/hardware. Hardwa
-	\item \textbf{Peripheral History}
 	\item \textbf{Peripheral Manufacturer}: The third party company that is responsible for the manufacturing of sensors and actuators.
 	\item \textbf{Peripheral Type}: The type of the peripheral. Currently sensor and actuator are possible.
 	\item \textbf{Peripheral}: Umbrella concept for sensors and actuators.
@@ -125,11 +122,10 @@ in this analysis.
 \chapter{Functional requirements}\label{sec:functional}
 \section*{Use case model}
 
-\begin{figure}[!htp]
+\begin{figure}[H]
     \centering
-    %\includegraphics[width=0.8\textwidth]{}
-    \missingfigure[figwidth=0.8\textwidth]{Use case model}
-    \caption{Use case diagram for the system.}\label{fig:use_case_model}
+    \includegraphics[width=\textwidth]{Use_Case_Diagram.pdf}
+    \caption{Use case diagram}\label{fig:Use_Case_Diagram}
 \end{figure}
 
 \section{Use case overview}\label{sec:uc_overview}
@@ -371,105 +367,232 @@ form of \emph{quality attribute scenarios}. We provide for each type
 (availability, performance and modifiability) one requirement.
 
 \section{Availability}
-\subsection{\emph{Av1}: Name of the quality attribute scenario}
-Shortly describe the context of the scenario.
-
+\subsection{\emph{Av1}: Communication channel between the gateway and the Online Service}
+Due to a failure of the intermediate telecom infrastructure or an error in/outage of the Online Service important functionalities of the Online Service are compromised: applications can not connect to the connected sensors/actuators to push modfications or get data.
 \begin{itemize}
-    \item \textbf{Source:} source
+    \item \textbf{Source:} external or internal (e.g. error in the Online Service which results in a loss of connection between gateway and Online Service).
     \item \textbf{Stimulus:}
         \begin{itemize}
-            \item Description of a first stimulus.
-            \item Description of a second stimulus.
+            \item the external communcation channel between the gateway and the online service is failing
+            \item or, the internal communication service of the Online Service is failing and thus connection between applications and gateways is not possible
         \end{itemize}
 
-    \item \textbf{Artifact:} the stimulated artifact
-    \item \textbf{Environment:} the condition under which the stimulus occurs
+    \item \textbf{Artifact:} external communication channel, gateway, internal communication system
+    \item \textbf{Environment:} normal execution
     \item \textbf{Response:}
         \begin{itemize}
-            \item Describe how the system should respond to the stimulus.
+            \item Prevention:
+            \begin{itemize}
+            	\item the SIoTIP corporation has negotiated a SLA with the telecom provider which stipulates 97\% availability over our communication channel 
+            	\item the SIoTIP corporation has negotiated a SLA with the server provider which provides 99\% uptime of the servers used to run our Online Service
+            	\item the gateways itself run minimal applications to ensure that when the connection to the Online Service is lost the actuators can still be used (e.g. temperature control)
+            \end{itemize}
+            \item Detection:
+            \begin{itemize}
+            	\item the gateways are able to detect that the Online Service is offline by receiving time-outs when sending data to the Online Service (e.g. when the external communication channel fails)
+            	\item the Online Service detects the lack of updates from gateways and keeps track of how long no updates have been received
+            \end{itemize}
+            \item Resolution:\\
+            In every scenario the system administrator is contacted.
+            \begin{itemize}
+            	\item if the external communication channel is at fault, the system administrator must contact the telecom provider to have this resolved
+            	\item if the internal communication fails the system administrator resolves the technical issue and communication is automatically restored
+            \end{itemize}
         \end{itemize}
 
     \item \textbf{Response measure:}
         \begin{itemize}
-            \item Describe how the satisfaction of a response is measured.
+            \item Detection of a failing external or internal communication link depends on the synchronisation protocol but happens within one minute.
+            \item In case of an external communication failure, the SLA with the telecom provider stipulates that the problem is addressed within 15minutes and resolved within one hour. 
+            \item In case of an internal communication failure, the system administrator has to resolve the issue within 20 minutes.
         \end{itemize}
 \end{itemize}
 
-\paragraph{UC2: Name}
-Short summary of this use case scenario
-
-\section{Performance}
-\subsection{\emph{P1}: Name of the quality attribute scenario}
-Shortly describe the context of the scenario.
-
+\subsection{\emph{Av2}: Availability of microPnP sensors}
+Due to the failure of a sensor, the correct behavior of a critical application is compromised.
 \begin{itemize}
-    \item \textbf{Source:} source
+    \item \textbf{Source:} external
     \item \textbf{Stimulus:}
         \begin{itemize}
-            \item Description of a first stimulus.
-            \item Description of a second stimulus.
+            \item A sensor that is in use by a critical application (e.g a fire alarm application) stopped working due to unforseen circumstances (e.g. faulty battery in mote).
         \end{itemize}
 
-    \item \textbf{Artifact:} the stimulated artifact
-    \item \textbf{Environment:} the condition under which the stimulus occurs
+    \item \textbf{Artifact:} the application
+    \item \textbf{Environment:} normal execution
     \item \textbf{Response:}
         \begin{itemize}
-            \item Describe how the system should respond to the stimulus.
+            \item Prevention:
+            \begin{itemize}
+            	\item the system administrator has to check the battery level on all motes periodically.
+            	\item the mote manufacturer guarantees a battery life of at least 3 years.
+            	\item the sensor manufacturer guarantees a lifetime of at least 5 years.
+            \end{itemize}
+            \item Detection:
+            \begin{itemize}
+            	\item The online service detects the lack of incoming data.
+            \end{itemize}
+            \item Resolution:\\
+            In every scenario the system administrator is contacted and the broken sensor is replaced.
+            \begin{itemize}
+            	\item If a alternative sensor can be found to replace the failing sensor, this sensor is used as a substitute.
+            	\item if no alternative sensor can be found, the application and the infrastructure owner are notified.
+            \end{itemize}
         \end{itemize}
 
     \item \textbf{Response measure:}
         \begin{itemize}
-            \item Describe how the satisfaction of a response is measured.
+            \item the detection of a sensor failure happens within 30 seconds.
+            \item in case of the presence of an alternative sensor the replacement in the application should be within 30 seconds.
+        \end{itemize}
+\end{itemize}
+\section{Performance}
+\subsection{\emph{P1}: Transferring data from sensor to Online Service}
+Transferring periodic data from the sensors to the applications should happen in a timely fashion, even if a lot of sensors send at the same time.
+
+\begin{itemize}
+    \item \textbf{Source:} Sensor data
+    \item \textbf{Stimulus:}
+        \begin{itemize}
+            \item synchronisation of data with the online service
+        \end{itemize}
+
+    \item \textbf{Artifact:} applications using the data
+    \item \textbf{Environment:} peak load
+    \item \textbf{Response:}
+        \begin{itemize}
+            \item When under heavy load, the system should increase the throughput as specified in the synchronisation protocol.
+        \end{itemize} The data packages should be as minimal as possible, without excluding necessary details.
+    \item \textbf{Response measure:}
+        \begin{itemize}
+            \item All packages should arrive within 5ms.
+        \end{itemize}
+\end{itemize}
+
+\subsection{\emph{P2}: Efficient testing of new applications}
+Transferring periodic data from the sensors to the applications should happen in a timely fashion, even if a lot of sensors send at the same time.
+
+\begin{itemize}
+    \item \textbf{Source:} Sensor data
+    \item \textbf{Stimulus:}
+        \begin{itemize}
+            \item synchronisation of data with the online service
+        \end{itemize}
+
+    \item \textbf{Artifact:} applications using the data
+    \item \textbf{Environment:} peak load
+    \item \textbf{Response:}
+        \begin{itemize}
+            \item When under heavy load, the system should increase the throughput as specified in the synchronisation protocol.
+        \end{itemize} The data packages should be as minimal as possible, without excluding necessary details.
+    \item \textbf{Response measure:}
+        \begin{itemize}
+            \item All packages should arrive within 5ms.
         \end{itemize}
 \end{itemize}
 
 \section{Modifiability}
-\subsection{\emph{M1}: Name of the quality attribute scenario}
-Shortly describe the context of the scenario.
-
+\subsection{\emph{M1}: Adding a new type of sensor to the topology}
+DistriNet has developped a new type of sensors (`presence sensors') which are capable of detecting if a specific person is present in the neighbourhood  of the sensor. This is based on radio signals emitted by the phones of the subjects. Of course, our Online Service and its applications must be able to process and use this data.
 \begin{itemize}
-    \item \textbf{Source:} source
-    \item \textbf{Stimulus:}
-        \begin{itemize}
-            \item Description of a first stimulus.
-            \item Description of a second stimulus.
-        \end{itemize}
-
+    \item \textbf{Source:} DistriNet research
+    \item \textbf{Stimulus:} expanding the application `horizon' and expanding the accuracy and reliability of current applications.
     \item \textbf{Artifact:} the stimulated artifact
-    \item \textbf{Environment:} the condition under which the stimulus occurs
+    \item \textbf{Environment:} normal execution
     \item \textbf{Response:}
         \begin{itemize}
-            \item Describe how the system should respond to the stimulus.
+        	\item The infrastructure owner has to be notified so he is up to date with the latest technology
+            \item The application logic has to be expanded to be able to cope with this new information
+            \item A new sensor type has to be added to the system
+            \item Our library and API's need to be updated to be able to cope with the new sensor type
         \end{itemize}
 
     \item \textbf{Response measure:}
         \begin{itemize}
-            \item Describe how the satisfaction of a response is measured.
+            \item This modification must be done within 30 minutes of introduction of the new sensor.
+        \end{itemize}
+\end{itemize}
+
+\subsection{\emph{M2}: Implementing a new and optimized sandboxing environment}
+Developers at SIoTIP have developed a new sandbox environment in which applications are tested before being accepted or rejected. This should not influence the currently deployed applications and should not preven future applications from being tested.
+\begin{itemize}
+    \item \textbf{Source:} SIoTIP
+    \item \textbf{Stimulus:} optimizing the application submission workflow and reliability, and by consequence the efficacy of our system 
+    \item \textbf{Artifact:} the sandbox environement
+    \item \textbf{Environment:} normal execution
+    \item \textbf{Response:}
+        \begin{itemize}
+        	\item The infrastructure owner has to be notified so he is up to date with the latest sandbox environement.
+            \item The current version of the sandbox environment has to be updated to the new version.
+            \item The updat to this new sandbox environment does not affect the rest of the system.
+        \end{itemize}
+
+    \item \textbf{Response measure:}
+        \begin{itemize}
+            \item This update must be done within 1 day.
         \end{itemize}
 \end{itemize}
 
 \section{Usability}
-\subsection{\emph{U1}: Name of the quality attribute scenario}
-Shortly describe the context of the scenario.
+\subsection{\emph{U1}: Subscribing to an application}
+Subscribing to a new application should be possible with ease. If a subscription requires new hardware, this hardware is ordered automaticlly. Whenever the new hardware arrives and is connected, the application should automatically become active (without configuration).
 
 \begin{itemize}
-    \item \textbf{Source:} source
-    \item \textbf{Stimulus:}
-        \begin{itemize}
-            \item Description of a first stimulus.
-            \item Description of a second stimulus.
-        \end{itemize}
-
-    \item \textbf{Artifact:} the stimulated artifact
-    \item \textbf{Environment:} the condition under which the stimulus occurs
+    \item \textbf{Source:} customer organization
+    \item \textbf{Stimulus:}: 
+    \begin{itemize}
+    \item Customer organisation wants to use the system efficiently and with ease.
+    \item The customer organisation does not need to know underlying processes.
+    \end{itemize}
+    \item \textbf{Artifact:}Online Service, application, the customer organisation dashboard (and indirectly with the hardware store), infrastructure owner, application provider
+    \item \textbf{Environment:} normal execution
     \item \textbf{Response:}
         \begin{itemize}
-            \item Describe how the system should respond to the stimulus.
+            \item The subscription is registered in the Online Service and key users are added in the application configuration.
+            \item It is checked with the infrastructure owner if the necessary sensors are available.
+            \begin{itemize} 
+            \item If the necessary hardware is available, the application is activated automatically and the end users of the customer organisation can start interacting with the applicaion.
+            \item If the necessary hardware is not available, the system puts the necessary hardware in a `shopping basket' and notifies the infrastructure owner associated with the customer organisation.
+            \item When the infrastructure owner accepts, the hardware will be deliverd in a few days. When installed by a employee of the infrastructure owner, the application will become active automatically.
+            \end{itemize}
         \end{itemize}
 
     \item \textbf{Response measure:}
         \begin{itemize}
-            \item Describe how the satisfaction of a response is measured.
+            \item Subscribing and configuring an application should be done in less than 10 minutes.
+            \item Ordering and installing the necessary hardware should be done in 5 working days.
+            \item Activating the application (when all hardware is available) should be done in less than 5 seconds.
+        \end{itemize}
+\end{itemize}
+
+\subsection{\emph{U2}: Adding an application}
+Developing and adding a new application should be easy and should follow a consequent and solid process. The application provider should be able to upload applications without breaking the system. Whenever an application does not meet the necessary requirements, the Online Service will notify the system administrator which can approve manually or can reject, which means the application provider has to modify its application.
+
+\begin{itemize}
+    \item \textbf{Source:} application provider
+    \item \textbf{Stimulus:}: 
+    \begin{itemize}
+    \item Application providers want to use the system as intended: the application developer does not need to have knowledge about the underlying process.
+    \item The application provider should be able to determine the flaws in their applications which should enable the provider to fix these errors.
+    \end{itemize}
+    \item \textbf{Artifact:}Online Service, application, application developer, sandbox environment
+    \item \textbf{Environment:} normal execution
+    \item \textbf{Response:}
+        \begin{itemize}
+            \item The application is automatically checked in the sandbox for, among others, memory leaks.
+            \begin{itemize} 
+            \item If the application does not produce any errors or trigger any security measurs, the application is added to the Online Service and starts accepting subscriptions.
+            \item If the sandboxing environment produces an error, a system administrator should be notified for manual inspection.
+            \item If the system administrator accepts the application nonetheless, the appliaction is published and starts accepting subscriptions. The application provider is notified about the succesful application.
+            \item If the system admnistratos rejects the appliication, the application provider is notified with the errors and is able to fix the errors before submitting the application once more.
+            \end{itemize}
+        \end{itemize}
+
+    \item \textbf{Response measure:}
+        \begin{itemize}
+            \item Uploading and checking the application in the sandbox environment should be done within 10 minutes, if no errors occur.
+            \item A system administrator should respond to an possible rejection notification within 8 hours.
+            \item After rejection by the system administrator the application provider is notified within 5 seconds.
+            \item After acceptance by the system administrator, the application is published within 5 seconds.
         \end{itemize}
 \end{itemize}
 
