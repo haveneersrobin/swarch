@@ -43,11 +43,12 @@ In this section we provide additional domain constraints.
     \item A end-user only receives notifications from applications that the customer organization he works for is subscribed to. He only receives these notifcations if he/she is an individual who should receive notifications as configured in the application by the previously mentioned customer organization.
     \item The Online Service can only communicate with peripherals via their gateway.
     \item The connectivity between the network manager and the attached devices is done via 6LoWPAN.
-    \item Application developers only receive rejection notification about the applications they want to deploy.
+    \item Application developers only receive rejection notifications about the applications they want to deploy.
     \item An application should be idle until all the necesarry hardware is available and if the hardware is available it should be activated automatically. For example, a fire application requires at least 2 specific sensors per room.
     \item If a component of the hardware fails, the system should automatically switch to a nearby, similar device if possible, based on the topology provided by the infrastructure owner.
     \item Only persons who are allowed to do so, can issue commands to an application.
     \item Gateways contain limited storage space. Whenever they're runnin low on space, the oldest information should be removed.
+    \item When communicating with the system, customer organisations, infrastructure owners, system administrators and application providers each have their own, personal, dashboard to do so.
 \end{itemize}
 
 \section{Glossary}
