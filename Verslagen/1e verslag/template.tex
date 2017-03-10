@@ -149,7 +149,7 @@ The user logs into the his Application Provider dashboard and uploads the new ap
 The user logs into the his Application Provider dashboard and uploads the updated application. The user also indicates whether to automatically update existing instances of the application or to require customer organisations to subscribe to the application. The Online Service initiates a number of automated tests and shows the progress on the user's application provider dashboard. If the application passes all tests, the user receives a notification and the application is made available to customer organisations for subscription. If the application does not pass all tests, a SIoTIP system administrator performs a secondary review and decides whether to accept or reject the application. In the latter case, the user is notified of the reason of rejection.
 
 \paragraph{UC6: Register as new infrastructure owner}
-The infrastructure owner contacts SIoTIP and negotiations are started. An Infrastructure Owner dashboard account is set up for the new user. The infrastructure owner provides the names of the currently renting companies, and SIoTIP contacts them for registration (See UC: Register new customer organisation).
+The infrastructure owner contacts SIoTIP and negotiations are started. An infrastructure owner dashboard account is set up for the new user. The infrastructure owner provides the names of the currently renting companies, and SIoTIP contacts them for registration (See UC: Register new customer organisation).
 
 \paragraph{UC7: Register as new customer organisation}
 The organisation contacts or is contacted by SIoTIP and provides it's billing and contact information. The organisation is then registered as a Customer organisation in the Online Service.
@@ -161,13 +161,13 @@ The user logs into his Customer organisation dashboard, subscribes to the applic
 The user logs into his Customer organisation dashboard and unsubscribes from the application. The user is informed by the Online Service that the application will be deactivated.
 
 \paragraph{UC10: Process hardware request}
-The Infrastructure Owner is notified of a new request for hardware. The infrastructure owner approves or rejects the purchase of the hardware and a notification of the decision is sent to the customer organisation which requested the peripherals. If the infrastructure owner approves the request, the hardware is ordered from SIoTIP.
+The infrastructure owner is notified of a new request for hardware. The infrastructure owner approves or rejects the purchase of the hardware and a notification of the decision is sent to the customer organisation which requested the peripherals. If the infrastructure owner approves the request, the hardware is ordered from SIoTIP.
 
 \paragraph{UC11: Install new hardware}
-The Infrastructure Owner receives the hardware from SIoTIP and installs it. The infrastructure owner configures any new gateways to connect to the local network. Once online, the gateways immediately connect to the Online Service to register themselves. The infrastructure owner then logs in to the infrastructure owner dashboard and provides the necessary topology information. Lastly, he allocates the new peripherals to the Customer organisations in his building (See UC: Allocate peripherals).
+The infrastructure owner receives the hardware from SIoTIP and installs it. The infrastructure owner configures any new gateways to connect to the local network. Once online, the gateways immediately connect to the Online Service to register themselves. The infrastructure owner then logs in to the infrastructure owner dashboard and provides the necessary topology information. Lastly, he allocates the new peripherals to the Customer organisations in his building (See UC: Allocate peripherals).
 
 \paragraph{UC12: Resolve hardware failure}
-The Online Service detects that a hardware component is no longer sending data and sends a notification to the Infrastructure Owner. The Online Service also notifies all applications currently using the failing hardware component so that the applications can search for equivalent sensors in the topology. 
+The Online Service detects that a hardware component is no longer sending data and sends a notification to the infrastructure owner. The Online Service also notifies all applications currently using the failing hardware component so that the applications can search for equivalent sensors in the topology. 
 
 \paragraph{UC13: Configure end-users}
 The user logs in to his Customer organisation dashboard and assigns users to an application. These changes are saved in the Online Service.
@@ -179,10 +179,10 @@ The sensor sends data to the corresponding gateway. The gateway stores the data 
 The user logs into his Customer organisation dashboard and selects the option to show his Customer organisation's invoice overview. The Online Service then shows an overview of all the Customer organisation's invoices.
 
 \paragraph{UC16: Edit topology}
-The user logs into his Infrastructure Owner dashboard and selects the option to edit the topology of his buildings. When the user is done editing the topology, the updated topology will be saved in the Online Service.
+The user logs into his infrastructure owner dashboard and selects the option to edit the topology of his buildings. When the user is done editing the topology, the updated topology will be saved in the Online Service.
 
 \paragraph{UC17: Allocate peripherals}
-The user logs into his Infrastructure Owner dashboard and selects the option to allocate peripherals to Customer organisations. He then assigns access rights to the Customer organisations in his building to use the new peripherals. The Online Service automatically activates any application of that Customer Organisation which needed the newly allocated peripherals in order to run. Conversely, if a peripheral gets withheld from a Customer organisation, the Online Service deactivates any application of that Customer organisation which needed the witheld peripheral to function properly.
+The user logs into his infrastructure owner dashboard and selects the option to allocate peripherals to Customer organisations. He then assigns access rights to the Customer organisations in his building to use the new peripherals. The Online Service automatically activates any application of that Customer Organisation which needed the newly allocated peripherals in order to run. Conversely, if a peripheral gets withheld from a Customer organisation, the Online Service deactivates any application of that Customer organisation which needed the witheld peripheral to function properly.
 
 \paragraph{UC18: Resolve platform failure}
 An event causes the platform to misbehave. The Online Service detects this event and sends a notification to the System Administrator(s).
@@ -258,7 +258,7 @@ The user logs into his Application Provider dashboard and request an overview th
         \begin{itemize}
             \item \textit{Online Service:} wants to authenticate its users and keep track of subscriptions.
             \item \textit{Customer organisation:} wants to subscribe to applications
-            \item \textit{Infrastructure Owner:} Has to decide whether hardware will be bought for the applications or not.
+            \item \textit{infrastructure owner:} Has to decide whether hardware will be bought for the applications or not.
         \end{itemize}
 
     \item \textbf{Preconditions:}
@@ -281,9 +281,9 @@ The user logs into his Application Provider dashboard and request an overview th
        \item The user subscribes to an application.
 	\item The Online Service saves the subscription.
 	\item The Online Service notifies the user that the application will be activated once the required peripherals are installed.
-	\item The Online Service notifies the Infrastructure Owner that new peripherals are needed (\textbf{Include:} UC10: Process peripheral request).
-	\item The Infrastructure Owner installs the hardware (\textbf{Include:} UC11: Install new hardware).
-    \item The Infrastructure Owner allocates the new peripherals to the Customer organisation (\textbf{Include:} UC17: Allocate peripherals )
+	\item The Online Service notifies the infrastructure owner that new peripherals are needed (\textbf{Include:} UC10: Process peripheral request).
+	\item The infrastructure owner installs the hardware (\textbf{Include:} UC11: Install new hardware).
+    \item The infrastructure owner allocates the new peripherals to the Customer organisation (\textbf{Include:} UC17: Allocate peripherals )
 	\item The Online Service activates the application
 	\item The Online Service notifies the user that the application is activated.
     \end{enumerate}
@@ -298,54 +298,54 @@ The user logs into his Application Provider dashboard and request an overview th
 \subsection{\emph{UC10}: Process hardware request}
 \begin{itemize}
     \item \textbf{Name:} Process peripheral request
-    \item \textbf{Primary actor:} Infrastructure Owner
+    \item \textbf{Primary actor:} infrastructure owner
     \item \textbf{Secondary actor(s)}: Online Service
     \item \textbf{Interested parties:} 
         \begin{itemize}
             \item \textit{Customer organisations:} Could use the requested hardware if it is allocated to them.
-            \item \textit{Infrastructure Owner:} Has to decide whether or not the hardware will be bought.
+            \item \textit{infrastructure owner:} Has to decide whether or not the hardware will be bought.
         \end{itemize}
 
     \item \textbf{Preconditions:}
         \begin{itemize}
-            \item The Infrastructure Owner received a request for new hardware.
-            \item The Infrastructure Owner is registered on the Online Service (cf. UC6).
-            \item The Infrastructure Owner is logged into his Infrastructure Owner dashboard. (cf. UC1)
+            \item The infrastructure owner received a request for new hardware.
+            \item The infrastructure owner is registered on the Online Service (cf. UC6).
+            \item The infrastructure owner is logged into his infrastructure owner dashboard. (cf. UC1)
         \end{itemize}
 
     \item \textbf{Postconditions:}
         \begin{itemize}
-            \item The requester of the hardware is notified about whether or not the Infrastructure Owner approved the request.
+            \item The requester of the hardware is notified about whether or not the infrastructure owner approved the request.
         \end{itemize}
         
     \item \textbf{Main scenario:} 
     \begin{enumerate}
-       \item The Infrastructure Owner approves the request.
+       \item The infrastructure owner approves the request.
        \item The Online Service orders the hardware from SIoTIP.
        \item The Online Service notifies the requester of the hardware about the decision.
     \end{enumerate}
 
     \item \textbf{Alternative scenarios:} 
     \begin{enumerate}
-        \item [1b1.] The Infrastructure Owner rejects the request, resume at step 3.
+        \item [1b1.] The infrastructure owner rejects the request, resume at step 3.
     \end{enumerate}
 \end{itemize}
 
 \subsection{\emph{UC11}: Install new hardware}
 \begin{itemize}
     \item \textbf{Name:} Install new hardware
-    \item \textbf{Primary actor:} Infrastructure Owner
-    \item \textbf{Secondary actor(s)}: 
+    \item \textbf{Primary actor:} infrastructure owner
+    \item \textbf{Secondary actor(s)}: /
     \item \textbf{Interested parties:} 
         \begin{itemize}
             \item \textit{Online Service:}  wants to authenticate its users and keep track of all hardware.
             \item \textit{Customer organisations:} can use the newly installed hardware if it is allocated to them.
-            \item \textit{Infrastructure Owner:} has to maintain topology of the hardware and has to place and configure it.
+            \item \textit{infrastructure owner:} has to maintain topology of the hardware and has to place and configure it.
         \end{itemize}
 
     \item \textbf{Preconditions:}
         \begin{itemize}
-            \item The Infrastructure Owner is registered on the Online Service (cf. UC6).
+            \item The infrastructure owner is registered on the Online Service (cf. UC6).
         \end{itemize}
 
     \item \textbf{Postconditions:}
@@ -356,13 +356,13 @@ The user logs into his Application Provider dashboard and request an overview th
         
     \item \textbf{Main scenario:} 
     \begin{enumerate}
-       \item The Infrastructure Owner receives the hardware from SIoTIP.
-       \item The Infrastructure Owner places the new hardware where it needs to be.
-       \item The Infrastructure Owner configures any new gateways to connect to the local network.
+       \item The infrastructure owner receives the hardware from SIoTIP.
+       \item The infrastructure owner places the new hardware where it needs to be.
+       \item The infrastructure owner configures any new gateways to connect to the local network.
        \item The new gateways automatically connect to the Online Service and register themselves.
-       \item The Infrastructure Owner logs into the Online Service. (\textbf{Include:} UC1: log in)
-       \item The Infrastructure Owner edits the topology of his infrastructure. (\textbf{Include:} UC16: Edit topology)
-       \item The Infrastructure Owner allocates the new peripherals to the Customer organisations who are allowed to use them. (\textbf{UC17: Allocate peripherals})
+       \item The infrastructure owner logs into the Online Service. (\textbf{Include:} UC1: log in)
+       \item The infrastructure owner edits the topology of his infrastructure. (\textbf{Include:} UC16: Edit topology)
+       \item The infrastructure owner allocates the new peripherals to the Customer organisations who are allowed to use them. (\textbf{UC17: Allocate peripherals})
     \end{enumerate}
 \end{itemize}
 
@@ -370,7 +370,7 @@ The user logs into his Application Provider dashboard and request an overview th
 \subsection{\emph{UC17}: Allocate peripherals}
 \begin{itemize}
     \item \textbf{Name:} Allocate peripherals
-    \item \textbf{Primary actor:} Infrastructure Owner
+    \item \textbf{Primary actor:} infrastructure owner
     \item \textbf{Secondary actor(s)}: Online Service
     \item \textbf{Interested parties:} 
         \begin{itemize}
@@ -380,34 +380,32 @@ The user logs into his Application Provider dashboard and request an overview th
 
     \item \textbf{Preconditions:}
         \begin{itemize}
-            \item The Infrastructure Owner is registered on the Online Service (cf. UC6).
-            \item The Infrastructure Owner is logged into his Infrastructure Owner dashboard. (cf. UC1)
+            \item The infrastructure owner is registered on the Online Service (cf. UC6).
+            \item The infrastructure owner is logged into his infrastructure owner dashboard. (cf. UC1)
         \end{itemize}
 
     \item \textbf{Postconditions:}
-        \begin{itemize}
-            \item
-        \end{itemize}
+    /
 
         
     \item \textbf{Main scenario:} 
     \begin{enumerate}
-       \item The Infrastructure Owner indicates he wants to allocate or withhold peripherals to/from Customer organisations.
+       \item The infrastructure owner indicates he wants to allocate or withhold peripherals to/from customer organisations.
        \item The Online Service presents the user with a means to do this.
-       \item The Infrastructure Owner allocates/withholds peripherals to/from Customer organisations.
-       \item The Online Service activates any application in a Customer organisation which needed the peripherals allocated to that Customer organisation.
-       \item The Online Service deactivates any application in a Customer organisation which needed the peripherals withheld from that Customer organisation.
+       \item The infrastructure owner allocates/withholds peripherals to/from Customer organisations.
+       \item The Online Service activates any application in a customer organisation which needed the peripherals allocated to that customer organisation.
+       \item The Online Service deactivates any application in a customer organisation which needed the peripherals withheld from that customer organisation.
     \end{enumerate}
 \end{itemize}
 
 \chapter{Non-functional requirements}\label{sec:non-functional}
 In this section, we model the non-functional requirements for the system in the
 form of \emph{quality attribute scenarios}. We provide for each type
-(availability, performance and modifiability) one requirement.
+(availability, performance and modifiability) two requirements.
 
 \section{Availability}
 \subsection{\emph{Av1}: Communication channel between the gateway and the Online Service}
-Due to a failure of the intermediate telecom infrastructure or an error in/outage of the Online Service important functionalities of the Online Service are compromised: applications can not connect to the connected sensors/actuators to push modifications or get data.
+Due to a failure of the intermediate telecom infrastructure or an error in/outage of the Online Service, important functionalities of the Online Service are compromised: applications can not connect to the connected sensors/actuators to push modifications or get data.
 \begin{itemize}
     \item \textbf{Source:} external or internal (e.g. error in the Online Service which results in a loss of connection between gateway and Online Service).
     \item \textbf{Stimulus:}
@@ -435,7 +433,7 @@ Due to a failure of the intermediate telecom infrastructure or an error in/outag
             In every scenario the system administrator is contacted.
             \begin{itemize}
             	\item if the external communication channel is at fault, the system administrator must contact the telecom provider to have this resolved
-            	\item if the internal communication fails the system administrator resolves the technical issue and communication is automatically restored
+            	\item if the internal communication system fails, the system administrator resolves the technical issue and communication is automatically restored
             \end{itemize}
         \end{itemize}
 
@@ -481,7 +479,7 @@ Due to the failure of a sensor, the correct behaviour of a critical application 
     \item \textbf{Response measure:}
         \begin{itemize}
             \item the detection of a sensor failure happens within 30 seconds.
-            \item in case of the presence of an alternative sensor the replacement in the application should be within 30 seconds.
+            \item in case of the presence of an alternative sensor, the replacement sensor should be used by the application within 30 seconds.
         \end{itemize}
 \end{itemize}
 \section{Performance}
@@ -508,26 +506,27 @@ Transferring periodic data from the sensors to the applications should happen in
 \end{itemize}
 
 \subsection{\emph{P2}: Efficient testing of new applications}
-Transferring periodic data from the sensors to the applications should happen in a timely fashion, even if a lot of sensors send at the same time.
+Application providers can submit their applications to the Online Service which automatically tests the submitted applications before deploying.
 
 \begin{itemize}
-    \item \textbf{Source:} Sensor data
+    \item \textbf{Source:} Submitted application
     \item \textbf{Stimulus:}
         \begin{itemize}
-            \item synchronisation of data with the online service
+            \item testing the application on the online service
         \end{itemize}
 
-    \item \textbf{Artifact:} applications using the data
-    \item \textbf{Environment:} peak load
+    \item \textbf{Artifact:} the Online Service
+    \item \textbf{Environment:} normal execution
     \item \textbf{Response:}
         \begin{itemize}
-            \item When under heavy load, the system should increase the throughput as specified in the synchronisation protocol.
-        \end{itemize} The data packages should be as minimal as possible, without excluding necessary details.
+            \item When an application is submitted, it should be tested automatically in the sandbox environment to prevent errors and bugs.
     \item \textbf{Response measure:}
         \begin{itemize}
-            \item All packages should arrive within 5ms.
+            \item Applications will bes tested within 2 minutes and the outcome will be notified within 10 seconds after the testing has finished.
         \end{itemize}
 \end{itemize}
+
+        \end{itemize}
 
 \section{Modifiability}
 \subsection{\emph{M1}: Adding a new type of sensor to the topology}
