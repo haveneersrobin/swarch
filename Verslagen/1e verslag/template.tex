@@ -54,7 +54,7 @@ In this section we provide additional domain constraints.
     \item If a component of the hardware fails, the system should automatically switch to a nearby, similar device if possible, based on the topology provided by the infrastructure owner.
     \item Only persons who are allowed to do so, can issue commands to an application.
     \item Gateways contain limited storage space. Whenever they're running low on space, the oldest information should be removed.
-    \item When communicating with the system, customer organisations, infrastructure owners, system administrators and application providers each have their own, personal, dashboard to do so.
+    \item When communicating with the system, customer organisations, infrastructure owners, system administrators and application providers each have their own, personal dashboard to do so.
 \end{itemize}
 
 \section{Glossary}
@@ -110,8 +110,8 @@ in this analysis.
 	\item \textbf{Server SLA}: The SLA between SIoTIP corporation and the server provider which, among others, specifies the up-time constraints and reaction time in case of a hardware failure.
 	\item \textbf{Subscription}: An agreement between the application provider and a customer organisation in which is specified for which application a customer organisation is subscribed.
 	\item \textbf{Synchronisation protocol}: The protocol used in the communication between the gateways and the online service.
-	\item \textbf{System Administrator}: The person responsible to act when a submitted application is rejected. He or she can accept the application nonetheless or reject it as well which notifies the application provider.
-	\item \textbf{System Notification}: A notification which notifies the system administrator when a submitted application needs attention. This notification is triggered by the sandbox environment.
+	\item \textbf{System administrator}: The person responsible to act when a submitted application is rejected. He or she can accept the application nonetheless or reject it as well which notifies the application provider.
+	\item \textbf{System notification}: A notification which notifies the system administrator when a submitted application needs attention. This notification is triggered by the sandbox environment.
 	\item \textbf{Telecom SLA}: The SLA between the SIoTIP corporation and the telecom provider which specifies the the capabilities of these communication channels.
 	\item \textbf{Telecom operators}: Third party who provides means for gateways to communicate with the Online Service and vice versa.
 	\item \textbf{Topology}: Overview of the hardware of the infrastructure spread out over the building(s) he owns. This can be used when new, for example, new applications are added to find out which new hardware is necessary.
@@ -133,74 +133,74 @@ in this analysis.
 The user wishing to use the system provides his credentials.
 The Online Service verifies the credentials and authenticates the user.
 The Online Service then provides the user access to his dashboard.
-If the provides credentials were not correct, the system does not authenticate the user.
+If the provided credentials were not correct, the system does not authenticate the user.
 
 \paragraph{UC2: Log out}
-The user indicates he wants to log off from the system.
-The system logs him of.
+The user indicates he wants to log out from the system.
+The system logs him out.
 
 \paragraph{UC3: Enroll as application provider}
 The organisation wishing to become a an Application Provider contacts SIoTIP and they negotiate the contract. The organisation receives API documentation and rules of conduct from SIoTIP. When the negotiations are conducted, the organisation is provided dashboard accounts for the individual developers employed by the organisation and the organisation is registered as an Application Provider in the Online service.
 
 \paragraph{UC4: Add application}
-The user logs into the his Application Provider dashboard and uploads the new application. The Online Service initiates a number of automated tests and shows the progress on the user's Application Provider dashboard. If the application passes all tests, the user receives a notification and the application is made available to Customer organisations for subscription. If the application does not pass al tests, a SIoTIP System Administrator performs a secondary review and decides whether to accept or reject the application. In the latter case, the user is notified of the reason of rejection.
+The user logs into the his Application provider dashboard and uploads the new application. The Online service initiates a number of automated tests and shows the progress on the user's Application provider dashboard. If the application passes all tests, the user receives a notification and the application is made available to customer organisations for subscription. If the application does not pass al tests, a SIoTIP system administrator performs a secondary review and decides whether to accept or reject the application. In the latter case, the user is notified of the reason of rejection.
 
 \paragraph{UC5: Update existing application}
-The user logs into the his Application Provider dashboard and uploads the updated application. The user also indicates whether to automatically update existing instances of the application or to require customer organisations to subscribe to the application. The Online Service initiates a number of automated tests and shows the progress on the user's application provider dashboard. If the application passes all tests, the user receives a notification and the application is made available to customer organisations for subscription. If the application does not pass all tests, a SIoTIP system administrator performs a secondary review and decides whether to accept or reject the application. In the latter case, the user is notified of the reason of rejection.
+The user logs into the his application provider dashboard and uploads the updated application. The user also indicates whether to automatically update existing instances of the application or to require customer organisations to subscribe to the application. The online service initiates a number of automated tests and shows the progress on the user's application provider dashboard. If the application passes all tests, the user receives a notification and the application is made available to customer organisations for subscription. If the application does not pass all tests, a SIoTIP system administrator performs a secondary review and decides whether to accept or reject the application. In the latter case, the user is notified of the reason of rejection.
 
 \paragraph{UC6: Register as new infrastructure owner}
 The infrastructure owner contacts SIoTIP and negotiations are started. An Infrastructure Owner dashboard account is set up for the new user. The infrastructure owner provides the names of the currently renting companies, and SIoTIP contacts them for registration (See UC: Register new customer organisation).
 
 \paragraph{UC7: Register as new customer organisation}
-The organisation contacts or is contacted by SIoTIP and provides it's billing and contact information. The organisation is then registered as a Customer organisation in the Online Service.
+The organisation contacts or is contacted by SIoTIP and provides its billing and contact information. The organisation is then registered as a customer organisation in the online service.
 
 \paragraph{UC8: Subscribe to application}
-The user logs into his Customer organisation dashboard, subscribes to the application and provides the needed information. The user is informed by the Online Service that the application will be activated once the required peripherals are installed. The Online Service checks whether or not the customer organisation has access to all the peripherals needed for the application. If not, the infrastructure owner is automatically notified of the subscription and the peripherals and gateways needed for that application (see UC10: process hardware request). Once all required hardware is installed, the application is activated and the user is notified.
+The user logs into his customer organisation dashboard, subscribes to the application and provides the needed information. The user is informed by the online service that the application will be activated once the required peripherals are installed. The Online Service checks whether or not the customer organisation has access to all the peripherals needed for the application. If not, the infrastructure owner is automatically notified of the subscription and the peripherals and gateways needed for that application (see UC10: process hardware request). Once all required hardware is installed, the application is activated and the user is notified.
 
 \paragraph{UC9: Unsubscribe from application}
-The user logs into his Customer organisation dashboard and unsubscribes from the application. The user is informed by the Online Service that the application will be deactivated.
+The user logs into his customer organisation dashboard and unsubscribes from the application. The user is informed by the online service that the application will be deactivated.
 
 \paragraph{UC10: Process hardware request}
-The Infrastructure Owner is notified of a new request for hardware. The infrastructure owner approves or rejects the purchase of the hardware and a notification of the decision is sent to the customer organisation which requested the peripherals. If the infrastructure owner approves the request, the hardware is ordered from SIoTIP.
+The infrastructure owner is notified of a new request for hardware. The infrastructure owner approves or rejects the purchase of the hardware and a notification of the decision is sent to the customer organisation which requested the peripherals. If the infrastructure owner approves the request, the hardware is ordered from SIoTIP.
 
 \paragraph{UC11: Install new hardware}
-The Infrastructure Owner receives the hardware from SIoTIP and installs it. The infrastructure owner configures any new gateways to connect to the local network. Once online, the gateways immediately connect to the Online Service to register themselves. The infrastructure owner then logs in to the infrastructure owner dashboard and provides the necessary topology information. Lastly, he allocates the new peripherals to the Customer organisations in his building (See UC: Allocate peripherals).
+The infrastructure owner receives the hardware from SIoTIP and installs it. The infrastructure owner configures any new gateways to connect to the local network. Once online, the gateways immediately connect to the online service to register themselves. The infrastructure owner then logs in to the infrastructure owner dashboard and provides the necessary topology information. Lastly, he allocates the new peripherals to the customer organisations in his building (See UC: Allocate peripherals).
 
 \paragraph{UC12: Resolve hardware failure}
-The Online Service detects that a hardware component is no longer sending data and sends a notification to the Infrastructure Owner. The Online Service also notifies all applications currently using the failing hardware component so that the applications can search for equivalent sensors in the topology. 
+The online service detects that a hardware component is no longer sending data and sends a notification to the infrastructure owner. The online service also notifies all applications currently using the failing hardware component so that the applications can search for equivalent sensors in the topology. 
 
 \paragraph{UC13: Configure end-users}
-The user logs in to his Customer organisation dashboard and assigns users to an application. These changes are saved in the Online Service.
+The user logs in to his customer organisation dashboard and assigns users to an application. These changes are saved in the online service.
 
 \paragraph{UC14: Transmit data}
 The sensor sends data to the corresponding gateway. The gateway stores the data and makes it available to all applications interacting with the sensor.
 
 \paragraph{UC15: Get invoice overview}
-The user logs into his Customer organisation dashboard and selects the option to show his Customer organisation's invoice overview. The Online Service then shows an overview of all the Customer organisation's invoices.
+The user logs into his customer organisation dashboard and selects the option to show his customer organisation's invoice overview. The online service then shows an overview of all the customer organisation's invoices.
 
 \paragraph{UC16: Edit topology}
-The user logs into his Infrastructure Owner dashboard and selects the option to edit the topology of his buildings. When the user is done editing the topology, the updated topology will be saved in the Online Service.
+The user logs into his infrastructure owner dashboard and selects the option to edit the topology of his buildings. When the user is done editing the topology, the updated topology will be saved in the online service.
 
 \paragraph{UC17: Allocate peripherals}
-The user logs into his Infrastructure Owner dashboard and selects the option to allocate peripherals to Customer organisations. He then assigns access rights to the Customer organisations in his building to use the new peripherals. The Online Service automatically activates any application of that Customer Organisation which needed the newly allocated peripherals in order to run. Conversely, if a peripheral gets withheld from a Customer organisation, the Online Service deactivates any application of that Customer organisation which needed the witheld peripheral to function properly.
+The user logs into his infrastructure owner dashboard and selects the option to allocate peripherals to customer organisations. He then assigns access rights to the customer organisations in his building to use the new peripherals. The online service automatically activates any application of that customer organisation which needed the newly allocated peripherals in order to run. Conversely, if a peripheral gets withheld from a customer organisation, the online service deactivates any application of that Customer organisation which needed the witheld peripheral to function properly.
 
 \paragraph{UC18: Resolve platform failure}
-An event causes the platform to misbehave. The Online Service detects this event and sends a notification to the System Administrator(s).
+An event causes the platform to misbehave. The online service detects this event and sends a notification to the system administrator(s).
 
 \paragraph{UC19: Resolve application failure}
-An event causes an application to misbehave. The Online Service detects this event and sends a notification to the System Administrator(s and a log is sent to the relevant Application Provider.
+An event causes an application to misbehave. The online service detects this event and sends a notification to the system administrator(s) and a log is sent to the relevant application provider.
 
 \paragraph{UC20: Configure method of notification delivery}
-The user logs into his Customer organisation dashboard and configures the method of notification delivery. The Online Service will save the changes made.
+The user logs into his customer organisation dashboard and configures the method of notification delivery. The online service will save the changes made.
 
 \paragraph{UC21: Request notification overview}
-The user logs into his dashboard and requests an overview of previously received notifications and alarms. The Online Service provides this overview.
+The user logs into his dashboard and requests an overview of previously received notifications and alarms. The online service provides this overview.
 
 \paragraph{UC22: Synchronize Online Service and gateway}
-The gateway sends all data acquired between this moment and the last synchronisation moment to the Online Service.
+The gateway sends all data acquired between this moment and the last synchronisation moment to the online service.
 
 \paragraph{UC23: Get application overview}
-The user logs into his Application Provider dashboard and request an overview their applications. The Online Service provides this overview.
+The user logs into his application provider dashboard and request an overview their applications. The online service provides this overview.
 
 
 \section{Detailed use cases}
