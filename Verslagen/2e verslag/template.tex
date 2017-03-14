@@ -28,28 +28,28 @@
 \todoinline{An introduction is not required, but if you include it, it should not be empty.}
 
 \chapter{Attribute-driven design documentation}\label{sec:add}
-\section{Decomposition 1: ModuleA (X1, Y3, UCa, UCb, UCc)}
+\section{Decomposition 1: SIOTIP (M1, U2, UC6, UC8, UC13)}
 \subsection{Module to decompose}
-In this run we decompose \texttt{ModuleA}.
+In this run we decompose \texttt{SIOTIP}.
 
 \subsection{Selected architectural drivers}
 The non-functional drivers for this decomposition are:
 
 \begin{itemize}
-	\item \emph{X1}: name
-	\item \emph{Y3}: name
+	\item \emph{M1}: Integrate new sensor or actuator manufacturer
+	\item \emph{U2}: Easy installation
 \end{itemize}
 
 The related functional drivers are:
 
 \begin{itemize}
-	\item \emph{UCa}: name
-	\item \emph{UCb}: name
-	\item \emph{UCc}: name
+	\item \emph{UC6}: Insert a pluggable device into a mote
+	\item \emph{UC8}: Initialise a pluggable device
+	\item \emph{UC13}: Configure a pluggable device
 \end{itemize}
 
 \paragraph{Rationale}
-A short discussion of why these drivers were selected for this decomposition.
+\todo{M1 en U2 zijn beide high priority + ze gaan beide over het installeren van nieuwe sensoren. U2 gaat meer over de gebruiksvriendelijkheid, terwijl M1 echt gaat over een nieuwe sensor van een andere fabrikant. M1 wordt zeer moeilijk zonder U2.}
 
 \subsection{Architectural design}
 \paragraph{Topic}
@@ -109,12 +109,12 @@ Rationale of the allocation of components to physical nodes.
 		\item \texttt{returnType operation1(ParamType param1)} throws TypeOfException
 		\begin{itemize}
 			\item Effect: Describe the effect of calling this operation.
-			\item Exceptions: 
+			\item Exceptions:
 			\begin{itemize}
 				\item TypeOfException: Describe when this exception is thrown.
 			\end{itemize}
 		\end{itemize}
-		
+
 		\item \texttt{returnType operation2()}
 		\begin{itemize}
 			\item Effect: Describe the effect of calling this operation.
