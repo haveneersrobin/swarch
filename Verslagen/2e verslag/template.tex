@@ -49,12 +49,15 @@ The related functional drivers are:
 \end{itemize}
 
 \paragraph{Rationale}
-
+M1 was chosen because it has high priority and because a lot of high priority usecases are linked to M1. \todo{Beter uitschrijven.}
 
 \subsection{Architectural design}
-\paragraph{Topic}
-Discussion of the solution selected for (a part of) one of the architectural
-drivers.
+\paragraph{Gateway for M1}
+M1 states that new types of sensor and actuator data should be transmitted to the online service. To accomodate for this, we first created a class \textit{Gateway} (representing the versasense gateway), which is responsible for relaying raw the sensor/actuator data to our system. This way, when a new peripheral (sensor/actuator) connects, the gateway automatically start to transmit the raw data of the new peripheral to our system.
+\paragraph{Intermediary for processing raw data for M1}
+M1 also states that the new type of sensor data has to be processed by our system. To accomplish this we introduced a \texttt{peripheralDB} wich stores all possible peripheral types with their corresponding conversion. This \texttt{peripheralDB} offers an API to add new peripheral types. When a new peripheral type is introduced, it is the task of the manufracturer to add a new entry to the \texttt{peripheralDB} including a name and a conversionfunction. We also implemented a \texttt{DataProcessingManager} which is responsible for receiving peripheral data from the gateway, processing and converting it to internal structures (using the \texttt{peripheralDB}) and send it to the rest of our system. This increases semantic coherence by assigning only this specific task to the \texttt{DataProcessingManager}. By doing this, we ensure modifiability by making the \texttt{peripheralDb} the only component that needs to be changed in order to accomodate for new peripheral types.
+\paragraph{Intermediary for distributing data for M1}
+Another requirement in M1 states that the peripheral data should be sent to the applications of the assigned customer organisations and should be stored. To solve this, we made a \texttt{DataDB} and a \texttt{AssignmentDB}. To former is responsible the data-records of all peripherals while the latter maps peripherals to customer organisations. In addition to these new structures we indroduced a \texttt{DataManager} to consult the \texttt{AssignmentDB} and send any incomming data (from the \texttt{DataProcessingManager}) to all applications that are allowed to access this peripheral data. It is also the responsibility of the \texttt{DataManager} to store the sensor data into the \texttt{DataDB}.
 
 \subsubsection*{Alternatives considered}
 \paragraph{Alternatives for solution}
