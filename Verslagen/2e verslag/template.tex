@@ -52,8 +52,8 @@ The related functional drivers are:
 M1 was chosen because it has high priority and because a lot of high priority usecases are linked to M1. \todo{Beter uitschrijven.}
 
 \subsection{Architectural design}
-\paragraph{Gateway for M1}
-M1 states that new types of sensor and actuator data should be transmitted to the online service. To accomodate for this, we first created a class \textit{Gateway} (representing the versasense gateway), which is responsible for relaying raw the sensor/actuator data to our system. This way, when a new peripheral (sensor/actuator) connects, the gateway automatically start to transmit the raw data of the new peripheral to our system.
+\paragraph{GatewayFacade for M1}
+M1 states that new types of sensor and actuator data should be transmitted to the online service. To accomodate for this, we first created a class \texttt{GatewayFacade} (representing the versasense gateway), which is responsible for relaying raw the sensor/actuator data to our system. This way, when a new peripheral (sensor/actuator) connects, the \texttt{GatewayFacade} automatically start to transmit the raw data of the new peripheral to our system.
 \paragraph{Encapsulation of raw data for M1}
 M1 also states that the new type of sensor data has to be processed by our system. To accomplish this we introduced a \texttt{PeripheralDB} wich stores all possible peripheral types with their corresponding conversion. This \texttt{PeripheralDB} offers an API to add new peripheral types. When a new peripheral type is introduced, it is the task of the manufracturer to add a new entry to the \texttt{PeripheralDB} including an identifier and a conversion function. We also implemented a \texttt{DataProcessingManager} which is responsible for receiving peripheral data from the gateway, processing and converting it to internal structures (using the \texttt{PeripheralDB}) and send it to the rest of our system. This increases semantic coherence by assigning only this specific task to the \texttt{DataProcessingManager}. By doing this, we ensure modifiability by making the \texttt{PeripheralDb} the only component that needs to be changed in order to accomodate for new peripheral types.
 \paragraph{Intermediary for distributing data for M1}
@@ -85,7 +85,7 @@ A possible alternative for using the \texttt{AssignmentDB} was encapsulating the
 Figure \ref{fig:it1-cc_main} shows the components resulting from the decomposition in this run. 
 
 
-\subparagraph{Gateway}
+\subparagraph{GatewayFacade}
 Responsible for forwardig data from the pluggable devices to the system.
 
 \subparagraph{DataProcessingManager}
@@ -152,12 +152,6 @@ Describe per complex data type used in the interfaces what it represents.
 This section describes per component which (parts of) the remaining
 requirements it is responsible for.
 
-\paragraph{ModuleB}
-\begin{itemize}
-	\item \emph{Z1}: name
-	\item \emph{UCd}: name
-\end{itemize}
-
 \paragraph{ApplicationManager}
 \begin{itemize}
 	\item \emph{Av2}: Application failure
@@ -168,7 +162,7 @@ requirements it is responsible for.
 	\item \emph{P2}: Requests to the pluggable data database
 \end{itemize}
 
-\paragraph{Gateway}
+\paragraph{GatewayFacade}
 \begin{itemize}
 	\item \emph{Av3b}: Pluggable device/mote failure detection
 	\item \emph{UC11a}: Relay data from pluggable devices to the system
