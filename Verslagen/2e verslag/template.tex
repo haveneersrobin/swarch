@@ -118,35 +118,6 @@ Responsible for keeping track of peripherals distributed over a certain geograph
 	\caption{Component-and-connector diagram of this decomposition.
 	}\label{fig:it1-cc_main}
 \end{figure}
-Dus 
-\subsection{Interfaces for child modules}
-\subsubsection*{ModuleB}
-\begin{itemize}
-	\item InterfaceA
-	\begin{itemize}
-		\item \texttt{returnType operation1(ParamType param1)} throws TypeOfException
-		\begin{itemize}
-			\item Effect: Describe the effect of calling this operation.
-			\item Exceptions:
-			\begin{itemize}
-				\item TypeOfException: Describe when this exception is thrown.
-			\end{itemize}
-		\end{itemize}
-
-		\item \texttt{returnType operation2()}
-		\begin{itemize}
-			\item Effect: Describe the effect of calling this operation.
-			\item Exceptions: None
-		\end{itemize}
-	\end{itemize}
-\end{itemize}
-
-\subsection{Data type definitions}
-Describe per complex data type used in the interfaces what it represents.
-
-\paragraph{returnType} This data element represents X.
-
-\paragraph{ParamType} This data element represents Y.
 
 \subsection{Verify and refine}
 This section describes per component which (parts of) the remaining
@@ -227,7 +198,6 @@ requirements it is responsible for.
 	\item \emph{UC27}: Receive application command or message from external frontend
 	\item \emph{UC28}: Log in
 	\item \emph{UC29}: Log out
-	\item \emph{
 \end{itemize}
 
 \section{Decomposition 2: Module (drivers)}
