@@ -143,10 +143,82 @@ requirements it is responsible for.
 	\item \emph{UCd}: name
 \end{itemize}
 
-\paragraph{ModuleC}
+\paragraph{ApplicationManager}
 \begin{itemize}
-	\item \emph{UCba}: name\\Description which part of the original use case is
-	the responsibility of this component.
+	\item \emph{Av2}: Application failure
+\end{itemize}
+
+\paragraph{DataDB}
+\begin{itemize}
+	\item \emph{P2}: Requests to the pluggable data database
+\end{itemize}
+
+\paragraph{Gateway}
+\begin{itemize}
+	\item \emph{Av3b}: Pluggable device/mote failure detection
+	\item \emph{UC11a}: Relay data from pluggable devices to the system
+\end{itemize}
+
+\paragraph{DataProcessingManager}
+\begin{itemize}
+	\item \emph{UC11b}: Convert raw data to a usable form and send it to the DataManager
+\end{itemize}
+
+\paragraph{DataManager}
+\begin{itemize}
+	\item \emph{UC11c}: Send data to all ApplicationManagers who belong to Applications which are authorized to use the sensor from which the data is sent.
+	\item \emph{UC24b}: Process request for historical data and consult DataDB to retrieve data.
+\end{itemize}
+
+\paragraph{ApplicationManager}
+\begin{itemize}
+	\item \emph{Av2}: Application failure
+	\item \emph{Av3b}: Redundancy when pluggable devices/motes fail \todoinline{Of is dit voor Application zelf?}
+	\item \emph{U2b}: Out of the box working when sensors are available
+	\item \emph{UC11d}: Send the data received from the DataManager to the Application only if the Application has indicated it needs the data.
+	\item \emph{UC25}: Access topology and available devices
+\end{itemize}
+
+\paragraph{Application}
+\begin{itemize}
+	\item \emph{U1}: Application updates
+	\item \emph{UC24a}: Send request for historical data
+\end{itemize}
+
+\paragraph{Topology}
+\begin{itemize}
+	\item \emph{U2a}: Edit topology when installing a new mote
+\end{itemize}
+
+\paragraph{OtherFunctionality1}
+\begin{itemize}
+	\item \emph{Av1}: Communication between SIoTIP gateway and Online Service
+	\item \emph{P1}: Large number of users
+	\item \emph{M2}: Big data analytics on pluggable data and/or application usage data
+	\item \emph{U2c}: Reintroducing motes \todoinline{Voor Topology?} and mandatory end-user assignment
+	\item \emph{UC1}: Register a customer organisation
+	\item \emph{UC2}: Register an end-user
+	\item \emph{UC3}: Unregister an end-user
+	\item \emph{UC4}: Install mote
+	\item \emph{UC5}: Uninstall mote
+	\item \emph{UC6}: Insert a pluggable device into a mote
+	\item \emph{UC7}: Remove a pluggable device from its mote
+	\item \emph{UC12}: Perform actuation command
+	\item \emph{UC14}: Send heartbeat
+	\item \emph{UC15}: Send notification
+	\item \emph{UC16}: Consult notification message
+	\item \emph{UC17}: Activate an application
+	\item \emph{UC18}: Check and deactivate applications
+	\item \emph{UC19}: Subscribe to application
+	\item \emph{UC20}: Unsubscribe from application
+	\item \emph{UC21}: Send invoice
+	\item \emph{UC22}: Upload an application
+	\item \emph{UC23}: Consult application statistics
+	\item \emph{UC26}: Send application command or message to external front-end
+	\item \emph{UC27}: Receive application command or message from external frontend
+	\item \emph{UC28}: Log in
+	\item \emph{UC29}: Log out
+	\item \emph{
 \end{itemize}
 
 \section{Decomposition 2: Module (drivers)}
