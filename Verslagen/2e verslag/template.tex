@@ -54,25 +54,63 @@ M1 was chosen because it has high priority and because a lot of high priority us
 \subsection{Architectural design}
 \paragraph{Gateway for M1}
 M1 states that new types of sensor and actuator data should be transmitted to the online service. To accomodate for this, we first created a class \textit{Gateway} (representing the versasense gateway), which is responsible for relaying raw the sensor/actuator data to our system. This way, when a new peripheral (sensor/actuator) connects, the gateway automatically start to transmit the raw data of the new peripheral to our system.
-\paragraph{Intermediary for processing raw data for M1}
-M1 also states that the new type of sensor data has to be processed by our system. To accomplish this we introduced a \texttt{peripheralDB} wich stores all possible peripheral types with their corresponding conversion. This \texttt{peripheralDB} offers an API to add new peripheral types. When a new peripheral type is introduced, it is the task of the manufracturer to add a new entry to the \texttt{peripheralDB} including a name and a conversionfunction. We also implemented a \texttt{DataProcessingManager} which is responsible for receiving peripheral data from the gateway, processing and converting it to internal structures (using the \texttt{peripheralDB}) and send it to the rest of our system. This increases semantic coherence by assigning only this specific task to the \texttt{DataProcessingManager}. By doing this, we ensure modifiability by making the \texttt{peripheralDb} the only component that needs to be changed in order to accomodate for new peripheral types.
+\paragraph{Encapsulation of raw data for M1}
+M1 also states that the new type of sensor data has to be processed by our system. To accomplish this we introduced a \texttt{PeripheralDB} wich stores all possible peripheral types with their corresponding conversion. This \texttt{PeripheralDB} offers an API to add new peripheral types. When a new peripheral type is introduced, it is the task of the manufracturer to add a new entry to the \texttt{PeripheralDB} including an identifier and a conversion function. We also implemented a \texttt{DataProcessingManager} which is responsible for receiving peripheral data from the gateway, processing and converting it to internal structures (using the \texttt{PeripheralDB}) and send it to the rest of our system. This increases semantic coherence by assigning only this specific task to the \texttt{DataProcessingManager}. By doing this, we ensure modifiability by making the \texttt{PeripheralDb} the only component that needs to be changed in order to accomodate for new peripheral types.
 \paragraph{Intermediary for distributing data for M1}
 Another requirement in M1 states that the peripheral data should be sent to the applications of the assigned customer organisations and should be stored. To solve this, we made a \texttt{DataDB} and a \texttt{AssignmentDB}. To former is responsible the data-records of all peripherals while the latter maps peripherals to customer organisations. In addition to these new structures we indroduced a \texttt{DataManager} to consult the \texttt{AssignmentDB} and send any incomming data (from the \texttt{DataProcessingManager}) to all applications that are allowed to access this peripheral data. It is also the responsibility of the \texttt{DataManager} to store the sensor data into the \texttt{DataDB}.
 
+\paragraph{Incorporating new sensor}
+M1 states that available applications can be updated to use any new pluggable devices. This requirement is met using the following structures. \texttt{Topology} is a data structure that keeps track of the installed sensors and actuators in the building. The \texttt{TopologyManager} provides an interface to the \texttt{ApplicationManager} only allowing acces to the peripherals it is assigned to in the \texttt{AssignmentDB}. Thus, adding a new pluggable device only impacts the \texttt{Topology} and thus available applications can be updated with ease to use the new pluggable devices. The \texttt{Application} uses the \texttt{Application Manager} interface to get an overview of the pluggable devices it can use. The \texttt{Application} can than specify, via the \texttt{Application Manager} from which pluggable device it wants to receive data.
+
+\paragraph{Initialise pluggable device}
+As stated in \emph{UC8} infrastructure owners must be able to initialize a new type of pluggable device. As mentioned before, this is why we introduced \texttt{PeripheralDB}. It offers an API to add new peripheral devices. The infrastructure owner is tasked to add a new entry to the \texttt{PeripheralDB} consisting of an identifier and the conversion method used for this pluggable, if any.
+
+\paragraph{Configuring acces rights}
+Furthermore, \emph{UC9} states that the infrastructure owner should be able to configure acces rights. For this we introduced the \texttt{AssignmentDB}. This database keeps track of which peripherals can be used by which customer organisations. If the infrastructure owner wants to configure the access rights, he is able to use the interface provided by this database to specify this relationship.
+
+\paragraph{View detailed information about pluggable device}
+When this new pluggable device is added to the system, the infrastructure owner wants to have the possibility to consult this device, as specified in \emph{UC10}. After initialising the device and configuring the acces rights, the new device is visible in the \texttt{Topology}. If the sensor is not yet in use, it is displayed on the side. In any case the infrastructure owner is able to view detailed information about the sensor using the interface provided by the \texttt{Topology}.
+
+
 \subsubsection*{Alternatives considered}
-\paragraph{Alternatives for solution}
-A discussion of the alternative solutions and why that were not selected.
+\paragraph{Alternatives for \texttt{DataManager}}
+An alternative we considered for using the \texttt{DataManager} would be to just have a direct relationship between the \texttt{ApplicationManager} and the \texttt{DataDB}. This way it would be the responsibility of the \texttt{ApplicationManager} of communcating with the \texttt{DataDB}. However, this way the \texttt{ApplicationManager} is able to view all the data in the \texttt{DataDB}, which is not desired. Moving the reponsibility of communicating with the \texttt{DataDB} seperates and localizes the responsibilities of each component even more. This approach was mentioned in our process of applying ADD, however it does not really add any advantages and thus was quickly rejected.
+	
+\paragraph{Alternatives for \texttt{AssigmentDB}}
+A possible alternative for using the \texttt{AssignmentDB} was encapsulating the information directly in the topology which would also result in not having the need for a \texttt{TopologyManager}. However our approach lowers the coupling and in general makes the system more modifiable.
+\todo{check this out}
 
 \subsection{Instantiation and allocation of functionality}
 \paragraph{Decomposition}
-Main aspects of the resulting decomposition.
+Figure \ref{fig:it1-cc_main} shows the components resulting from the decomposition in this run. 
 
-\subparagraph{ModuleB}
-Per introduced component a paragraph describing its responsibilities.
 
-\subparagraph{ModuleC}
-Per introduced component a paragraph describing its responsibilities.
+\subparagraph{Gateway}
+Responsible for forwardig data from the pluggable devices to the system.
 
+\subparagraph{DataProcessingManager}
+Provides an interface for receiving data from the gatewa. Is responsible for looking up the appropriate conversion method in the \texttt{PeripheralDB} and applying it to the raw data. At last, this module is responsible for forwarding the processed data to the rest of the system.
+
+\subparagraph{PeripheralDB}
+Responsible for storing the different type of peripherals and their related conversion methods. Provides an interface for adding new types of peripherals along with the conversion methods and an interface to consult the database.
+
+\subparagraph{DataManager}
+This module is responsible for receiving processed data and storing it in the \texttt{DataDB}. It can consult the \texttt{AssignmentDB} to forward the data to the appropriate \texttt{ApplicationManager}.
+
+\subparagraph{AssignmentDB}
+Stores information about the relationships between peripherals and customer organizations. Provides an interface to look up this information as well as an interface to add new data to this database.
+
+\subparagraph{ApplicationManager}
+Responsible for keeping track of the sensors used by the corresponding application. It also provides an interface to configure sensors for a certain application. Is also responsible for forwarding the appropriate and correct information coming from the \texttt{DataManager} to the application.
+
+\subparagraph{Application}
+Receives appropriate data which it can use in its application logic.
+
+\subparagraph{TopologyManager}
+Provieds an interface to the \texttt{ApplicationManager} to consult the topology linked to the customer organisation who uses the \texttt{Application} linked with this \texttt{Application Manager}. Consults the \texttt{AssignmentDB} to see which peripherals are available to this \texttt{Application}.
+
+\subparagraph{Topology}
+Responsible for keeping track of peripherals distributed over a certain geographic location. Also keeps track of the relationship between avaiable sensors and provides an overview of sensors that are not yet avaialable. Also provides an interface to the infrastructure owner to configure new devices.
 \begin{figure}[!htp]
 	\centering
 	%\includegraphics[width=0.8\textwidth]{}
@@ -80,30 +118,7 @@ Per introduced component a paragraph describing its responsibilities.
 	\caption{Component-and-connector diagram of this decomposition.
 	}\label{fig:it1-cc_main}
 \end{figure}
-
-\paragraph{Behaviour}
-If needed and explanation of the behaviour of certain aspects of the design so
-far.
-
-\begin{figure}[!htp]
-	\centering
-	%\includegraphics[width=0.8\textwidth]{}
-	\missingfigure[figwidth=0.8\textwidth]{Sequence diagram}
-	\caption{Sequence diagram illustrating a key behavioural aspect.
-	}\label{fig:it1-seq_aspect1}
-\end{figure}
-
-\paragraph{Deployment}
-Rationale of the allocation of components to physical nodes.
-
-\begin{figure}[!htp]
-	\centering
-	%\includegraphics[width=0.8\textwidth]{}
-	\missingfigure[figwidth=0.8\textwidth]{Deployment diagram}
-	\caption{Deployment diagram of this decomposition.
-	}\label{fig:it1-depl_main}
-\end{figure}
-
+Dus 
 \subsection{Interfaces for child modules}
 \subsubsection*{ModuleB}
 \begin{itemize}
