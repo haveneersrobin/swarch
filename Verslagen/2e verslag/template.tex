@@ -49,7 +49,7 @@ The related functional drivers are:
 \end{itemize}
 
 \paragraph{Rationale}
-M1 was chosen because it has high priority and because a lot of high priority usecases are linked to M1. Integrating a new sensor or actuator manufacturer is closely related to initialising and configuring the topology or any pluggable devices. For this reason, we chose M1, UC8, UC9, UC10 and UC13 as drivers. \todo{Beter uitschrijven.}
+M1 was chosen because it has high priority and because a lot of high priority usecases are linked to M1. \todo{Beter uitschrijven.}
 
 \subsection{Architectural design}
 \paragraph{GatewayFacade for M1}
@@ -113,8 +113,8 @@ Provieds an interface to the \texttt{ApplicationManager} to consult the topology
 Responsible for keeping track of peripherals distributed over a certain geographic location. Also keeps track of the relationship between avaiable sensors and provides an overview of sensors that are not yet avaialable. Also provides an interface to the infrastructure owner to configure new devices.
 \begin{figure}[!htp]
 	\centering
-	%\includegraphics[width=0.8\textwidth]{}
-	\missingfigure[figwidth=0.8\textwidth]{Component-and-connector diagram}
+	\includegraphics[width=0.8\textwidth]{component_diagram.pdf}
+	%\missingfigure[figwidth=0.8\textwidth]{Component-and-connector diagram}
 	\caption{Component-and-connector diagram of this decomposition.
 	}\label{fig:it1-cc_main}
 \end{figure}
