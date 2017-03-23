@@ -38,7 +38,6 @@ The non-functional drivers for this decomposition are:
 \begin{itemize}
 	\item \emph{M1}: Integrate new sensor or actuator manufacturer
 \end{itemize}
-
 The related functional drivers are:
 
 \begin{itemize}
@@ -202,7 +201,25 @@ requirements it is responsible for.
 
 \section{Decomposition 2: Module (drivers)}
 \subsection{Module to decompose}
+In this run we decompose \texttt{OtherFuntionality}.
 \subsection{Selected architectural drivers}
+The non-functional drivers for this decomposition are:
+
+\begin{itemize}
+	\item \emph{U2}: Easy installation
+\end{itemize}
+
+The related functional drivers are:
+
+\begin{itemize}
+	\item \emph{UC4}: Install mote
+	\item \emph{UC5}: Uninstall mote
+	\item \emph{UC6}: Insert a pluggable device into a mote
+	\item \emph{UC7}: Remove a pluggable device from its mote
+\end{itemize}
+
+\paragraph{Rationale}
+U2 was chosen because it has a high priority. UC4, UC5, UC6, UC7 are all concerned with the installation of pluggables and are therefore tightly linked with U2. These 4 use cases all have high priority.
 \subsection{Architectural design}
 \subsection{Instantiation and allocation of functionality}
 \subsection{Interfaces for child modules}
