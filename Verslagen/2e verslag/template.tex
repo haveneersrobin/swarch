@@ -245,12 +245,14 @@ The related functional drivers are:
 	\item \emph{UC5}: Uninstall mote
 	\item \emph{UC6}: Insert a pluggable device into a mote
 	\item \emph{UC7}: Remove a pluggable device from its mote
-	\item \epmp{UC14}: Send heartbeat
+	\item \emph{UC14}: Send heartbeat
 \end{itemize}
 
 \paragraph{Rationale}
 U2 was chosen because it has a high priority. UC4, UC5, UC6, UC7 are all concerned with the installation of pluggables and are therefore tightly linked with U2. The 4 first use cases all have high priority. UC14 is connected to U2 because it is an essential part of the easy installation and tighly connected to possibility to reintroduce previously connected nodes.
 \subsection{Architectural design}
+\paragraph{GatewayFacade for U2}
+The \texttt{GatewayFacade} gets extended with the functionality 
 \subsection{Instantiation and allocation of functionality}
 \subsection{Interfaces for child modules}
 \subsection{Data type definitions}
