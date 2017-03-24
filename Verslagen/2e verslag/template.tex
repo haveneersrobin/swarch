@@ -112,8 +112,8 @@ Provieds an interface to the \texttt{ApplicationManager} to consult the topology
 Responsible for keeping track of peripherals distributed over a certain geographic location. Also keeps track of the relationship between avaiable sensors and provides an overview of sensors that are not yet avaialable. Also provides an interface to the infrastructure owner to configure new devices.
 \begin{figure}[!htp]
 	\centering
-	%\includegraphics[width=0.8\textwidth]{}
-	\missingfigure[figwidth=0.8\textwidth]{Component-and-connector diagram}
+	\includegraphics[width=0.8\textwidth]{component_diagram_1.pdf}
+	%\missingfigure[figwidth=0.8\textwidth]{Component-and-connector diagram}
 	\caption{Component-and-connector diagram of this decomposition.
 	}\label{fig:it1-cc_main}
 \end{figure}
@@ -225,6 +225,45 @@ U2 was chosen because it has a high priority. UC4, UC5, UC6, UC7 are all concern
 \paragraph{GatewayFacade for U2}
 The \texttt{GatewayFacade} gets extended with the functionality of also transmitting the other types of messages, more specifcally the connection message and the heartbeat. Again, the \texttt{GatewayFacade} is reponsible for relaying this data to the Online Service where it can be processed and used in the necessary contexts. Whenever a mote is connected or disconnected a corresponding message is sent automatically. Whenever pluggables get plugged in a connected mote, this new pluggable will be included in the next heartbeat sent by the mote.
 \subsection{Instantiation and allocation of functionality}
+\paragraph{Decomposition}
+Figure \ref{fig:it2-cc_main} shows the components resulting from the decomposition in this run. 
+
+
+\subparagraph{GatewayFacade}
+Responsible for forwardig data from the pluggable devices to the system.
+
+\subparagraph{DataProcessingManager}
+Provides an interface for receiving data from the gatewa. Is responsible for looking up the appropriate conversion method in the \texttt{PeripheralDB} and applying it to the raw data. At last, this module is responsible for forwarding the processed data to the rest of the system.
+
+\subparagraph{PeripheralDB}
+Responsible for storing the different type of peripherals and their related conversion methods. Provides an interface for adding new types of peripherals along with the conversion methods and an interface to consult the database.
+
+\subparagraph{DataManager}
+This module is responsible for receiving processed data and storing it in the \texttt{DataDB}. It can consult the \texttt{AssignmentDB} to forward the data to the appropriate \texttt{ApplicationManager}.
+
+\subparagraph{AssignmentDB}
+Stores information about the relationships between peripherals and customer organizations. Provides an interface to look up this information as well as an interface to add new data to this database.
+
+\subparagraph{ApplicationManager}
+Responsible for keeping track of the sensors used by the corresponding application. It also provides an interface to configure sensors for a certain application. Is also responsible for forwarding the appropriate and correct information coming from the \texttt{DataManager} to the application.
+
+\subparagraph{Application}
+Receives appropriate data which it can use in its application logic.
+
+\subparagraph{TopologyManager}
+Provieds an interface to the \texttt{ApplicationManager} to consult the topology linked to the customer organisation who uses the \texttt{Application} linked with this \texttt{Application Manager}. Consults the \texttt{AssignmentDB} to see which peripherals are available to this \texttt{Application}.
+
+\subparagraph{Topology}
+Responsible for keeping track of peripherals distributed over a certain geographic location. Also keeps track of the relationship between avaiable sensors and provides an overview of sensors that are not yet avaialable. Also provides an interface to the infrastructure owner to configure new devices.
+
+\begin{figure}[!htp]
+	\centering
+	\includegraphics[width=0.8\textwidth]{component_diagram_2.pdf}
+	%\missingfigure[figwidth=0.8\textwidth]{Component-and-connector diagram}
+	\caption{Component-and-connector diagram of this decomposition.
+	}\label{fig:it2-cc_main}
+\end{figure}
+
 \subsection{Interfaces for child modules}
 \subsection{Data type definitions}
 \subsection{Verify and refine}
@@ -241,8 +280,12 @@ The \texttt{GatewayFacade} gets extended with the functionality of also transmit
 
 \paragraph{GatewayFacade}
 \begin{itemize}
-	\item \emph{Av3b}: Pluggable device/mote failure detection
 	\item \emph{UC11a}: Relay data from pluggable devices to the system
+\end{itemize}
+
+\paragraph{TopologyManager}
+\begin{itemize}
+	\item \emph{Av3b}: Pluggable device/mote failure detection
 \end{itemize}
 
 \paragraph{DataProcessingManager}
