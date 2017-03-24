@@ -234,33 +234,19 @@ As stated in U2 it should be possible to reintroduce motes, i.e. if a previously
 \paragraph{Decomposition}
 Figure \ref{fig:it2-cc_main} shows the components resulting from the decomposition in this run. 
 
+\subparagraph{ConnectionManager}
+The main task of the \texttt{ConnectionManager} is to check for incoming connection and heartbeat messages. When a message arrives, it is the task of the \texttt{ConnectionManager} to forward it to the \texttt{DeviceHistoryManager} to check if the mote is reconnecting or if it is a new mote. In the former case, the \texttt{DeviceHistoryManager} returns the old configuration and this configuration is added to the topology via the \texttt{TopologyManager}. In the latter case, the new mote is temporarily added to the topology via the \texttt{TopologyManager}, awaiting further configuration by the infrastructure owner.
 
-\subparagraph{GatewayFacade}
-Responsible for forwardig data from the pluggable devices to the system.
+\subparagraph{DeviceHistoryManager}
+It is the task of the \texttt{DeviceHistoryManager} to check if a connecting mote has already been connected in the past. If this is the case, it consults the \texttt{DeviceHistoryDB} to recover the mote's past configuration and assignments. Afterwards it will re-enter the old assignments into the \texttt{AssignmentDB} \footnote{Only if possible (if the state of the system is not drastically different).} and send the old topology-configuration to the \texttt{ConnectionManger}.
 
-\subparagraph{DataProcessingManager}
-Provides an interface for receiving data from the gatewa. Is responsible for looking up the appropriate conversion method in the \texttt{PeripheralDB} and applying it to the raw data. At last, this module is responsible for forwarding the processed data to the rest of the system.
+\subparagraph{DeviceHistoryDB}
+Database that keeps past configurations and assignments of peripherals on disconnected motes to be able to easily restore to a previous state.
 
-\subparagraph{PeripheralDB}
-Responsible for storing the different type of peripherals and their related conversion methods. Provides an interface for adding new types of peripherals along with the conversion methods and an interface to consult the database.
+\subparagraph{ApplicationActivator}
+When it receives a message from the \texttt{TopologyManager} (when the \texttt{Topology} is changed), it checks the \texttt{ApplicationActivationDB} if there is an application waiting on this new peripheral. When this is the case, the \texttt{ApplicationActivator} contacts the \texttt{ApplicationManager} to activate the waiting application.
 
-\subparagraph{DataManager}
-This module is responsible for receiving processed data and storing it in the \texttt{DataDB}. It can consult the \texttt{AssignmentDB} to forward the data to the appropriate \texttt{ApplicationManager}.
 
-\subparagraph{AssignmentDB}
-Stores information about the relationships between peripherals and customer organizations. Provides an interface to look up this information as well as an interface to add new data to this database.
-
-\subparagraph{ApplicationManager}
-Responsible for keeping track of the sensors used by the corresponding application. It also provides an interface to configure sensors for a certain application. Is also responsible for forwarding the appropriate and correct information coming from the \texttt{DataManager} to the application.
-
-\subparagraph{Application}
-Receives appropriate data which it can use in its application logic.
-
-\subparagraph{TopologyManager}
-Provieds an interface to the \texttt{ApplicationManager} to consult the topology linked to the customer organisation who uses the \texttt{Application} linked with this \texttt{Application Manager}. Consults the \texttt{AssignmentDB} to see which peripherals are available to this \texttt{Application}.
-
-\subparagraph{Topology}
-Responsible for keeping track of peripherals distributed over a certain geographic location. Also keeps track of the relationship between avaiable sensors and provides an overview of sensors that are not yet avaialable. Also provides an interface to the infrastructure owner to configure new devices.
 
 \begin{figure}[!htp]
 	\centering
