@@ -223,7 +223,7 @@ The related functional drivers are:
 U2 was chosen because it has a high priority. UC4, UC5, UC6, UC7 are all concerned with the installation of pluggables and are therefore tightly linked with U2. The 4 first use cases all have high priority. UC14 is connected to U2 because it is an essential part of the easy installation and tighly connected to possibility to reintroduce previously connected nodes.
 \subsection{Architectural design}
 \paragraph{GatewayFacade for U2}
-The \texttt{GatewayFacade} gets extended with the functionality 
+The \texttt{GatewayFacade} gets extended with the functionality of also transmitting the other types of messages, more specifcally the connection message and the heartbeat. Again, the \texttt{GatewayFacade} is reponsible for relaying this data to the Online Service where it can be processed and used in the necessary contexts. Whenever a mote is connected or disconnected a corresponding message is sent automatically. Whenever pluggables get plugged in a connected mote, this new pluggable will be included in the next heartbeat sent by the mote.
 \subsection{Instantiation and allocation of functionality}
 \paragraph{Decomposition}
 Figure \ref{fig:it2-cc_main} shows the components resulting from the decomposition in this run. 
