@@ -28,7 +28,7 @@
 %\todoinline{An introduction is not required, but if you include it, it should not be empty.}
 
 \chapter{Attribute-driven design documentation}\label{sec:add}
-\section{Decomposition 1: SIOTIP (M1, U2, UC6, UC8, UC13)}
+\section{Decomposition 1: SIoTIP (M1, U2, UC6, UC8, UC13)}
 \subsection{Module to decompose}
 In this run we decompose \texttt{SIoTIP}.
 
@@ -48,32 +48,32 @@ The related functional drivers are:
 \end{itemize}
 
 \paragraph{Rationale}
-M1 was chosen because it has high priority and because a lot of high priority use cases are linked to M1. UC8, UC9 and UC13 are conserned with the initialisation and configuration of pluggable devices which is related to M1 in the sense that the new devices are similar to already exisiting devices and thus require a similar approach. The same is true for UC10 where the topology has to be adjusted as well when adding these new types of sensors, similar to how it should be adjusted when adding already existing sensors. 
+M1 was chosen because it has high priority and because a lot of high priority use cases are linked to M1. UC8, UC9 and UC13 are concerned with the initialisation and configuration of pluggable devices which is related to M1 in the sense that the new devices are similar to already existing devices and thus require a similar approach. The same is true for UC10 where the topology has to be adjusted as well when adding these new types of sensors, similar to how it should be adjusted when adding already existing sensors. 
 
 \subsection{Architectural design}
 \paragraph{GatewayFacade for M1}
-M1 states that new types of sensor and actuator data should be transmitted to the online service. To accomodate for this, we first created a class \texttt{GatewayFacade} (representing the versasense gateway), which is responsible for relaying raw the sensor/actuator data to our system. This way, when a new peripheral (sensor/actuator) connects, the \texttt{GatewayFacade} automatically start to transmit the raw data of the new peripheral to our system.
+M1 states that new types of sensor and actuator data should be transmitted to the online service. To accommodate for this, we first created a class \texttt{GatewayFacade} (representing the VersaSense gateway), which is responsible for relaying raw the sensor/actuator data to our system. This way, when a new peripheral (sensor/actuator) connects, the \texttt{GatewayFacade} automatically start to transmit the raw data of the new peripheral to our system.
 \paragraph{Encapsulation of raw data for M1}
-M1 also states that the new type of sensor data has to be processed by our system. To accomplish this we introduced a \texttt{PeripheralDB} wich stores all possible peripheral types with their corresponding conversion. This \texttt{PeripheralDB} offers an API to add new peripheral types. When a new peripheral type is introduced, it is the task of the manufracturer to add a new entry to the \texttt{PeripheralDB} including an identifier and a conversion function. We also implemented a \texttt{DataProcessingManager} which is responsible for receiving peripheral data from the gateway, processing and converting it to internal structures (using the \texttt{PeripheralDB}) and send it to the rest of our system. This increases semantic coherence by assigning only this specific task to the \texttt{DataProcessingManager}. By doing this, we ensure modifiability by making the \texttt{PeripheralDb} the only component that needs to be changed in order to accomodate for new peripheral types.
+M1 also states that the new type of sensor data has to be processed by our system. To accomplish this we introduced a \texttt{PeripheralDB} which stores all possible peripheral types with their corresponding conversion. This \texttt{PeripheralDB} offers an API to add new peripheral types. When a new peripheral type is introduced, it is the task of the manufacturer to add a new entry to the \texttt{PeripheralDB} including an identifier and a conversion function. We also implemented a \texttt{DataProcessingManager} which is responsible for receiving peripheral data from the gateway, processing and converting it to internal structures (using the \texttt{PeripheralDB}) and send it to the rest of our system. This increases semantic coherence by assigning only this specific task to the \texttt{DataProcessingManager}. By doing this, we ensure modifiability by making the \texttt{PeripheralDb} the only component that needs to be changed in order to accommodate for new peripheral types.
 \paragraph{Intermediary for distributing data for M1}
-Another requirement in M1 states that the peripheral data should be sent to the applications of the assigned customer organisations and should be stored. To solve this, we made a \texttt{DataDB} and a \texttt{AssignmentDB}. To former is responsible the data-records of all peripherals while the latter maps peripherals to customer organisations. In addition to these new structures we indroduced a \texttt{DataManager} to consult the \texttt{AssignmentDB} and send any incomming data (from the \texttt{DataProcessingManager}) to all applications that are allowed to access this peripheral data. It is also the responsibility of the \texttt{DataManager} to store the sensor data into the \texttt{DataDB}.
+Another requirement in M1 states that the peripheral data should be sent to the applications of the assigned customer organisations and should be stored. To solve this, we made a \texttt{DataDB} and a \texttt{AssignmentDB}. To former is responsible the data-records of all peripherals while the latter maps peripherals to customer organisations. In addition to these new structures we introduced a \texttt{DataManager} to consult the \texttt{AssignmentDB} and send any incoming data (from the \texttt{DataProcessingManager}) to all applications that are allowed to access this peripheral data. It is also the responsibility of the \texttt{DataManager} to store the sensor data into the \texttt{DataDB}.
 
 \paragraph{Incorporating new sensor}
-M1 states that available applications can be updated to use any new pluggable devices. This requirement is met using the following structures. \texttt{Topology} is a data structure that keeps track of the installed sensors and actuators in the building. The \texttt{TopologyManager} provides an interface to the \texttt{ApplicationManager} only allowing acces to the peripherals it is assigned to in the \texttt{AssignmentDB}. Thus, adding a new pluggable device only impacts the \texttt{Topology} and thus available applications can be updated with ease to use the new pluggable devices. The \texttt{Application} uses the \texttt{Application Manager} interface to get an overview of the pluggable devices it can use. The \texttt{Application} can than specify, via the \texttt{Application Manager} from which pluggable device it wants to receive data.
+M1 states that available applications can be updated to use any new pluggable devices. This requirement is met using the following structures. \texttt{Topology} is a data structure that keeps track of the installed sensors and actuators in the building. The \texttt{TopologyManager} provides an interface to the \texttt{ApplicationManager} only allowing access to the peripherals it is assigned to in the \texttt{AssignmentDB}. Thus, adding a new pluggable device only impacts the \texttt{Topology} and thus available applications can be updated with ease to use the new pluggable devices. The \texttt{Application} uses the \texttt{Application Manager} interface to get an overview of the pluggable devices it can use. The \texttt{Application} can than specify, via the \texttt{Application Manager} from which pluggable device it wants to receive data.
 
 \paragraph{Initialise pluggable device}
-As stated in \emph{UC8} infrastructure owners must be able to initialize a new type of pluggable device. As mentioned before, this is why we introduced \texttt{PeripheralDB}. It offers an API to add new peripheral devices. The infrastructure owner is tasked to add a new entry to the \texttt{PeripheralDB} consisting of an identifier and the conversion method used for this pluggable, if any.
+As stated in \emph{UC8} infrastructure owners must be able to initialise a new type of pluggable device. As mentioned before, this is why we introduced \texttt{PeripheralDB}. It offers an API to add new peripheral devices. The infrastructure owner is tasked to add a new entry to the \texttt{PeripheralDB} consisting of an identifier and the conversion method used for this pluggable, if any.
 
-\paragraph{Configuring acces rights}
-Furthermore, \emph{UC9} states that the infrastructure owner should be able to configure acces rights. For this we introduced the \texttt{AssignmentDB}. This database keeps track of which peripherals can be used by which customer organisations. If the infrastructure owner wants to configure the access rights, he is able to use the interface provided by this database to specify this relationship.
+\paragraph{Configuring access rights}
+Furthermore, \emph{UC9} states that the infrastructure owner should be able to configure access rights. For this we introduced the \texttt{AssignmentDB}. This database keeps track of which peripherals can be used by which customer organisations. If the infrastructure owner wants to configure the access rights, he is able to use the interface provided by this database to specify this relationship.
 
 \paragraph{View detailed information about pluggable device}
-When this new pluggable device is added to the system, the infrastructure owner wants to have the possibility to consult this device, as specified in \emph{UC10}. After initialising the device and configuring the acces rights, the new device is visible in the \texttt{Topology}. If the sensor is not yet in use, it is displayed on the side. In any case the infrastructure owner is able to view detailed information about the sensor using the interface provided by the \texttt{Topology}.
+When this new pluggable device is added to the system, the infrastructure owner wants to have the possibility to consult this device, as specified in \emph{UC10}. After initialising the device and configuring the access rights, the new device is visible in the \texttt{Topology}. If the sensor is not yet in use, it is displayed on the side. In any case the infrastructure owner is able to view detailed information about the sensor using the interface provided by the \texttt{Topology}.
 
 
 \subsubsection*{Alternatives considered}
 \paragraph{Alternatives for \texttt{DataManager}}
-An alternative we considered for using the \texttt{DataManager} would be to just have a direct relationship between the \texttt{ApplicationManager} and the \texttt{DataDB}. This way it would be the responsibility of the \texttt{ApplicationManager} of communcating with the \texttt{DataDB}. However, this way the \texttt{ApplicationManager} is able to view all the data in the \texttt{DataDB}, which is not desired. Moving the reponsibility of communicating with the \texttt{DataDB} seperates and localizes the responsibilities of each component even more. This approach was mentioned in our process of applying ADD, however it does not really add any advantages and thus was quickly rejected.
+An alternative we considered for using the \texttt{DataManager} would be to just have a direct relationship between the \texttt{ApplicationManager} and the \texttt{DataDB}. This way it would be the responsibility of the \texttt{ApplicationManager} of communicating with the \texttt{DataDB}. However, this way the \texttt{ApplicationManager} is able to view all the data in the \texttt{DataDB}, which is not desired. Moving the responsibility of communicating with the \texttt{DataDB} separates and localises the responsibilities of each component even more. This approach was mentioned in our process of applying ADD, however it does not really add any advantages and thus was quickly rejected.
 	
 \paragraph{Alternatives for \texttt{AssigmentDB}}
 A possible alternative for using the \texttt{AssignmentDB} was encapsulating the information directly in the topology which would also result in not having the need for a \texttt{TopologyManager}. However our approach lowers the coupling and in general makes the system more modifiable.
@@ -84,10 +84,10 @@ Figure \ref{fig:it1-cc_main} shows the components resulting from the decompositi
 
 
 \subparagraph{GatewayFacade}
-Responsible for forwardig data from the pluggable devices to the system.
+Responsible for forwarding data from the pluggable devices to the system.
 
 \subparagraph{DataProcessingManager}
-Provides an interface for receiving data from the gatewa. Is responsible for looking up the appropriate conversion method in the \texttt{PeripheralDB} and applying it to the raw data. At last, this module is responsible for forwarding the processed data to the rest of the system.
+Provides an interface for receiving data from the gateway. Is responsible for looking up the appropriate conversion method in the \texttt{PeripheralDB} and applying it to the raw data. At last, this module is responsible for forwarding the processed data to the rest of the system.
 
 \subparagraph{PeripheralDB}
 Responsible for storing the different type of peripherals and their related conversion methods. Provides an interface for adding new types of peripherals along with the conversion methods and an interface to consult the database.
@@ -96,7 +96,7 @@ Responsible for storing the different type of peripherals and their related conv
 This module is responsible for receiving processed data and storing it in the \texttt{DataDB}. It can consult the \texttt{AssignmentDB} to forward the data to the appropriate \texttt{ApplicationManager}.
 
 \subparagraph{AssignmentDB}
-Stores information about the relationships between peripherals and customer organizations. Provides an interface to look up this information as well as an interface to add new data to this database.
+Stores information about the relationships between peripherals and customer organisations. Provides an interface to look up this information as well as an interface to add new data to this database.
 
 \subparagraph{ApplicationManager}
 Responsible for keeping track of the sensors used by the corresponding application. It also provides an interface to configure sensors for a certain application. Is also responsible for forwarding the appropriate and correct information coming from the \texttt{DataManager} to the application.
@@ -105,10 +105,10 @@ Responsible for keeping track of the sensors used by the corresponding applicati
 Receives appropriate data which it can use in its application logic.
 
 \subparagraph{TopologyManager}
-Provieds an interface to the \texttt{ApplicationManager} to consult the topology linked to the customer organisation who uses the \texttt{Application} linked with this \texttt{Application Manager}. Consults the \texttt{AssignmentDB} to see which peripherals are available to this \texttt{Application}.
+Provides an interface to the \texttt{ApplicationManager} to consult the topology linked to the customer organisation who uses the \texttt{Application} linked with this \texttt{Application Manager}. Consults the \texttt{AssignmentDB} to see which peripherals are available to this \texttt{Application}.
 
 \subparagraph{Topology}
-Responsible for keeping track of peripherals distributed over a certain geographic location. Also keeps track of the relationship between avaiable sensors and provides an overview of sensors that are not yet avaialable. Also provides an interface to the infrastructure owner to configure new devices.
+Responsible for keeping track of peripherals distributed over a certain geographic location. Also keeps track of the relationship between available sensors and provides an overview of sensors that are not yet available. Also provides an interface to the infrastructure owner to configure new devices.
 \begin{figure}[!htp]
 	\centering
 	\includegraphics[width=0.8\textwidth]{component_diagram_1.pdf}
@@ -144,7 +144,7 @@ requirements it is responsible for.
 
 \paragraph{DataManager}
 \begin{itemize}
-	\item \emph{UC11c}: Send data to all ApplicationManagers who belong to Applications which are authorized to use the sensor from which the data is sent.
+	\item \emph{UC11c}: Send data to all ApplicationManagers who belong to Applications which are authorised to use the sensor from which the data is sent.
 	\item \emph{UC24b}: Process request for historical data and consult DataDB to retrieve data.
 \end{itemize}
 
@@ -193,7 +193,7 @@ requirements it is responsible for.
 	\item \emph{UC22}: Upload an application
 	\item \emph{UC23}: Consult application statistics
 	\item \emph{UC26}: Send application command or message to external front-end
-	\item \emph{UC27}: Receive application command or message from external frontend
+	\item \emph{UC27}: Receive application command or message from external front-end
 	\item \emph{UC28}: Log in
 	\item \emph{UC29}: Log out
 \end{itemize}
@@ -219,31 +219,31 @@ The related functional drivers are:
 \end{itemize}
 
 \paragraph{Rationale}
-U2 was chosen because it has a high priority. UC4, UC5, UC6, UC7 are all concerned with the installation of pluggables and are therefore tightly linked with U2. The 4 first use cases all have high priority. UC14 is connected to U2 because it is an essential part of the easy installation and tighly connected to possibility to reintroduce previously connected nodes.
+U2 was chosen because it has a high priority. UC4, UC5, UC6, UC7 are all concerned with the installation of pluggables and are therefore tightly linked with U2. The 4 first use cases all have high priority. UC14 is connected to U2 because it is an essential part of the easy installation and tightly connected to possibility to reintroduce previously connected nodes.
 \subsection{Architectural design}
 \paragraph{GatewayFacade for U2}
-The \texttt{GatewayFacade} gets extended with the functionality of also transmitting the other types of messages, more specifcally the connection message and the heartbeat. Again, the \texttt{GatewayFacade} is reponsible for relaying this data to the Online Service where it can be processed and used in the necessary contexts. Whenever a mote is connected or disconnected a corresponding message is sent automatically. Whenever pluggables get plugged in a connected mote, this new pluggable will be included in the next heartbeat sent by the mote.
+The \texttt{GatewayFacade} gets extended with the functionality of also transmitting the other types of messages, more specifically the connection message and the heartbeat. Again, the \texttt{GatewayFacade} is responsible for relaying this data to the Online Service where it can be processed and used in the necessary contexts. Whenever a mote is connected or disconnected a corresponding message is sent automatically. Whenever pluggables get plugged in a connected mote, this new pluggable will be included in the next heartbeat sent by the mote.
 
 \paragraph{Installing new mote} 
-As specified in U2, installing a new mote should not require any more configuration than adding it to the topology. This is met using the \texttt{GatewayFacade} and the \texttt{ConnectionManager}. Whenever a new mote is installed it emits a connection message. This connection message is forwarded and checked against the history of previously installed motes. Since it is a new mote no configuration can be retreived and the mote is added to the topology as an 'uninitiliased' device waiting to be configured by the infrastructure owner. Thus the only configuration required is the action performed by the infrastructure owner, which is possible via the interface \texttt{ToplogyMgmt} (as stated in the first decomposition). Configuring acces rights is not a necessity and thus after this the new mote is installed.
+As specified in U2, installing a new mote should not require any more configuration than adding it to the topology. This is met using the \texttt{GatewayFacade} and the \texttt{ConnectionManager}. Whenever a new mote is installed it emits a connection message. This connection message is forwarded and checked against the history of previously installed motes. Since it is a new mote no configuration can be retrieved and the mote is added to the topology as an 'uninitialised' device waiting to be configured by the infrastructure owner. Thus the only configuration required is the action performed by the infrastructure owner, which is possible via the interface \texttt{ToplogyMgmt} (as stated in the first decomposition). Configuring access rights is not a necessity and thus after this the new mote is installed.
 
 \paragraph{Reintroducing previously known mote - `Undo'-ing the removal of a mote}
-As stated in U2 it should be possible to reintroduce motes, i.e. if a previously known and configure mote gets reintroduced to the system, it should automatically retreive its configuration and reinstate the correct acces rights. This approach is based on the undo tactic and can be achieved by adhering to the memento pattern. Even though this is not really a undo, rollback scenario in the hard sense of the word, it is still tightly related. The memento object in this case is stored in the \texttt{DeviceHistoryDB}. In this case the originator is the mote itself and the origin of change comes from the \texttt{ConnectionManager} which handles the connection message and thus wishes to reinstate the previously configured mote. Thus, in this case, the \texttt{DeviceHistoryManager} will check the \texttt{DeviceHistoryDB} and will put back the necessary assignments in the \texttt{AssignmentDB} as explained in the first decomposition. Afterwards, the topology history gets passed to the \texttt{TopologyManger} and the device will be added to its last known position in the topology. No further configuration is required.
+As stated in U2 it should be possible to reintroduce motes, i.e. if a previously known and configure mote gets reintroduced to the system, it should automatically retrieve its configuration and reinstate the correct access rights. This approach is based on the undo tactic and can be achieved by adhering to the memento pattern. Even though this is not really a undo, rollback scenario in the hard sense of the word, it is still tightly related. The memento object in this case is stored in the \texttt{DeviceHistoryDB}. In this case the originator is the mote itself and the origin of change comes from the \texttt{ConnectionManager} which handles the connection message and thus wishes to reinstate the previously configured mote. Thus, in this case, the \texttt{DeviceHistoryManager} will check the \texttt{DeviceHistoryDB} and will put back the necessary assignments in the \texttt{AssignmentDB} as explained in the first decomposition. Afterwards, the topology history gets passed to the \texttt{TopologyManger} and the device will be added to its last known position in the topology. No further configuration is required.
 
 \paragraph{Adding new sensors or actuators}
-The next requirement of U2 is that adding new sensors or actuators should not require more configuration than adding them to the topology. As we known, motes send periodic heartbeats containg a list of connected pluggable devices. Whenever a new pluggable (sensor or actuator) is connected, the next heartbeat emitted by the mote will be updated to contain the newly connected devices. The heartbeat message is transfered via the \texttt{GatewayFacade} which will use the \texttt{TopologyManger} to update the topology and place this new device. If the new device is connected to a mote that has been configured, the new device will receive the same location as the mote. If the device is plugged in in a not yet configured mote in the topology, it will remain 'idle' together with the mote. Whenever the mote gets configured by the infrastructure owner, the pluggable device will adhere the same location as the mote.
+The next requirement of U2 is that adding new sensors or actuators should not require more configuration than adding them to the topology. As we known, motes send periodic heartbeats which contain a list of connected pluggable devices. Whenever a new pluggable (sensor or actuator) is connected, the next heartbeat emitted by the mote will be updated to contain the newly connected devices. The heartbeat message is transferred via the \texttt{GatewayFacade} which will use the \texttt{TopologyManger} to update the topology and place this new device. If the new device is connected to a mote that has been configured, the new device will receive the same location as the mote. If the device is plugged in in a not yet configured mote in the topology, it will remain 'idle' together with the mote. Whenever the mote gets configured by the infrastructure owner, the pluggable device will adhere the same location as the mote.
 
 \paragraph{Automatic activation of applications}
-U2 states that applications should work out of the box if the required sensors and actuators are available. For this we introduced the \texttt{ApplicationActivator}. Whenever a new application is introduced to the system by an application provider, it is registered using the interface provided by the \texttt{ApplicationActivator} and stored in the \texttt{ApplicationActivationDB}, which keeps track of the current status of the application and the required sensors. As stated in the firs decomposition, the \texttt{ApplicationManager} can check the topology to find out whether the required sensors are yet available and if so, activates the application and marks the application as active in the \texttt{ApplicationActivationDB}. In the other case, when the required sensors are not yet all available, it is marked as 'not yet active' in the database. When new pluggables get introduced, the \texttt{TopologyManager} notifies the \texttt{ApplicationActivator} of this change and the \texttt{TopologyManager} checks whether there are applications waiting for this new device to become active and if so activates the application. The same goes for the other way around: whenever devices get disconnectedn, the \texttt{ApplicationActivator} checks the \texttt{ApplicationActivationDB} and deactivates applications, if necessary. This way the responsibility of keeping track of non-active applications and the (de)activation of the applications is clearly seperated.
+U2 states that applications should work out of the box if the required sensors and actuators are available. For this we introduced the \texttt{ApplicationActivator}. Whenever a new application is introduced to the system by an application provider, it is registered using the interface provided by the \texttt{ApplicationActivator} and stored in the \texttt{ApplicationActivationDB}, which keeps track of the current status of the application and the required sensors. As stated in the firs decomposition, the \texttt{ApplicationManager} can check the topology to find out whether the required sensors are yet available and if so, activates the application and marks the application as active in the \texttt{ApplicationActivationDB}. In the other case, when the required sensors are not yet all available, it is marked as 'not yet active' in the database. When new pluggables get introduced, the \texttt{TopologyManager} notifies the \texttt{ApplicationActivator} of this change and the \texttt{TopologyManager} checks whether there are applications waiting for this new device to become active and if so activates the application. The same goes for the other way around: whenever devices get disconnected, the \texttt{ApplicationActivator} checks the \texttt{ApplicationActivationDB} and deactivates applications, if necessary. This way the responsibility of keeping track of non-active applications and the (de)activation of the applications is clearly separated.
 
 \paragraph{Install and uninstall mote}
-As specified in UC4 and UC5 it must be easy to install and uninstall motes. For the installation part, the mote must become active and activate any applications requiring this new device. This is described in the previous paragrpahs and is covered by the modules in our decomposition. Likewise for UC5 where a mote gets uninstalled: the disconnection of the mote could trigger the deactivation of applications and has as effect that the mote gets listed as inactive in the topology. This is a joint effort provided by the \texttt{TopologyManager} which notifies the \texttt{ApplicationActivator} of the change which in its turn deactivates the applications depending on it and the \texttt{TopologyManager} also changes the \texttt{Topology} accordingly.
+As specified in UC4 and UC5 it must be easy to install and uninstall motes. For the installation part, the mote must become active and activate any applications requiring this new device. This is described in the previous paragraphs and is covered by the modules in our decomposition. Likewise for UC5 where a mote gets uninstalled: the disconnection of the mote could trigger the deactivation of applications and has as effect that the mote gets listed as inactive in the topology. This is a joint effort provided by the \texttt{TopologyManager} which notifies the \texttt{ApplicationActivator} of the change which in its turn deactivates the applications depending on it and the \texttt{TopologyManager} also changes the \texttt{Topology} accordingly.
 
 \paragraph{Inserting and removing pluggable device}
-UC6 and UC7 specify the ability of inserting and removing pluggable devices. As explained in the previous paragraphs it's the responsibility of the \texttt{TopologyManger} and the \texttt{ApplicationActivator} to register the devices with the topolgy. If the configuration was previously known, no further action is needed from an external actor. If not, the device gets listed as 'inactive' and waits for the necessary actor to configure the device. If applications were waiting for this device, the \texttt{ApplicationActivator} automatically activates the applications. 
+UC6 and UC7 specify the ability of inserting and removing pluggable devices. As explained in the previous paragraphs it's the responsibility of the \texttt{TopologyManger} and the \texttt{ApplicationActivator} to register the devices with the topology. If the configuration was previously known, no further action is needed from an external actor. If not, the device gets listed as 'inactive' and waits for the necessary actor to configure the device. If applications were waiting for this device, the \texttt{ApplicationActivator} automatically activates the applications. 
 
 \paragraph{Send heartbeat}
-As specified in UC14 a heartbeat is sent periodically by the motes including a list of sensors and actuators connected to it. As specified in the previous paragraphs (more specifically in 'Adding new sensors or actuators'), it is the responsibility of the \texttt{TopologyManger} and the \texttt{ApplicationActivator} to respectively modify the topology and acitvate (or deactivate) the related applications.
+As specified in UC14 a heartbeat is sent periodically by the motes including a list of sensors and actuators connected to it. As specified in the previous paragraphs (more specifically in 'Adding new sensors or actuators'), it is the responsibility of the \texttt{TopologyManger} and the \texttt{ApplicationActivator} to respectively modify the topology and activate (or deactivate) the related applications.
 
 \paragraph{Alternatives considered}
 \subparagraph{•}
@@ -301,7 +301,7 @@ When it receives a message from the \texttt{TopologyManager} (when the \texttt{T
 
 \paragraph{DataManager}
 \begin{itemize}
-	\item \emph{UC11c}: Send data to all ApplicationManagers who belong to Applications which are authorized to use the sensor from which the data is sent.
+	\item \emph{UC11c}: Send data to all ApplicationManagers who belong to Applications which are authorised to use the sensor from which the data is sent.
 	\item \emph{UC24b}: Process request for historical data and consult DataDB to retrieve data.
 \end{itemize}
 
@@ -334,7 +334,7 @@ When it receives a message from the \texttt{TopologyManager} (when the \texttt{T
 \paragraph{OtherFunctionality1}
 \begin{itemize}
 	\item \emph{Av1}: Communication between SIoTIP gateway and Online Service
-	\item \emph{Av3d}: Notification of infrastructure owner when pluggable devices fail, notification of customer organizations when applications fail.
+	\item \emph{Av3d}: Notification of infrastructure owner when pluggable devices fail, notification of customer organisations when applications fail.
 	\item \emph{P1}: Large number of users
 	\item \emph{M2}: Big data analytics on pluggable data and/or application usage data
 	\item \emph{UC1}: Register a customer organisation
@@ -350,7 +350,7 @@ When it receives a message from the \texttt{TopologyManager} (when the \texttt{T
 	\item \emph{UC22}: Upload an application
 	\item \emph{UC23}: Consult application statistics
 	\item \emph{UC26}: Send application command or message to external front-end
-	\item \emph{UC27}: Receive application command or message from external frontend
+	\item \emph{UC27}: Receive application command or message from external front-end
 	\item \emph{UC28}: Log in
 	\item \emph{UC29}: Log out
 \end{itemize}
