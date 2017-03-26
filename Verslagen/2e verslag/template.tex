@@ -3,6 +3,7 @@
 % E.g., \documentclass[english,peerreview]{sareport}
 
 \usepackage[colorlinks, linkcolor=black, citecolor=black, urlcolor=black]{hyperref}
+\usepackage{float}
 
 
 % Set all authors, if your group counts 2, set third author empty \authorthree{}
@@ -269,7 +270,7 @@ Database that stores information about which peripherals applications need in or
 
 \begin{figure}[!htp]
 	\centering
-	\includegraphics[width=0.8\textwidth]{component_diagram_2.pdf}
+	\includegraphics[width=\textwidth]{component_diagram_2.pdf}
 	%\missingfigure[figwidth=0.8\textwidth]{Component-and-connector diagram}
 	\caption{Component-and-connector diagram of this decomposition.
 	}\label{fig:it2-cc_main}
@@ -360,9 +361,9 @@ Database that stores information about which peripherals applications need in or
 
 
 \chapter{Resulting partial architecture}\label{sec:architecture}
-This section provides an over of the architecture constructed through ADD\@.
+This section provides an overview of the architecture constructed through ADD\@.
 
-\begin{figure}[!htp]
+\begin{figure}[H]
 	\centering
 	\includegraphics[angle=90,width=0.8\textwidth]{result_arch.pdf}
 	%\missingfigure[figwidth=0.8\textwidth]{Component-and-connector diagram}
