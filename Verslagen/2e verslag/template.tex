@@ -24,8 +24,8 @@
 
 \tableofcontents
 
-\chapter{Introduction}\label{sec:introduction}
-\todoinline{An introduction is not required, but if you include it, it should not be empty.}
+%\chapter{Introduction}\label{sec:introduction}
+%\todoinline{An introduction is not required, but if you include it, it should not be empty.}
 
 \chapter{Attribute-driven design documentation}\label{sec:add}
 \section{Decomposition 1: SIOTIP (M1, U2, UC6, UC8, UC13)}
@@ -48,7 +48,7 @@ The related functional drivers are:
 \end{itemize}
 
 \paragraph{Rationale}
-M1 was chosen because it has high priority and because a lot of high priority usecases are linked to M1. \todo{Beter uitschrijven.}
+M1 was chosen because it has high priority and because a lot of high priority use cases are linked to M1. UC8, UC9 and UC13 are conserned with the initialisation and configuration of pluggable devices which is related to M1 in the sense that the new devices are similar to already exisiting devices and thus require a similar approach. The same is true for UC10 where the topology has to be adjusted as well when adding these new types of sensors, similar to how it should be adjusted when adding already existing sensors. 
 
 \subsection{Architectural design}
 \paragraph{GatewayFacade for M1}
@@ -77,7 +77,6 @@ An alternative we considered for using the \texttt{DataManager} would be to just
 	
 \paragraph{Alternatives for \texttt{AssigmentDB}}
 A possible alternative for using the \texttt{AssignmentDB} was encapsulating the information directly in the topology which would also result in not having the need for a \texttt{TopologyManager}. However our approach lowers the coupling and in general makes the system more modifiable.
-\todo{check this out}
 
 \subsection{Instantiation and allocation of functionality}
 \paragraph{Decomposition}
@@ -174,7 +173,7 @@ requirements it is responsible for.
 	\item \emph{Av1}: Communication between SIoTIP gateway and Online Service
 	\item \emph{P1}: Large number of users
 	\item \emph{M2}: Big data analytics on pluggable data and/or application usage data
-	\item \emph{U2c}: Reintroducing motes \todoinline{Voor Topology?} and mandatory end-user assignment
+	\item \emph{U2c}: Reintroducing motes and mandatory end-user assignment
 	\item \emph{UC1}: Register a customer organisation
 	\item \emph{UC2}: Register an end-user
 	\item \emph{UC3}: Unregister an end-user
