@@ -264,6 +264,9 @@ Database that keeps past configurations and assignments of peripherals on discon
 \subparagraph{ApplicationActivator}
 When it receives a message from the \texttt{TopologyManager} (when the \texttt{Topology} is changed), it checks the \texttt{ApplicationActivationDB} if there is an application waiting on this new peripheral. When this is the case, the \texttt{ApplicationActivator} contacts the \texttt{ApplicationManager} to activate the waiting application.
 
+\subparagraph{ApplicationActivationDB}
+Database that stores information about which peripherals applications need in order to function properly.
+
 \begin{figure}[!htp]
 	\centering
 	\includegraphics[width=0.8\textwidth]{component_diagram_2.pdf}
