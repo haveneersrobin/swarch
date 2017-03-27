@@ -14,77 +14,77 @@
 %
 % 1. DOMAIN MODEL
 %
-Q1:    [  ] explanation: [ ]
-Q2:    [  ] explanation: [ ]
-Q3:    [  ] explanation: [ ]
-Q4:    [  ] explanation: [ ]
-Q5:    [  ] explanation: [ ]
-Q6:    [  ] explanation: [ ]
-Q7:    [  ] explanation: [ ]
-Q8:    [  ] explanation: [ ]
-Q9:    [  ] explanation: [ ]
-Q10:   [  ] explanation: [ ]
-Q11:   [  ] explanation: [ ]
-Q12:   [  ] explanation: [ ]
-Q13:   [  ] explanation: [ ]
-Q14:   [  ] explanation: [ ]
-Q15:   [  ] explanation: [ ]
-Q16:   [  ] explanation: [ ]
-Q17:   [  ] explanation: [ ]
-Q18:   [  ] explanation: [ ]
-Q19:   [  ] explanation: [ ]
-Q20:   [  ] explanation: [ ]
-Q21:   [  ] explanation: [ ]
-Q22:   [  ] explanation: [ ]
-Q23:   [  ] explanation: [ ]
-Q24:   [  ] explanation: [ ]
-Q25:   [  ] explanation: [ ]
-Q26:   [  ] explanation: [ ]
-Q27:   [  ] explanation: [ ]
-Q28:   [  ] explanation: [ ]
-Q29:   [  ] explanation: [ ]
-Q30:   [  ] explanation: [ ]
-Q31:   [  ] explanation: [ ]
-Q32:   [  ] explanation: [ ]
-Q33:   [  ] explanation: [ ]
+Q1:    [ 2] explanation: [Sensor, Mote and Gateway have an attribute “location”, Application has “configurations”.]
+Q2:    [ 0] explanation: [ ]
+Q3:    [ 1] explanation: [All devices have a location which can be used as a form of identifier, but 2 devices can share the same location.]
+Q4:    [ 0] explanation: [ ]
+Q5:    [ 0] explanation: [This is not clear from the diagram.]
+Q6:    [ 2] explanation: [These two different concepts are separately represented]
+Q7:    [ 1] explanation: [There is a notice of sensor data, although it is not entirely clear who produces the data. There is no value, measurement unit or time stamp.]
+Q8:    [ 0] explanation: [ ]
+Q9:    [ 0] explanation: [ ]
+Q10:   [ 0] explanation: [ ]
+Q11:   [ 0] explanation: [ ]
+Q12:   [ 0] explanation: [ ]
+Q13:   [ 0] explanation: [ ]
+Q14:   [ 0] explanation: [ ]
+Q15:   [ 1] explanation: [There exists a link between the infrastructure owner and the devices, but not between the customer organisation and the devices.]
+Q16:   [ 0] explanation: [ ]
+Q17:   [ 1] explanation: [There is a notion of notification but there is no clear indication of how it van be delivered.]
+Q18:   [ 0] explanation: [ ]
+Q19:   [ 1] explanation: [We assume that view is used to distinguish different types of application views (e.g. web view, mobile app …) but view and application are not explicitly linked.]
+Q20:   [ 0] explanation: [ ]
+Q21:   [ 2] explanation: [The attribute “configurations” can be used for this.]
+Q22:   [ 1] explanation: [There is a “period” attribute in invoice, but the way invoice is modeled is not 100% clear.]
+Q23:   [ 1] explanation: [This could be contained in “configurations” but isn’t explained elsewhere.]
+Q24:   [ 0] explanation: [ ]
+Q25:   [ 1] explanation: [This could be contained in “configurations” but isn’t explained elsewhere.]
+Q26:   [ 1] explanation: [Customer organisations can be subscribed to 0..* applications, but again this depends on how “configurations” is defined. ]
+Q27:   [ 0] explanation: [ ]
+Q28:   [ 0] explanation: [ ]
+Q29:   [ 2] explanation: [This can be derived from the “location” attribute.]
+Q30:   [ 0] explanation: [“Location” is not enough to determine if two sensors are equivalent for a specific application.]
+Q31:   [ 0] explanation: [ ]
+Q32:   [ 0] explanation: [ ]
+Q33:   [ 0] explanation: [ ]
 %
 % 2. USE CASES
 %
-Q34:   [  ] explanation: [ ]
-Q35:   [  ] explanation: [ ]
-Q36:   [  ] explanation: [ ]
-Q37:   [  ] explanation: [ ]
-Q38:   [  ] explanation: [ ]
-Q39:   [  ] explanation: [ ]
-Q40:   [  ] explanation: [ ]
-Q41:   [  ] explanation: [ ]
-Q42:   [  ] explanation: [ ]
-Q43:   [  ] explanation: [ ]
-Q44:   [  ] explanation: [ ]
-Q45:   [  ] explanation: [ ]
-Q46:   [  ] explanation: [ ]
-Q47:   [  ] explanation: [ ]
-Q48:   [  ] explanation: [ ]
-Q49:   [  ] explanation: [ ]
-Q50:   [  ] explanation: [ ]
-Q51:   [  ] explanation: [ ]
-Q52:   [  ] explanation: [ ]
-Q53:   [  ] explanation: [ ]
-Q54:   [  ] explanation: [ ]
+Q34:   [ 0] explanation: [ ]
+Q35:   [ 2] explanation: [Use case 16: Send heartbeat]
+Q36:   [ 1] explanation: [Use case 25 could be interpreted as such but this is not entirely clear.]
+Q37:   [ 2] explanation: [Use case 10: Subscribe to applications ]
+Q38:   [ 2] explanation: [Use case 25: Manage topology of hardware]
+Q39:   [ 1] explanation: [Use case 26: Provide customer organisation data for registration -> could cover it, but not clearly explained.]
+Q40:   [ 2] explanation: [Use case 17: Send sensor data]
+Q41:   [ 2] explanation: [Use case 19: Set data]
+Q42:   [ 0] explanation: [ ]
+Q43:   [ 2] explanation: [Use case 15: Notify]
+Q44:   [ 2] explanation: [Use case 4: Upload application]
+Q45:   [ 2] explanation: [Use case 5: Update application]
+Q46:   [ 2] explanation: [Use case 6: Debug application]
+Q47:   [ 2] explanation: [Yes, we feel that most of the essential parts of the system are covered.]
+Q48:   [ 2] explanation: [Yes, use case 27]
+Q49:   [ 0] explanation: [The only thing we noticed was that “customer organisation” and “customer organisation representative” are used interchangeably.]
+Q50:   [ 0] explanation: [ ]
+Q51:   [ 2] explanation: [E.g. Use cases 18 and 19]
+Q52:   [ 2] explanation: [E.g. Use cases 4,5,6 and 8]
+Q53:   [ 2] explanation: [E.g. Use case 6 alternative 4b or 7c]
+Q54:   [ 2] explanation: [E.g. Topology and development environment are not included in the domain model.]
 %
 % 3. QUALITY ATTRIBUTE SCENARIOS
 %
-Q55:   [  ] explanation: [ ]
-Q56:   [  ] explanation: [ ]
-Q57:   [  ] explanation: [ ]
-Q58:   [  ] explanation: [ ]
-Q59:   [  ] explanation: [ ]
-Q60:   [  ] explanation: [ ]
-Q61:   [  ] explanation: [ ]
-Q62:   [  ] explanation: [ ]
-Q63:   [  ] explanation: [ ]
-Q64:   [  ] explanation: [ ]
-Q65:   [  ] explanation: [ ]
+Q55:   [ 1] explanation: [The majority chosen quality attribute scenarios cover relevant aspects of the business model except for U2, which is vague.]
+Q56:   [ 1] explanation: [Most of the QAS’s are sufficiently concrete, except for U2 which is vague and P2 which relies on concept that are not present in the system (data priority).]
+Q57:   [ 0] explanation: [ ]
+Q58:   [ 2] explanation: [They make sense and the metrics are suitable.]
+Q59:   [ 2] explanation: [The following are covered: (i) unusable database, (iii) broken sensor.]
+Q60:   [ 2] explanation: [They make sense and the metrics are suitable.]
+Q61:   [ 2] explanation: [The following are covered: (ii) mote data to application delay, (iii) application requests under peak-load.]
+Q62:   [ 2] explanation: [They make sense and the metrics are suitable.]
+Q63:   [ 2] explanation: [M1 has an impact on application logic and how they are implemented and M2 has an impact on the UI.]
+Q64:   [ 2] explanation: [Yes, the measure is number of clicks.]
+Q65:   [ 2] explanation: [U1 is concerned with reviewing applications.]
 %
 % 4. GENERAL
 %
@@ -97,32 +97,31 @@ Q65:   [  ] explanation: [ ]
 %  NA (unclear or impossible to assess)
 % Also, briefly explain your answers.
 %
-Q66:   [  ]
+Q66:   [ 2]
 Q66explanation: [
-
-
+A lot of key concepts are missing in our opinion (based on their use cases).
+Most links are modelled incorrectly, which has a negative impact on the readability and the correlation with the assignment.
 ]
-Q67:   [  ]
+Q67:   [ 3]
 Q67explanation: [
-
-
+Relevant information is covered but most of the time very brief.
+This makes some use cases unclear or vague. Some of the use cases are (in our opinion) unnecessary. e.g. Use case 8: Get upload progress
 ]
-Q68:   [  ]
+Q68:   [ 4]
 Q68explanation: [
-
-
+Overall they were good however some concepts used are not mentioned anywhere else.
 ]
-Q69:   [  ]
+Q69:   [ 3]
 Q69explanation: [
-
-
+The report is fairly easy to read and navigate. The domain model however was difficult to read and analyse due to misuse of UML arrows.
+The report covers the most important parts, but is sometimes too concise.
+Throughout the report there were some minor inconsistencies.
 ]
 % Questions 70-71 are open questions.
 Q70:   [
-
-
+No, there are a lot of missing concepts. Some relevant aspects are to vaguely covered (topology, development environment, different types of message types …).
 ]
 Q71:   [
-
-
+Try using the correct UML syntax. Try to elaborate more on certain key parts of the assignment.
+We really had the idea that the 3 parts of the assignment were made by 3 different people. We think that working together would solve many inconsistencies.
 ]
