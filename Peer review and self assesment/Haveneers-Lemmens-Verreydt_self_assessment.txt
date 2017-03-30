@@ -14,77 +14,77 @@
 %
 % 1. DOMAIN MODEL
 %
-Q1:    [  ] explanation: [ ]
-Q2:    [  ] explanation: [ ]
-Q3:    [  ] explanation: [ ]
-Q4:    [  ] explanation: [ ]
-Q5:    [  ] explanation: [ ]
-Q6:    [  ] explanation: [ ]
-Q7:    [  ] explanation: [ ]
-Q8:    [  ] explanation: [ ]
-Q9:    [  ] explanation: [ ]
-Q10:   [  ] explanation: [ ]
-Q11:   [  ] explanation: [ ]
-Q12:   [  ] explanation: [ ]
-Q13:   [  ] explanation: [ ]
-Q14:   [  ] explanation: [ ]
-Q15:   [  ] explanation: [ ]
-Q16:   [  ] explanation: [ ]
-Q17:   [  ] explanation: [ ]
-Q18:   [  ] explanation: [ ]
-Q19:   [  ] explanation: [ ]
-Q20:   [  ] explanation: [ ]
-Q21:   [  ] explanation: [ ]
-Q22:   [  ] explanation: [ ]
-Q23:   [  ] explanation: [ ]
-Q24:   [  ] explanation: [ ]
-Q25:   [  ] explanation: [ ]
-Q26:   [  ] explanation: [ ]
-Q27:   [  ] explanation: [ ]
-Q28:   [  ] explanation: [ ]
-Q29:   [  ] explanation: [ ]
-Q30:   [  ] explanation: [ ]
-Q31:   [  ] explanation: [ ]
-Q32:   [  ] explanation: [ ]
-Q33:   [  ] explanation: [ ]
+Q1:    [ 2] explanation: [message in Notification, value in Heartbeat Message]
+Q2:    [ 2] explanation: [Infrastructure owner owns buildings and customer organisations reside in buildings.]
+Q3:    [ 1] explanation: [An identifier for Gateway (more precise, Gateway Identifier is modelled but we did not do this explicitly for the other devices.]
+Q4:    [ 1] explanation: [Again, yes for the gateway but not for the explicitly for the other devices.]
+Q5:    [ 0] explanation: [Due to the separation of our diagram in two parts, this is not explicitly shown.]
+Q6:    [ 2] explanation: [Yes. They are two separate concepts.]
+Q7:    [ 1] explanation: [We have modelled Message as a requirement on the link between Mote and Gateway, but it is not clear that this data comes from a sensor/actuator.]
+Q8:    [ 1] explanation: [The same as before: these three types of messages are distinct and are a requirement for the link between mote and gateway but is not explicitly shown by who they are produced.]
+Q9:    [ 0] explanation: [ ]
+Q10:   [ 0] explanation: [ ]
+Q11:   [ 0] explanation: [ ]
+Q12:   [ 0] explanation: [ ]
+Q13:   [ 0] explanation: [ ]
+Q14:   [ 0] explanation: [ ]
+Q15:   [ 1] explanation: [The Gateways are registered on the Online Service with a certain identifier but the link is not explicitly present.]
+Q16:   [ 0] explanation: [ ]
+Q17:   [ 1] explanation: [We have different types of Notifications (such as Application Notification) which could represent an alarm but this is not modelled explicitly.]
+Q18:   [ 0] explanation: [ ]
+Q19:   [ 2] explanation: [We see a Mobile Application a type of interface to interact with the Application running on the SIoTIP service.]
+Q20:   [ 2] explanation: [Although we interpreted this differently, Mobile Application is in fact part of an Application as a type of interface.]
+Q21:   [ 2] explanation: [Subscription is used for this.]
+Q22:   [ 1] explanation: [This is not modelled explicitly but could be part of the Subscription. ]
+Q23:   [ 0] explanation: [ ]
+Q24:   [ 2] explanation: [We have a constraint stating that an Application can only become active when the necessary hardware is available.]
+Q25:   [ 0] explanation: [ ]
+Q26:   [ 0] explanation: [ ]
+Q27:   [ 0] explanation: [ ]
+Q28:   [ 2] explanation: [Yes, Topology is modelled in the domain model.]
+Q29:   [ 1] explanation: [Buildings are described by a Topology (which contain information about the installed hardware) and Buildings are owned by Infrastructure Owners. This way it could be possible to derive nearby devices.]
+Q30:   [ 1] explanation: [This is in line with the previous answer. In addition to this there is a (textual) constraint about ‘replacement’ devices.]
+Q31:   [ 1] explanation: [A Customer Organisation resides in a Building which is described by Topology containing the information about the devices but this does not take in account, for example, nearby Customer Organisations.]
+Q32:   [ 0] explanation: [ ]
+Q33:   [ 2] explanation: [The constraints indeed strengthen associations between concepts both in terms of cardinality as of conditionality.]
 %
 % 2. USE CASES
 %
-Q34:   [  ] explanation: [ ]
-Q35:   [  ] explanation: [ ]
-Q36:   [  ] explanation: [ ]
-Q37:   [  ] explanation: [ ]
-Q38:   [  ] explanation: [ ]
-Q39:   [  ] explanation: [ ]
-Q40:   [  ] explanation: [ ]
-Q41:   [  ] explanation: [ ]
-Q42:   [  ] explanation: [ ]
-Q43:   [  ] explanation: [ ]
-Q44:   [  ] explanation: [ ]
-Q45:   [  ] explanation: [ ]
-Q46:   [  ] explanation: [ ]
-Q47:   [  ] explanation: [ ]
-Q48:   [  ] explanation: [ ]
-Q49:   [  ] explanation: [ ]
-Q50:   [  ] explanation: [ ]
-Q51:   [  ] explanation: [ ]
-Q52:   [  ] explanation: [ ]
-Q53:   [  ] explanation: [ ]
-Q54:   [  ] explanation: [ ]
+Q34:   [ 2] explanation: [UC11: Install new hardware]
+Q35:   [ 1] explanation: [The UC14: Transmit data is present in the textual description but is missing from the diagram. This in combination with UC22: Synchronize Online Service and gateway models this functionality.]
+Q36:   [ 2] explanation: [UC11: Install new hardware]
+Q37:   [ 2] explanation: [UC8: Subscribe to application]
+Q38:   [ 2] explanation: [UC16: Edit topology]
+Q39:   [ 2] explanation: [UC17: Allocate peripherals]
+Q40:   [ 1] explanation: [Not explicitly but could be contained in UC14: Transmit data]
+Q41:   [ 0] explanation: [ ]
+Q42:   [ 0] explanation: [ ]
+Q43:   [ 0] explanation: [ ]
+Q44:   [ 2] explanation: [UC4: Add application]
+Q45:   [ 2] explanation: [UC5: Update existing application]
+Q46:   [ 1] explanation: [This is contained in UC4: Add application]
+Q47:   [ 2] explanation: [We believe that our written out use cases cover important aspects of the system.]
+Q48:   [ 2] explanation: [UC14 is not present in the diagram.]
+Q49:   [ 0] explanation: [ ]
+Q50:   [ 1] explanation: [In hindsight, Gateway shouldn’t be an actor external to the system.]
+Q51:   [ 0] explanation: [ ]
+Q52:   [ 2] explanation: [Yes: UC3,UC4,UC5.]
+Q53:   [ 2] explanation: [Yes, UC4.]
+Q54:   [ 0] explanation: [ ]
 %
 % 3. QUALITY ATTRIBUTE SCENARIOS
 %
-Q55:   [  ] explanation: [ ]
-Q56:   [  ] explanation: [ ]
-Q57:   [  ] explanation: [ ]
-Q58:   [  ] explanation: [ ]
-Q59:   [  ] explanation: [ ]
-Q60:   [  ] explanation: [ ]
-Q61:   [  ] explanation: [ ]
-Q62:   [  ] explanation: [ ]
-Q63:   [  ] explanation: [ ]
-Q64:   [  ] explanation: [ ]
-Q65:   [  ] explanation: [ ]
+Q55:   [ 2] explanation: [M2 seems like the least ‘important’ one, but the other quality attribute scenarios have a lot of impact on the business.]
+Q56:   [ 2] explanation: [We feel that our description is sufficiently concrete.]
+Q57:   [ 1] explanation: [We did not explicitly write to which use case exactly is referred, but there are scenarios that involve actions described in our use cases.]
+Q58:   [ 2] explanation: [They make sensz and we measure the response, among others, in uptime and time between detection.]
+Q59:   [ 2] explanation: [Yes, Av1 is concerned with (ii) availability of the communication channel between the gateway and the Online Service. Av2 is concerned with (iii) failure of a microPnP device.]
+Q60:   [ 2] explanation: [Albeit a little bit brief, we feel the responses make sense and are measured in suitable metrics.]
+Q61:   [ 2] explanation: [Yes, P1 is related to (ii) handling of sensor data.]
+Q62:   [ 2] explanation: [We feel that the measures make sense and are measured with suitable metrics (time).]
+Q63:   [ 2] explanation: [Yes, for example M2 is concerned with implementing a new sandboxing environment.]
+Q64:   [ 1] explanation: [We feel the responses are fairly adequate, however the response measure are not completely suitable for this type of scenarios.]
+Q65:   [ 2] explanation: [Yes, U2: Adding an application.]
 %
 % 4. GENERAL
 %
@@ -97,32 +97,27 @@ Q65:   [  ] explanation: [ ]
 %  NA (unclear or impossible to assess)
 % Also, briefly explain your answers.
 %
-Q66:   [  ]
+Q66:   [3]
 Q66explanation: [
-
-
+We have included very little attributes which, in hindsight, could have made things a lot more clear and understandable.
+We also feel that the most important concepts are present.
 ]
-Q67:   [  ]
+Q67:   [3]
 Q67explanation: [
-
-
+We feel that the use cases cover the most important functionality, however specific use cases with Application as an actor are missing and in hindsight Gateway should not be external to the system.
 ]
-Q68:   [  ]
+Q68:   [4]
 Q68explanation: [
-
-
+We believe that in general the quality attribute scenarios cover important parts of the business and are explained well.
 ]
-Q69:   [  ]
+Q69:   [4]
 Q69explanation: [
-
-
+The domain model is maybe a tiny bit too small but overall we believe that our report is fairly easy to read, navigate and interpret.
 ]
 % Questions 70-71 are open questions.
 Q70:   [
-
-
+Some parts are, we feel, are a good replacement for the textual description. For example, the quality attribute scenarios were an important stepping stone for part 2b and we feel that they were decent in our report. The domain model could be improved a bit as well as some parts of the use cases.
 ]
 Q71:   [
-
-
+We should think more in terms of an external reader and not focus on what we know. We omitted some aspects relying on the fact the WE know why and how but did not consider enough that other people should be able to analyse, for examples, the diagrams with ease without having the textual description present.
 ]
