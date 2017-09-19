@@ -69,7 +69,7 @@ Q49:   [ 0] explanation: [ ]
 Q50:   [ 1] explanation: [In hindsight, Gateway shouldn’t be an actor external to the system.]
 Q51:   [ 0] explanation: [ ]
 Q52:   [ 2] explanation: [Yes: UC3,UC4,UC5.]
-Q53:   [ 2] explanation: [Yes, UC4.]
+Q53:   [ 2] explanation: [Yes: UC4.]
 Q54:   [ 0] explanation: [ ]
 %
 % 3. QUALITY ATTRIBUTE SCENARIOS
@@ -116,8 +116,8 @@ The domain model is maybe a tiny bit too small but overall we believe that our r
 ]
 % Questions 70-71 are open questions.
 Q70:   [
-Some parts are, we feel, are a good replacement for the textual description. For example, the quality attribute scenarios were an important stepping stone for part 2b and we feel that they were decent in our report. The domain model could be improved a bit as well as some parts of the use cases.
+Some parts are, we feel, a good replacement for the textual description. For example, the quality attribute scenarios were an important stepping stone for part 2b and we feel that they were decent in our report. The domain model could be improved a bit as well as some parts of the use cases.
 ]
 Q71:   [
-We should think more in terms of an external reader and not focus on what we know. We omitted some aspects relying on the fact the WE know why and how but did not consider enough that other people should be able to analyse, for examples, the diagrams with ease without having the textual description present.
+We should think more in terms of an external reader and not focus on what we know. We omitted some aspects relying on the fact the WE know why and how but did not consider enough that other people should be able to analyse, for example, the diagrams with ease without having the textual description present.
 ]
